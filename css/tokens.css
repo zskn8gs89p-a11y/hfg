@@ -1,0 +1,222 @@
+/* =============================================================
+   TOKENS.CSS — Design-Grundwerte / "Single Source of Truth"
+   HfG Ulm E-Learning · iPad 13" (1024 × 1366px)
+   
+   Alle Farben, Schriften, Abstände und Größen sind hier
+   als CSS Custom Properties definiert. Niemand sollte
+   Rohwerte direkt im Code schreiben — immer var() benutzen.
+   ============================================================= */
+
+
+/* -------------------------------------------------------------
+   CUSTOM FONTS — Resonate
+   Pfad: tokens.css liegt in /css/, Fonts in /assets/fonts/
+   daher: ../assets/fonts/
+   ------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-ThinOblique.ttf') format('truetype');
+  font-weight: 100;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-LightOblique.ttf') format('truetype');
+  font-weight: 300;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-Oblique.ttf') format('truetype');
+  font-weight: 400;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-BoldOblique.ttf') format('truetype');
+  font-weight: 700;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Resonate';
+  src: url('../assets/fonts/Resonate-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+/* -------------------------------------------------------------
+   FARBEN
+   ------------------------------------------------------------- */
+:root {
+  /* Basis */
+  --color-bg:          #FFFFFF;   /* Hintergrund: Weiß */
+  --color-white:       #FFFFFF;
+  --color-black:       #000;   /* Fast-Schwarz aus dem Design */
+
+  /* Akzent */
+  --color-orange:      #FF7B00;   /* Hauptakzentfarbe */
+  --color-orange-dark: #CC6200;   /* Dunkleres Orange für Hover */
+
+  /* Text */
+  --color-text:        #000000;   /* Standardtext */
+  --color-text-light:  #FFFFFF;   /* Text auf dunklem Hintergrund */
+  --color-text-muted:  rgba(0, 0, 0, 0.5); /* Abgeschwächter Text */
+
+  /* Raster-Hilfsfarbe (nur sichtbar wenn .show-grid aktiv) */
+  --color-grid-column: rgba(255, 255, 255, 0.55);  /* Weiße Streifen */
+  --color-grid-line:   rgba(255, 123, 0, 0.15);    /* Rasterlinien */
+}
+
+
+/* -------------------------------------------------------------
+   TYPOGRAFIE
+   Space Grotesk: Überschriften
+   Resonate: Fließtext, Labels, Details
+   
+   HINWEIS: Schriften müssen in assets/fonts/ liegen oder
+   via Google Fonts geladen werden (siehe index.html)
+   ------------------------------------------------------------- */
+:root {
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body:    'Space Grotesk', sans-serif;
+
+  /* Schriftgrößen (pt → px, 1pt ≈ 1.333px, gerundet) */
+  --fs-h1:     130px;   /* Space Grotesk Bold — Hero-Titel */
+  --fs-h2:      48px;   /* Space Grotesk 700  — Abschnittstitel */
+  --fs-h3:      30px;   /* Resonate 700       — Untertitel / Karten */
+  --fs-body:    18px;   /* Resonate 400       — Fließtext */
+  --fs-detail:  13px;   /* Resonate 600       — Labels, Caps */
+
+  /* Schriftgewichte */
+  --fw-regular:  400;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* Zeilenhöhen */
+  --lh-tight:  1.0;
+  --lh-normal: 1.4;
+  --lh-loose:  1.6;
+
+  /* Letter-Spacing für Detail-Labels */
+  --ls-caps:   0.12em;
+}
+
+
+/* -------------------------------------------------------------
+   RED-SQUARE SYSTEM — Modulares Spacing & Größen
+   Basiert auf dem quadratischen Rastersystem aus Figma.
+   Alle Abstände und Elemente orientieren sich an diesen Werten.
+   ------------------------------------------------------------- */
+:root {
+  --sq-1: 210px;   /* Größte Einheit — Sektionsabstände, große Elemente */
+  --sq-2: 110px;   /* Mittlere Einheit — Block-Abstände */
+  --sq-3:  55px;   /* Standard-Padding, Komponent-Abstände */
+  --sq-4:  40px;   /* Interne Abstände, kleinere Blöcke */
+  --sq-5:  28px;   /* Kleine Abstände (27.5 gerundet) */
+  --sq-6:  14px;   /* Feinabstimmung (13.75 gerundet) */
+
+  /* Alias-Namen für sinnvollen Einsatz */
+  --space-xl:  var(--sq-2);   /* 110px — zwischen Sektionen */
+  --space-lg:  var(--sq-3);   /* 55px  — zwischen Blöcken */
+  --space-md:  var(--sq-4);   /* 40px  — innerhalb von Komponenten */
+  --space-sm:  var(--sq-5);   /* 28px  — kleine Lücken */
+  --space-xs:  var(--sq-6);   /* 14px  — Micro-Abstände */
+}
+
+
+/* -------------------------------------------------------------
+   4. BUTTON-GRÖSSEN
+   ------------------------------------------------------------- */
+:root {
+  --btn-w-lg:  210px;
+  --btn-w-md:  135px;
+  --btn-sz-round-lg: 80px;    /* Quadratisch / rund */
+  --btn-sz-round-md: 60px;
+  --btn-h:      60px;         /* Höhe für rechteckige Buttons */
+  --btn-radius: 9999px;       /* Vollständig abgerundet (Pill) */
+}
+
+
+/* -------------------------------------------------------------
+   5. LAYOUT-KONSTANTEN
+   ------------------------------------------------------------- */
+:root {
+  /* iPad 13" Querformat */
+  --canvas-w:    1366px;
+  --canvas-h:    1024px;
+
+  /* Feste UI-Elemente */
+  --nav-h:         56px;   /* Höhe der oberen Navigation */
+  --sidebar-w:     60px;   /* Breite des linken Fortschrittsbalkens */
+
+  /* 12-Spalten-Raster */
+  --grid-cols:     12;
+  --grid-gutter:   20px;
+  --grid-margin:    0px;   /* Margin 0, wie in Figma */
+
+  /* Border-Radius */
+  --radius-sm:    8px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-full: 9999px;
+}

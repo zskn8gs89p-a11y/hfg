@@ -1,0 +1,726 @@
+/* =============================================================
+   LEHRE-BECCY.CSS
+   Nur Seitenlayout + Anpassungen. Komponenten bleiben bestehen.
+============================================================= */
+
+.lehre-station {
+  padding-top: var(--sq-2);
+}
+
+.lehre-intro-grid {
+  margin-top: var(--sq-3);
+  align-items: center;
+}
+
+.lehre-archive-card {
+  background: rgba(255,255,255,0.75);
+  border: 1.5px solid rgba(26,10,0,0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: 0 12px 30px rgba(26,10,0,0.08);
+}
+
+.lehre-archive-card h3 {
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.lehre-archive-card p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+}
+
+.lehre-archive-card img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  filter: grayscale(100%);
+}
+
+
+/* Start-Guide wie auf der Geschichtsseite */
+#lehre-start {
+  padding-top: var(--sq-3);
+  padding-bottom: var(--sq-4);
+}
+
+#lehre-start .story-intro-guide {
+  margin-top: var(--sq-3);
+  margin-bottom: var(--sq-3);
+}
+
+/* gleiche große Picto/Sprechblasen-Optik wie Geschichte */
+.lehre-guide,
+#lehre-start .history-guide {
+  justify-content: flex-start !important;
+  padding-inline: 0 !important;
+  background: transparent !important;
+}
+
+#lehre-start .history-guide--hero {
+  width: 100%;
+  align-items: center !important;
+}
+
+#lehre-start .history-guide--hero .qv2-guide-figure {
+  width: 280px !important;
+  height: 280px !important;
+  flex-shrink: 0;
+}
+
+#lehre-start .history-guide--hero .qv2-guide-bubble {
+  width: 100% !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
+  padding: var(--sq-4) var(--sq-3) !important;
+}
+
+#lehre-start .history-guide--hero .qv2-guide-bubble p {
+  font-size: 24px;
+  line-height: 1.45;
+}
+
+#bewerbung .card {
+  overflow: hidden;
+}
+
+#bewerbung .image-frame{
+    margin-top:var(--sq-6);
+    margin-left: var(--sq-5);
+}
+
+#bewerbung .image-frame img{
+    display:block;
+    width:100%;
+    height:260px;          /* Höhe des Ausschnitts */
+    object-fit:cover;      /* füllt die komplette Breite */
+    object-position: center 19%; /* zeigt den oberen Bereich */
+    filter:grayscale(100%) contrast(1.05);
+    transform:scale(1.12);
+    border-radius: 12px;
+}
+#bewerbung .image-frame .caption {
+  
+  padding-top: var(--sq-6);
+}
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(8px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.25s;
+    z-index:9999;
+}
+
+.lightbox.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.lightbox img{
+    max-width:90vw;
+    max-height:85vh;
+
+    border-radius:16px;
+    background:white;
+
+    transform:scale(.9);
+    transition:.25s;
+}
+
+.lightbox.open img{
+    transform:scale(1);
+}
+
+.lightbox-close{
+    position:absolute;
+    top:32px;
+    right:32px;
+
+    width:48px;
+    height:48px;
+
+    border:none;
+    border-radius:50%;
+    background:white;
+    cursor:pointer;
+
+    font-size:24px;
+}
+
+.zoom-image{
+    cursor:pointer;
+}
+
+.grundlehre-intro{
+    margin-top:var(--sq-24);
+    margin-bottom:var(--sq-12);
+
+    max-width:520px;
+
+    font-size:34px;
+    line-height:1.15;
+    font-weight:600;
+}
+
+.grundtext{
+    max-width:540px;
+}
+
+.grundlehre-pikto{
+
+    width:170px;
+
+}
+
+
+/* Grundlehre Intro */
+.grundlehre-intro-grid {
+  margin-top: var(--sq-3);
+  align-items: center;
+}
+
+.grundlehre-intro-title {
+  margin-bottom: var(--sq-5);
+  max-width: 560px;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.grundlehre-intro-text {
+  max-width: 560px;
+}
+
+/* Picto/Sprechblase bei Grundlehre größer */
+.grundlehre-guide {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  background: transparent !important;
+  padding-inline: 0 !important;
+}
+
+.grundlehre-guide .qv2-guide-figure {
+  width: 220px !important;
+  height: 220px !important;
+  flex-shrink: 0;
+}
+
+.grundlehre-guide .qv2-guide-bubble {
+  flex: 1 1 auto !important;
+  max-width: none !important;
+  padding: var(--sq-4) var(--sq-3) !important;
+}
+
+.grundlehre-guide .qv2-guide-bubble p {
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+.qv2-expl-node--center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.qv2-expl-node--center span{
+    display:block;
+    text-align:center;
+    font-size:2rem;
+    font-weight:700;
+    line-height:0.9;
+    letter-spacing:0.08em;
+}
+
+/* Spezialisierung */
+.spezialisierung-intro {
+  margin-top: var(--sq-3);
+  align-items: center;
+}
+
+.spezialisierung-guide {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  background: transparent !important;
+  padding-inline: 0 !important;
+}
+
+.spezialisierung-guide .qv2-guide-figure {
+  width: 180px !important;
+  height: 180px !important;
+  flex-shrink: 0;
+}
+
+.spezialisierung-guide .qv2-guide-bubble {
+  max-width: 360px !important;
+  padding: var(--sq-4) var(--sq-3) !important;
+}
+
+.spezialisierung-guide .qv2-guide-bubble p {
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.spezialisierung-lead {
+  margin-bottom: var(--sq-5);
+  max-width: 520px;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.spezialisierung-intro .body-text {
+  max-width: 560px;
+}
+
+.spezialisierung-cards {
+  margin-top: var(--sq-3);
+  row-gap: var(--sq-4);
+}
+
+.spezialisierung-cards .card {
+  min-height: 230px;
+}
+
+/* Ulmer Modell */
+.ulmer-modell-intro {
+  margin-top: var(--sq-3);
+  align-items: center;
+}
+
+.ulmer-modell-lead {
+  margin-bottom: var(--sq-5);
+  max-width: 560px;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.ulmer-modell-intro .body-text {
+  max-width: 560px;
+}
+
+.ulmer-modell-guide {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  background: transparent !important;
+  padding-inline: 0 !important;
+}
+
+.ulmer-modell-guide .qv2-guide-figure {
+  width: 220px !important;
+  height: 220px !important;
+  flex-shrink: 0;
+}
+
+.ulmer-modell-guide .qv2-guide-bubble {
+  width: 420px !important;
+  max-width: 420px !important;
+  padding: var(--sq-4) var(--sq-3) !important;
+}
+
+.ulmer-modell-guide .qv2-guide-bubble p {
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+/* Cards wieder als echte 3er-Reihe */
+.ulmer-modell-cards {
+  margin-top: var(--sq-3);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gutter);
+}
+
+.ulmer-modell-cards .history-flip-card {
+  min-height: 260px;
+}
+
+/* =============================================================
+   Explorer-Mitte für Grundlehre lesbarer machen
+============================================================= */
+.qv2-expl-mark--lehre {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: var(--fw-bold);
+  line-height: 0.9;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.qv2-expl-mark--lehre span {
+  display: block;
+}
+
+/* =============================================================
+   Flipcards — aus Geschichte übernommen, lokal für Lehre
+============================================================= */
+.history-flip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gutter);
+  margin-top: var(--sq-3);
+  perspective: 1400px;
+}
+
+.history-flip-card {
+  position: relative;
+  min-height: 260px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform .5s ease;
+  font-family: var(--font-body);
+  text-align: left;
+}
+
+.history-flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.history-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1.5px solid rgba(26, 10, 0, 0.12);
+}
+
+.history-flip-front {
+  background: rgba(255,255,255,.65);
+}
+
+.history-flip-back {
+  background: var(--color-black);
+  color: var(--color-white);
+  transform: rotateY(180deg);
+  justify-content: center;
+}
+
+.history-flip-back p {
+  color: var(--color-white);
+  font-size: var(--fs-body);
+  line-height: var(--lh-loose);
+}
+
+.history-flip-num,
+.history-flip-tap {
+  color: var(--color-orange);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+}
+
+.history-flip-front p {
+  color: var(--color-text-muted);
+  font-size: var(--fs-detail);
+  margin-top: var(--sq-6);
+}
+
+.ulmer-modell-cards {
+  margin-top: var(--sq-3);
+}
+
+.ulmer-modell-cards .history-flip-card {
+  min-height: 260px;
+}
+
+#werkstaetten .qv2-day-stage {
+  height: 620px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+#werkstaetten .qv2-day-stage img {
+  filter: grayscale(100%) !important;
+}
+
+/* Diplom */
+/* Diplom wie Intro-Guide */
+.diplom-big-guide {
+  margin-top: var(--sq-3);
+  margin-bottom: var(--sq-3);
+  justify-content: flex-start !important;
+  padding-inline: 0 !important;
+  background: transparent !important;
+  align-items: center !important;
+}
+
+.diplom-big-guide .qv2-guide-figure {
+  width: 280px !important;
+  height: 280px !important;
+  flex-shrink: 0;
+}
+
+.diplom-big-guide .qv2-guide-bubble {
+  width: 100% !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
+  padding: var(--sq-4) var(--sq-3) !important;
+}
+
+.diplom-big-guide .qv2-guide-bubble p {
+  font-size: 24px;
+  line-height: 1.45;
+}
+
+.diplom-text-grid {
+  margin-top: var(--sq-3);
+}
+
+.diplom-lead {
+  margin-bottom: var(--sq-5);
+  max-width: 560px;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.diplom-text-grid .body-text {
+  max-width: 560px;
+}
+
+/* International */
+.international-intro {
+  margin-top: var(--sq-3);
+}
+
+.international-lead {
+  margin-bottom: var(--sq-5);
+  max-width: 560px;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.international-intro .body-text {
+  max-width: 560px;
+}
+
+.international-hotspot {
+  height: 620px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(0,0,0,.08);
+  overflow: hidden;
+}
+
+.international-hotspot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(100%) !important;
+}
+
+/* Quiz-v2 Styleguide auf Lehrseite ausblenden */
+.qv2-guide-styleguide,
+#qv2-guide-styleguide,
+.qv2-styleguide,
+[id*="styleguide"] {
+  display: none !important;
+}
+
+/* =============================================================
+   LEHRE — SORTIERÜBUNG / DRAG & DROP
+============================================================= */
+
+.lehre-sort-quiz {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding-inline: 0;
+}
+
+.lehre-sort-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.lehre-sort-chip {
+  display: inline-flex;
+  align-items: center;
+
+  padding: var(--space-xs) var(--space-sm);
+
+  border: 1.5px solid var(--color-black);
+  border-radius: var(--radius-full);
+
+  background: var(--color-white);
+  color: var(--color-text);
+
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+/* Auf dem iPad zeigt dieser Zustand die angetippte Auswahl */
+.lehre-sort-chip.is-selected {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.lehre-sort-chip.used {
+  opacity: 0.22;
+  cursor: default;
+  pointer-events: none;
+}
+
+.lehre-sort-slots {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-sm);
+
+  width: 100%;
+  margin-bottom: var(--space-md);
+}
+
+.lehre-sort-slot {
+  position: relative;
+  min-width: 0;
+  min-height: 210px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: var(--sq-5);
+
+  border: 1.5px dashed rgba(26, 10, 0, 0.3);
+  border-radius: var(--radius-lg);
+  background: transparent;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.lehre-sort-slot:active {
+  transform: scale(0.985);
+}
+
+.lehre-sort-slot:focus-visible,
+.lehre-sort-chip:focus-visible {
+  outline: 3px solid rgba(255, 123, 0, 0.3);
+  outline-offset: 3px;
+}
+
+.lehre-sort-slot__number {
+  color: var(--color-orange);
+
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+}
+
+.lehre-sort-slot__title {
+  margin-top: auto;
+
+  font-family: var(--font-heading);
+  font-size: 25px;
+  font-weight: var(--fw-bold);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+
+  overflow-wrap: anywhere;
+}
+
+.lehre-sort-slot__placeholder {
+  margin-top: var(--sq-5);
+
+  color: var(--color-text-muted);
+
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: var(--fw-regular);
+}
+
+.lehre-sort-slot__value {
+  margin-top: var(--sq-5);
+
+  color: var(--color-text);
+
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  line-height: 1.35;
+}
+
+.lehre-sort-slot.over {
+  border-color: var(--color-orange);
+  background: rgba(255, 123, 0, 0.08);
+}
+
+.lehre-sort-slot.is-filled {
+  border-style: solid;
+}
+
+.lehre-sort-slot.filled-correct {
+  border-style: solid;
+  border-color: var(--color-orange);
+  background: rgba(255, 123, 0, 0.06);
+}
+
+.lehre-sort-slot.filled-wrong {
+  border-style: solid;
+  border-color: var(--color-black);
+}
+
+.lehre-sort-footer {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--space-sm);
+}
+
+/* Die allgemeine Quiz-Komponente blendet Feedback ggf. zunächst aus */
+#lehre-sort-feedback {
+  display: none;
+}
+
+#lehre-sort-feedback.is-visible {
+  display: block;
+}
+
+/* iPad Pro 13": fünf Karten bleiben in einer Reihe */
+@media (max-width: 1100px) {
+  .lehre-sort-slots {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+

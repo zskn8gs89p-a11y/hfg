@@ -1,0 +1,868 @@
+/* =============================================================
+   COMPONENTS.CSS — Alle wiederverwendbaren UI-Komponenten
+   HfG Ulm E-Learning
+   
+   Reihenfolge:
+   1.  Buttons
+   2.  Info-Boxen (Dark / Light)
+   3.  Cards
+   4.  Quiz
+   5.  Hotspot-Bilder (aufklappbare Inhalte)
+   6.  Mind-Map / Node-Diagramm
+   7.  Bild-Container
+   8.  Scrollytelling
+   9.  Timeline
+   10. Zitat / Fokus-Element
+   ============================================================= */
+
+
+/* =============================================================
+   1. BUTTONS
+   ============================================================= */
+
+/* Basis aller Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent; /* iPad: kein blaues Highlight beim Tippen */
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Pill-Form (alle Buttons sind abgerundet) */
+.btn--pill {
+  border-radius: var(--btn-radius);
+  height: var(--btn-h);  /* 60px */
+}
+
+/* GRÖSSE 1: Breit (210 × 60) */
+.btn--lg {
+  width: var(--btn-w-lg);   /* 210px */
+  height: var(--btn-h);
+}
+
+/* GRÖSSE 2: Mittel (135 × 60) */
+.btn--md {
+  width: var(--btn-w-md);   /* 135px */
+  height: var(--btn-h);
+}
+
+/* GRÖSSE 3: Rund groß (80 × 80) */
+.btn--round-lg {
+  width:  var(--btn-sz-round-lg);   /* 80px */
+  height: var(--btn-sz-round-lg);
+  border-radius: 50%;
+  padding: 0;
+}
+
+/* GRÖSSE 4: Rund klein (60 × 60) */
+.btn--round-md {
+  width:  var(--btn-sz-round-md);   /* 60px */
+  height: var(--btn-sz-round-md);
+  border-radius: 50%;
+  padding: 0;
+}
+
+/* FARBE: Schwarz (primär) */
+.btn--black {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+.btn--black:hover {
+  background: #3A2A1A;
+}
+
+/* FARBE: Orange */
+.btn--orange {
+  background: var(--color-orange);
+  color: var(--color-white);
+}
+.btn--orange:hover {
+  background: var(--color-orange-dark);
+}
+
+/* FARBE: Ghost (nur Outline) */
+.btn--ghost {
+  background: transparent;
+  border: 1.5px solid var(--color-text);
+  color: var(--color-text);
+}
+.btn--ghost:hover {
+  background: rgba(26, 10, 0, 0.06);
+}
+
+
+/* =============================================================
+   2. INFO-BOXEN
+   Zwei Varianten: Dark (schwarz) und Light (rosa/transparent)
+   Wie in Bild 3 zu sehen.
+   ============================================================= */
+
+.info-box {
+  border-radius: var(--radius-lg);  /* 24px */
+  padding: var(--space-md);         /* 40px */
+  position: relative;
+  overflow: hidden;
+}
+
+/* DARK-Variante */
+.info-box--dark {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.info-box--dark .info-box__label {
+  color: var(--color-orange);
+}
+
+.info-box--dark .info-box__title,
+.info-box--dark .info-box__body {
+  color: var(--color-white);
+}
+
+/* LIGHT-Variante */
+.info-box--light {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1.5px solid rgba(26, 10, 0, 0.12);
+  backdrop-filter: blur(4px);
+}
+
+/* Inhalte der Box */
+.info-box__label {
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-orange);
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.info-box__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-sm);
+}
+
+.info-box__body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-loose);
+}
+
+.info-box__body strong {
+  font-weight: var(--fw-bold);
+}
+
+
+/* =============================================================
+   3. CARDS
+   ============================================================= */
+
+.card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1.5px solid rgba(26, 10, 0, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.card--dark {
+  background: var(--color-black);
+  border-color: transparent;
+  color: var(--color-white);
+}
+
+.card__label {
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+.card__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  color: inherit;
+}
+
+.card__body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-loose);
+  color: inherit;
+}
+
+
+/* =============================================================
+   4. QUIZ-KOMPONENTE
+   Wie in Bild 5 zu sehen: Frage + Radio-Buttons + Weiter-Button
+   ============================================================= */
+
+.quiz {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1.5px solid rgba(26, 10, 0, 0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* "FRAGE 01 / 05" */
+.quiz__counter {
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+/* Die eigentliche Frage */
+.quiz__question {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+/* Antwort-Optionen (Radio-Buttons) */
+.quiz__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.quiz__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 18px var(--space-md);
+  border: 1.5px solid rgba(26, 10, 0, 0.15);
+  border-radius: var(--radius-full); /* Pill-Form */
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+  transition: border-color 0.2s ease, background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.quiz__option:hover {
+  border-color: var(--color-text);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Ausgewählte Antwort */
+.quiz__option.is-selected {
+  border-color: var(--color-text);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Richtige Antwort nach Auflösung */
+.quiz__option.is-correct {
+  border-color: #2E7D32;
+  background: rgba(46, 125, 50, 0.08);
+}
+
+/* Falsche Antwort nach Auflösung */
+.quiz__option.is-wrong {
+  border-color: #C62828;
+  background: rgba(198, 40, 40, 0.08);
+}
+
+/* Radio-Circle */
+.quiz__radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(26, 10, 0, 0.25);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.quiz__option.is-selected .quiz__radio {
+  border-color: var(--color-text);
+  background: var(--color-text);
+}
+
+.quiz__option.is-selected .quiz__radio::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-white);
+}
+
+/* Antwort-Text */
+.quiz__option-text {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  color: var(--color-text);
+}
+
+/* Weiter-Button Zeile */
+.quiz__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Feedback nach Beantwortung */
+.quiz__feedback {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  display: none; /* Wird via JS eingeblendet */
+}
+
+.quiz__feedback.is-visible {
+  display: block;
+}
+
+.quiz__feedback--correct {
+  color: #2E7D32;
+  background: rgba(46, 125, 50, 0.1);
+}
+
+.quiz__feedback--wrong {
+  color: #C62828;
+  background: rgba(198, 40, 40, 0.1);
+}
+
+
+/* =============================================================
+   5. HOTSPOT-BILD (aufklappbare Inhalte auf Bildern)
+   Wie in Bild 5 unten: Bild + oranges Plus/X + Popup-Karte
+   ============================================================= */
+
+.hotspot-container {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.hotspot-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Schwarz-Weiß mit rotem Tint wie im Design */
+  filter: grayscale(100%) sepia(20%) hue-rotate(330deg) saturate(150%);
+}
+
+/* Der Trigger-Button (orange + / ×) */
+.hotspot-trigger {
+  position: absolute;
+  width: var(--btn-sz-round-lg);   /* 80px */
+  height: var(--btn-sz-round-lg);
+  border-radius: 50%;
+  background: var(--color-orange);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+  /* Position wird inline gesetzt: style="top: 65%; left: 30%" */
+}
+
+.hotspot-trigger:hover {
+  transform: scale(1.08);
+}
+
+.hotspot-trigger.is-open {
+  background: var(--color-orange-dark);
+}
+
+/* Das + / × Icon */
+.hotspot-trigger__icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.hotspot-trigger__icon::before,
+.hotspot-trigger__icon::after {
+  content: '';
+  position: absolute;
+  background: var(--color-white);
+  border-radius: 2px;
+}
+
+/* Horizontal-Linie des + */
+.hotspot-trigger__icon::before {
+  width: 18px;
+  height: 2.5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Vertikal-Linie des + */
+.hotspot-trigger__icon::after {
+  width: 2.5px;
+  height: 18px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Wenn offen: wird zum × (Rotation) */
+.hotspot-trigger.is-open .hotspot-trigger__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+.hotspot-trigger.is-open .hotspot-trigger__icon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 18px;
+}
+
+/* Das Popup-Kärtchen */
+.hotspot-popup {
+  position: absolute;
+  width: 280px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  z-index: 11;
+  /* Position wird inline gesetzt */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+  /* Einblend-Animation */
+  opacity: 0;
+  transform: translateY(8px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.hotspot-popup.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.hotspot-popup__label {
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-orange);
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.hotspot-popup__title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.hotspot-popup__body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: var(--lh-loose);
+  color: var(--color-text);
+}
+
+
+/* =============================================================
+   6. MIND-MAP / NODE-DIAGRAMM
+   Wie in Bild 1 + 2: zentraler oranger Kreis + Satelliten
+   ============================================================= */
+
+.mindmap {
+  position: relative;
+  width: 100%;
+  height: 500px;  /* Anpassbar je nach Seite */
+}
+
+/* Ein einzelner Node */
+.mindmap__node {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mindmap__node:hover {
+  transform: scale(1.06);
+}
+
+/* Zentraler Haupt-Node (orange) */
+.mindmap__node--center {
+  width: 150px;
+  height: 150px;
+  background: var(--color-orange);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  z-index: 2;
+}
+
+/* Satelliten-Nodes (outline) */
+.mindmap__node--satellite {
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  border: 1.5px solid rgba(26, 10, 0, 0.3);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  padding: 12px;
+}
+
+/* Verbindungslinien (SVG, liegt hinter den Nodes) */
+.mindmap__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mindmap__line {
+  stroke: rgba(26, 10, 0, 0.2);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+
+/* =============================================================
+   7. BILD-CONTAINER
+   ============================================================= */
+
+.image-block {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.image-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* Caption */
+.image-block__caption {
+  position: absolute;
+  bottom: var(--space-sm);
+  left: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  color: rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.4);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+/* =============================================================
+   IMAGE-BREAK — Vollflächiges Trennbild
+   Verwendung: als visuelle Trennung zwischen Sektionen,
+   analog zur break-box aber mit Bild statt schwarzem Hintergrund
+   ============================================================= */
+
+/* =============================================================
+   IMAGE-BREAK — Vollflächiges Trennbild
+   ============================================================= */
+
+.image-break {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--sq-3);
+  margin-bottom: var(--sq-3);
+}
+
+/* Höhen-Varianten */
+.image-break--sm { height: calc(var(--sq-1) * 1.5); }   /* 315px */
+.image-break--md { height: calc(var(--sq-1) * 2.5); }   /* 525px */
+.image-break--lg { height: calc(var(--sq-1) * 3.5); }   /* 735px */
+
+.image-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+}
+
+/* =============================================================
+   8. SCROLLYTELLING-LAYOUT
+   Linke Spalte scrollt, rechte Spalte (Bild/Visual) bleibt.
+   ============================================================= */
+
+.scrolly {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  column-gap: var(--grid-gutter);
+  align-items: start;
+}
+
+/* Linke Text-Spalte (scrollt normal) */
+.scrolly__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding: var(--space-lg) 0;
+}
+
+/* Einzelner Textblock innerhalb des Scrollytelling */
+.scrolly__step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  opacity: 0.35;
+  transition: opacity 0.4s ease;
+}
+
+/* Aktiver Step (via JS gesetzt) */
+.scrolly__step.is-active {
+  opacity: 1;
+}
+
+/* Rechte Sticky-Spalte */
+.scrolly__visual {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--space-sm));
+  height: calc(var(--canvas-h) - var(--nav-h) - var(--space-lg));
+}
+
+/* Einzelne Visual-Panels (werden per JS ein-/ausgeblendet) */
+.scrolly__panel {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.scrolly__panel.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* =============================================================
+   9. TIMELINE (horizontal)
+   ============================================================= */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Die Schiene */
+.timeline__track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  padding: 0 var(--space-lg);
+}
+
+/* Linie */
+.timeline__line {
+  position: absolute;
+  top: 50%;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  height: 1.5px;
+  background: rgba(26, 10, 0, 0.2);
+  z-index: 0;
+}
+
+/* Einzelner Punkt */
+.timeline__point {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+}
+
+.timeline__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(26, 10, 0, 0.2);
+  border: 2px solid rgba(26, 10, 0, 0.2);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.timeline__point.is-active .timeline__dot,
+.timeline__point:hover .timeline__dot {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+  transform: scale(1.3);
+}
+
+.timeline__year {
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+}
+
+.timeline__point.is-active .timeline__year {
+  color: var(--color-text);
+}
+
+/* Detail-Bereich unterhalb der Schiene */
+.timeline__details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+
+/* =============================================================
+   10. ZITAT / FOKUS-ELEMENT
+   Große zentrierte These + 3 Kontext-Kacheln darunter
+   ============================================================= */
+
+.quote-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+}
+
+/* Die vertikale Linie über dem Zitat */
+.quote-section__line {
+  width: 2px;
+  height: 60px;
+  background: rgba(26, 10, 0, 0.2);
+  border-radius: 2px;
+}
+
+.quote-section__text {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+  max-width: 900px;  /* Entspricht ca. 10 Spalten */
+  color: var(--color-text);
+}
+
+.quote-section__source {
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Kontext-Kacheln darunter */
+.quote-section__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  width: 100%;
+  text-align: left;
+}
+
+/* =============================================================
+   BREAK-BOX — Schwarze Trennbox / Sektionsbruch
+   Verwendung: als visuelle Trennung zwischen Sektionen,
+   als Zitat-Hintergrund, als dunkler Inhaltsblock
+   ============================================================= */
+
+.break-box {
+  background: var(--color-black);
+  width: 100%;
+  padding: var(--sq-2) var(--sq-3);
+  margin-top: var(--sq-3);
+  margin-bottom: var(--sq-3);
+}
+
+/* Alle Texte innerhalb automatisch weiß */
+.break-box h1,
+.break-box h2,
+.break-box h3,
+.break-box p,
+.break-box .body-text,
+.break-box .label,
+.break-box .detail-text,
+.break-box blockquote {
+  color: var(--color-white);
+}
+
+.break-box .label--orange,
+.break-box .detail-text--orange {
+  color: var(--color-orange);
+}
+
+/* Variante: kompakt */
+.break-box--sm {
+  padding-top: var(--sq-3);
+  padding-bottom: var(--sq-3);
+}
+
+/* Variante: mittel */
+.break-box--md {
+  padding-top: var(--sq-2);
+  padding-bottom: var(--sq-2);
+}
+
+/* Variante: groß / Zitat */
+.break-box--lg {
+  padding-top: var(--sq-1);
+  padding-bottom: var(--sq-1);
+}
+
+
+

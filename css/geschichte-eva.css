@@ -1,0 +1,596 @@
+/* =============================================================
+   GESCHICHTE-EVA.CSS — Seitenstyles Geschichte
+   Nutzt bestehende Komponenten aus tokens / typography / layout / components / quiz-v2.
+   Vertikaler Rhythmus: --sq-* | Horizontales Layout: 12-Spalten-Grid.
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   0. Aufräumen / alte Systeme deaktivieren
+------------------------------------------------------------- */
+.jahr-scrolly,
+.qv2-guide-styleguide {
+  display: none !important;
+}
+
+/* Kleine Utility-Klassen für saubere HTML-Struktur */
+.grid--center {
+  align-items: center;
+}
+
+.grid--end {
+  align-items: end;
+}
+
+.text-accent {
+  color: var(--color-orange);
+}
+
+/* -------------------------------------------------------------
+   1. Bilder / Medien
+------------------------------------------------------------- */
+.image-frame {
+  margin: 0;
+  background: var(--color-white);
+  border: 1.5px solid rgba(26, 10, 0, 0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.image-frame img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.image-frame--large img {
+  height: 480px;
+}
+
+.image-frame--hero img {
+  height: 620px;
+}
+
+.image-frame .caption {
+  display: block;
+  padding: var(--sq-6) var(--sq-5) var(--sq-5);
+}
+
+/* -------------------------------------------------------------
+   2. Personen
+------------------------------------------------------------- */
+.person-full {
+  margin-top: var(--sq-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sq-2);
+}
+
+.person-feature {
+  align-items: center;
+}
+
+.person-feature h2 {
+  margin-top: var(--sq-6);
+}
+
+.person-feature .body-text {
+  margin-top: var(--sq-5);
+}
+
+.person-feature .image-frame img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+}
+
+/* Alte Personen-Card-Klassen bleiben als Fallback erhalten */
+.person-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+  gap: var(--sq-4);
+}
+
+.person-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  filter: grayscale(100%);
+}
+
+.personen-grid {
+  margin-top: var(--sq-4);
+}
+
+.personen-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sq-3);
+}
+
+/* -------------------------------------------------------------
+   3. Zitat / Fokus-Elemente / Cards
+------------------------------------------------------------- */
+.quote-figure {
+  width: 180px;
+}
+
+.quote-card {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid rgba(26, 10, 0, 0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--sq-3);
+}
+
+.quote-card--large {
+  font-size: var(--fs-h2);
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+}
+
+.card-row {
+  margin-top: var(--sq-4);
+}
+
+.card-row > .card {
+  min-height: 230px;
+}
+
+/* -------------------------------------------------------------
+   4. Station-CTAs
+------------------------------------------------------------- */
+.station-cta img {
+  width: 140px;
+  display: block;
+}
+
+.station-cta.info-box--dark img {
+  filter: invert(1);
+}
+
+.station-cta .btn.is-disabled,
+.station-cta .btn[aria-disabled="true"] {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------
+   5. Guide-Figur / Sprechblase auf Geschichtsseite
+   Überschreibt quiz-v2 lokal NUR innerhalb .history-guide.
+------------------------------------------------------------- */
+.history-guide {
+  justify-content: flex-start !important;
+  padding-inline: 0 !important;
+  background: transparent !important;
+}
+
+.history-guide--hero {
+  width: 100%;
+  align-items: center !important;
+}
+
+.history-guide--hero .qv2-guide-figure {
+  width: 280px !important;
+  height: 280px !important;
+  flex-shrink: 0;
+}
+
+.history-guide--hero .qv2-guide-bubble {
+  width: 100% !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
+  padding: var(--sq-4) var(--sq-3) !important;
+}
+
+.history-guide--hero .qv2-guide-bubble p {
+  font-size: 24px;
+  line-height: 1.45;
+}
+
+.story-intro-guide {
+  margin-top: var(--sq-3);
+  margin-bottom: var(--sq-3);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.story-intro-guide.is-hidden {
+  opacity: 0;
+  transform: translateY(-24px);
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------
+   6. Story Scroll — Jahreszahl links, Stichpunkte rechts
+------------------------------------------------------------- */
+.story-scroll {
+  padding-top: var(--sq-3);
+  padding-bottom: var(--sq-4);
+}
+
+.story-scroll__grid {
+  margin-top: var(--sq-3);
+  align-items: stretch;
+}
+
+.story-scroll__grid > div:first-child {
+  align-self: stretch;
+}
+
+.story-scroll__sticky {
+  position: sticky;
+  top: var(--sq-4);
+  height: calc(100vh - var(--sq-3));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.story-scroll__sticky.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.story-scroll__figure {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  margin-bottom: var(--sq-5);
+  transform: scale(2.4);
+  transform-origin: top left;
+}
+
+.story-scroll__year {
+  font-family: var(--font-heading);
+  font-size: 150px;
+  font-weight: var(--fw-bold);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  color: var(--color-orange);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.story-scroll__year.is-changing {
+  opacity: 0.25;
+  transform: translateY(-10px);
+}
+
+.story-scroll__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.story-step {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.story-step.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.story-step .label,
+.story-step .card__label {
+  color: var(--color-orange);
+  margin-bottom: var(--sq-5);
+}
+
+.story-step h2,
+.story-step .card__title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--sq-3);
+}
+
+.story-step ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sq-5);
+}
+
+.story-step li {
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+  position: relative;
+  padding-left: 36px;
+}
+
+.story-step li::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-orange);
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+}
+
+/* -------------------------------------------------------------
+   7. Hotspots
+------------------------------------------------------------- */
+.eva-hotspot {
+  height: 620px;
+  margin-top: var(--sq-4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.eva-hotspot img {
+  filter: grayscale(100%);
+}
+
+/* -------------------------------------------------------------
+   8. Kapitel-Checks / Quiz-Ergänzungen
+------------------------------------------------------------- */
+.chapter-check .quiz {
+  margin-top: var(--sq-4);
+}
+
+.chapter-check .quiz__feedback {
+  display: none;
+}
+
+.chapter-check .quiz__feedback.is-visible {
+  display: block;
+}
+
+.chapter-check .quiz__footer {
+  display: flex;
+  align-items: center;
+  margin-top: var(--sq-5);
+}
+
+.chapter-check .qv2-gap-bank {
+  margin-bottom: var(--sq-4);
+}
+
+.chapter-check .qv2-gap-text {
+  margin-bottom: var(--sq-5);
+}
+
+.chapter-check .qv2-gap-slot {
+  min-height: 42px;
+}
+
+.chapter-check .qv2-gap-slot.is-filled {
+  border-bottom-color: var(--color-orange);
+  color: var(--color-orange);
+}
+
+.chapter-check .qv2-gap-slot.filled-correct,
+.chapter-check .qv2-gap-slot.is-correct {
+  border-bottom-color: var(--color-orange);
+  color: var(--color-orange);
+}
+
+.chapter-check .qv2-gap-slot.filled-wrong,
+.chapter-check .qv2-gap-slot.is-wrong {
+  border-bottom-color: var(--color-black);
+  color: var(--color-black);
+}
+
+.chapter-check .btn.is-disabled,
+.chapter-check .btn[aria-disabled="true"] {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------
+   9. Abschlussquiz
+------------------------------------------------------------- */
+.final-quiz-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sq-4);
+}
+
+.final-quiz-item {
+  padding-bottom: var(--sq-4);
+  border-bottom: 1.5px solid rgba(26, 10, 0, 0.1);
+}
+
+.final-quiz-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.final-quiz-item .quiz__question {
+  margin-bottom: var(--sq-5);
+}
+
+.final-quiz-item.is-answered {
+  opacity: 0.82;
+}
+
+/* -------------------------------------------------------------
+   10. Reduced Motion
+------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .story-step,
+  .story-scroll__year,
+  .story-scroll__sticky,
+  .story-intro-guide {
+    transition: none;
+  }
+}
+
+/* ==========================================================
+   ABGABE-FIXES 07.07 — Geschichte stabilisieren
+========================================================== */
+
+/* Scrollytelling: Figur nicht über Jahreszahl legen */
+.story-scroll__sticky {
+  overflow: visible;
+}
+
+.story-scroll__figure {
+  width: 190px !important;
+  height: 260px !important;
+  object-fit: cover !important;
+  object-position: center bottom !important;
+  transform: none !important;
+  margin-bottom: var(--sq-5) !important;
+  display: block;
+}
+
+.story-scroll__year {
+  display: block;
+  margin-top: 0;
+}
+
+/* Intro-Guide bleibt sichtbar, bis JS ihn bewusst ausblendet */
+.story-intro-guide {
+  opacity: 1;
+  visibility: visible;
+}
+
+.story-intro-guide.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Kapitel-Intro-Raster */
+.history-chapter-intro {
+  margin-top: var(--sq-3);
+  margin-bottom: var(--sq-3);
+  align-items: center;
+}
+
+/* Flip-Karten für Unterricht */
+.history-flip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gutter);
+  margin-top: var(--sq-3);
+  perspective: 1400px;
+}
+
+.history-flip-card {
+  position: relative;
+  min-height: 220px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform .5s ease;
+  font-family: var(--font-body);
+  text-align: left;
+}
+
+.history-flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.history-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1.5px solid rgba(26, 10, 0, 0.12);
+}
+
+.history-flip-front {
+  background: rgba(255,255,255,.65);
+}
+
+.history-flip-back {
+  background: var(--color-black);
+  color: var(--color-white);
+  transform: rotateY(180deg);
+  justify-content: center;
+}
+
+.history-flip-back p {
+  color: var(--color-white);
+  font-size: var(--fs-body);
+  line-height: var(--lh-loose);
+}
+
+.history-flip-num,
+.history-flip-tap {
+  color: var(--color-orange);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+}
+
+.history-flip-front p {
+  color: var(--color-text-muted);
+  font-size: var(--fs-detail);
+  margin-top: var(--sq-6);
+}
+
+/* Konfliktkarten */
+.history-conflict-cards {
+  margin-top: var(--sq-3);
+}
+
+/* Checks: Chips funktionieren per Tippen, also Cursor anpassen */
+.chapter-check .qv2-gap-chip {
+  cursor: pointer;
+}
+
+.chapter-check .qv2-gap-chip.used {
+  opacity: .28;
+  pointer-events: none;
+}
+
+.chapter-check .quiz__feedback {
+  display: none;
+}
+
+.chapter-check .quiz__feedback.is-visible,
+#abschlussquiz .quiz__feedback.is-visible {
+  display: block;
+}
+
+.chapter-check .quiz__option,
+.chapter-check .qv2-tf-btn,
+#abschlussquiz .qv2-tf-btn {
+  cursor: pointer;
+}
+
+/* Finalquiz etwas luftiger */
+.final-quiz-list {
+  gap: var(--sq-4);
+}

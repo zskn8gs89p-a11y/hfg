@@ -1,0 +1,103 @@
+/* =============================================================
+   KAPITEL-HERO — Vollflächige Kapiteleinführung
+   Wird auf jeder Unterseite als erster Block eingesetzt.
+   ============================================================= */
+
+   /* Padding-top des main-content für Seiten mit Hero reduzieren */
+.main-content:has(.kapitel-hero) {
+  padding-top: 0;   
+}
+
+/* Fortschrittsbalken ausblenden solange Inhalt gesperrt */
+.inhalt-gesperrt .progress-sidebar {
+  display: none;
+}
+
+.kapitel-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Oranger Hintergrund Figur + Figur links */
+.kapitel-hero__visual {
+  position: absolute;
+  left: 0;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.kapitel-hero__d-svg {
+  width: 490px;
+  height: 380px;
+  display: block;
+}
+
+/* Großer Titel rechts */
+.kapitel-hero__title {
+  position: absolute;
+  right: var(--sq-3);
+  top: 40%;
+  transform: translateY(-60%);
+  text-align: right;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+
+.kapitel-hero__title-line {
+  font-family: var(--font-heading);
+  font-size: 130px;
+  font-weight: var(--fw-bold);
+  line-height: 0.95;
+  color: var(--color-black);
+  display: block;
+}
+
+.kapitel-hero__title-line--orange {
+  color: var(--color-orange);
+}
+
+/* Unterer Bereich: Label + H2 + Button */
+.kapitel-hero__content {
+  position: absolute;
+  bottom: var(--sq-3);
+  left: var(--sq-3);
+  right: var(--sq-3);
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gutter);
+  align-items: end;
+}
+
+.kapitel-hero__content-left {
+  grid-column: 1 / 7;  /* Spalten 1–6 */
+  display: flex;
+  flex-direction: column;
+  gap: var(--sq-6);
+}
+
+.kapitel-hero__content-right {
+  grid-column: 9 / 13; /* Spalten 9–12 */
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/* Inhalt unterhalb des Heroes gesperrt bis Button gedrückt */
+.inhalt-gesperrt {
+  overflow: hidden;
+  height: var(--canvas-h);
+}
+
+html.inhalt-gesperrt,
+html.inhalt-gesperrt body {
+  overflow: hidden;
+  height: 100%;
+}

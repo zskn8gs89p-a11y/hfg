@@ -1,0 +1,150 @@
+/* =============================================================
+   TYPOGRAPHY.CSS — Alle Schrift-Stile
+   HfG Ulm E-Learning
+   
+   Importiert tokens.css voraus (wird in HTML verlinkt).
+   Definiert alle typografischen Klassen, die auf den Seiten
+   verwendet werden.
+   ============================================================= */
+
+
+/* -------------------------------------------------------------
+   ÜBERSCHRIFTEN
+   ------------------------------------------------------------- */
+
+/* H1: Hero-Titel — z.B. "hauptkurse", "ulmer-modell" */
+h1, .h1 {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  text-transform: lowercase; /* Wie im Design: alles klein */
+  margin: 0;
+}
+
+/* H2: Abschnittstitel — z.B. "Das Erbe", "Erlebe einen Tag" */
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: 1.15;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* H3: Karten-Titel, Box-Überschriften */
+h3, .h3 {
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* Alle Überschriften: Standard-Margin zurücksetzen */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/* -------------------------------------------------------------
+   FLIESSTEXT
+   ------------------------------------------------------------- */
+
+/* Standard Paragraph */
+p, .body-text {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-loose);
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* Fließtext auf dunklem Hintergrund */
+.body-text--light {
+  color: var(--color-text-light);
+}
+
+/* Abgeschwächter Text */
+.body-text--muted {
+  color: var(--color-text-muted);
+}
+
+
+/* -------------------------------------------------------------
+   DETAIL-LABEL (z.B. "LEHRE · TEIL 1", "AUSGEWÄHLT")
+   Resonate 600, 13px, Caps, oft in Orange
+   ------------------------------------------------------------- */
+.label, .detail-text {
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+/* Orange-Variante (häufig für Sections-Labels) */
+.label--orange, .detail-text--orange {
+  color: var(--color-orange);
+}
+
+/* Auf dunklem Hintergrund */
+.label--light {
+  color: var(--color-text-light);
+}
+
+
+/* -------------------------------------------------------------
+   HILFSSTILE
+   ------------------------------------------------------------- */
+
+/* Fettdruck innerhalb von Fließtext */
+strong, b {
+  font-weight: var(--fw-bold);
+}
+
+/* Listen (z.B. Bullet-Liste im Erbe-Screen) */
+ul.styled-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+ul.styled-list li {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Oranger Bullet-Punkt */
+ul.styled-list li::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-orange);
+  flex-shrink: 0;
+}
+
+/* Caption / Bild-Beschriftung */
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
