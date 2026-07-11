@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1366">
+  <title>HfG Ulm — Styleguide & Komponentenübersicht</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <style>
+    /* Nur für diese Vorlage — nicht in andere Seiten kopieren */
+    .sg-section {
+      padding: var(--sq-3) var(--sq-3);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .sg-title {
+      font-family: var(--font-body);
+      font-size: var(--fs-detail);
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps);
+      text-transform: uppercase;
+      color: var(--color-orange);
+      margin-bottom: var(--sq-4);
+      display: block;
+    }
+    .sg-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: rgba(0,0,0,0.35);
+      margin-top: var(--sq-6);
+      display: block;
+    }
+    .sg-row {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--sq-3);
+      flex-wrap: wrap;
+    }
+    .sg-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .sg-swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .sg-grid-demo {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--grid-gutter);
+      width: 100%;
+      height: 40px;
+    }
+    .sg-grid-col {
+      background: rgba(255,123,0,0.12);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--color-orange);
+      font-weight: var(--fw-semibold);
+    }
+    .sg-sq {
+      background: #E8000B;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 4px 6px;
+    }
+    .sg-sq span {
+      font-size: 10px;
+      color: white;
+      font-weight: var(--fw-semibold);
+    }
+    .image-placeholder {
+      background: rgba(0,0,0,0.06);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(0,0,0,0.3);
+      font-size: var(--fs-detail);
+      font-family: var(--font-body);
+      letter-spacing: var(--ls-caps);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FORTSCHRITTSBALKEN -->
+  <aside class="progress-sidebar" aria-label="Lesefortschritt">
+    <span class="progress-sidebar__label">Fortschritt</span>
+    <div class="progress-sidebar__track">
+      <div class="progress-sidebar__fill"></div>
+      <div class="progress-sidebar__marker"></div>
+    </div>
+    <span class="progress-sidebar__pct">0%</span>
+  </aside>
+
+  <!-- NAVIGATION -->
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <div class="nav-bar">
+      <a class="nav-link is-active" href="start.html"      data-page="start">Start</a>
+      <a class="nav-link"          href="geschichte.html"  data-page="geschichte">Geschichte</a>
+      <a class="nav-link"          href="lehre.html"       data-page="lehre">Lehre</a>
+      <a class="nav-link"          href="design.html"      data-page="design">Design</a>
+      <a class="nav-link"          href="erbe.html"        data-page="erbe">Erbe</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <main class="main-content">
+
+      <!-- HEADER -->
+      <div class="sg-section" style="padding-top: var(--sq-2);">
+        <span class="label label--orange">HfG Ulm E-Learning</span>
+        <h1 style="font-size: var(--fs-h2); margin-bottom: var(--sq-5);">Styleguide & Komponentenübersicht</h1>
+        <p class="body-text" style="max-width: 600px;">
+          Diese Seite zeigt alle verfügbaren Elemente des Design-Systems.
+          Komponenten von hier direkt in die eigene Seite kopieren.
+          Nichts auf dieser Seite verändern.
+        </p>
+      </div>
+
+
+      <!-- =====================================================
+           1. FARBEN
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">01 — Farben</span>
+        <div class="sg-row">
+          <div class="sg-item">
+            <div class="sg-swatch" style="background: var(--color-orange);"></div>
+            <span class="sg-label">--color-orange<br>#FF7B00</span>
+          </div>
+          <div class="sg-item">
+            <div class="sg-swatch" style="background: var(--color-black);"></div>
+            <span class="sg-label">--color-black<br>#1A0A00</span>
+          </div>
+       
+          <div class="sg-item">
+            <div class="sg-swatch" style="background: var(--color-white); border: 1px solid rgba(0,0,0,0.12);"></div>
+            <span class="sg-label">--color-white<br>#FFFFFF</span>
+          </div>
+      
+        </div>
+      </div>
+
+
+      <!-- =====================================================
+           2. TYPOGRAFIE
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">02 — Typografie</span>
+
+        <!-- H1 -->
+        <div style="margin-bottom: var(--sq-4); padding-bottom: var(--sq-4); border-bottom: 1px solid rgba(0,0,0,0.06);">
+          <span class="sg-label" style="margin-top:0;">H1 — Space Grotesk Bold · 130px · --fs-h1</span>
+          <h1 style="margin-bottom: 0;">gestaltung</h1>
+        </div>
+
+        <!-- H2 -->
+        <div style="margin-bottom: var(--sq-4); padding-bottom: var(--sq-4); border-bottom: 1px solid rgba(0,0,0,0.06);">
+          <span class="sg-label" style="margin-top:0;">H2 — Space Grotesk Bold · 48px · --fs-h2</span>
+          <h2 style="margin-top: 0; margin-bottom: 0;">Hochschule für Gestaltung</h2>
+        </div>
+
+        <!-- H3 -->
+        <div style="margin-bottom: var(--sq-4); padding-bottom: var(--sq-4); border-bottom: 1px solid rgba(0,0,0,0.06);">
+          <span class="sg-label" style="margin-top:0;">H3 — Resonate Bold · 30px · --fs-h3</span>
+          <h3 style="margin-top: 0; margin-bottom: 0;">Grundkurs Ulm</h3>
+        </div>
+
+        <!-- Body -->
+        <div style="margin-bottom: var(--sq-4); padding-bottom: var(--sq-4); border-bottom: 1px solid rgba(0,0,0,0.06);">
+          <span class="sg-label" style="margin-top:0;">P — Resonate Regular · 18px · --fs-body</span>
+          <p class="body-text" style="margin-bottom: 0; max-width: 600px;">
+            Das Herzstück: Wahrnehmung, Materialverständnis und gestalterisches
+            Denken für alle Studierenden. Im Grundkurs werden sämtliche
+            Disziplinen erarbeitet.
+          </p>
+        </div>
+
+        <!-- Detail / Label -->
+        <div>
+          <span class="sg-label" style="margin-top:0;">Label — Resonate SemiBold · 13px · --fs-detail · Caps</span>
+          <span class="label label--orange">Lehre · Teil 1</span>
+          <span class="label" style="margin-top: var(--sq-6);">Ausgewählt</span>
+        </div>
+      </div>
+
+
+      <!-- =====================================================
+           3. BUTTONS
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">03 — Buttons</span>
+        <div class="sg-row" style="align-items: center;">
+
+          <div class="sg-item">
+            <button class="btn btn--black btn--pill btn--lg">Button Text</button>
+            <span class="sg-label">Schwarz · Groß<br>210 × 60px · btn--black btn--pill btn--lg</span>
+          </div>
+
+          <div class="sg-item">
+            <button class="btn btn--black btn--pill btn--md">Button</button>
+            <span class="sg-label">Schwarz · Mittel<br>135 × 60px · btn--black btn--pill btn--md</span>
+          </div>
+
+          <div class="sg-item">
+            <button class="btn btn--orange btn--pill btn--lg">Button Text</button>
+            <span class="sg-label">Orange · Groß<br>210 × 60px · btn--orange btn--pill btn--lg</span>
+          </div>
+
+          <div class="sg-item">
+            <button class="btn btn--orange btn--pill btn--md">Button</button>
+            <span class="sg-label">Orange · Mittel<br>135 × 60px · btn--orange btn--pill btn--md</span>
+          </div>
+
+          <div class="sg-item">
+            <button class="btn btn--ghost btn--pill btn--lg">Button Text</button>
+            <span class="sg-label">Ghost · Groß<br>210 × 60px · btn--ghost btn--pill btn--lg</span>
+          </div>
+
+          <div class="sg-item">
+            <button class="btn btn--ghost btn--pill btn--md">Button</button>
+            <span class="sg-label">Ghost · Mittel<br>135 × 60px · btn--ghost btn--pill btn--md</span>
+          </div>
+
+          <div class="sg-item">
+            <button class="btn btn--black btn--round-lg">+</button>
+            <span class="sg-label">Rund · Groß<br>80 × 80px · btn--round-lg</span>
+          </div>
+
+          <div class="sg-item">
+            <button class="btn btn--orange btn--round-md">+</button>
+            <span class="sg-label">Rund · Klein<br>60 × 60px · btn--round-md</span>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- =====================================================
+           4. INFO-BOXEN
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">04 — Info-Boxen</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--sq-3);">
+
+          <!-- Dark -->
+          <div>
+            <span class="sg-label" style="margin-top:0;">Dark · info-box--dark</span>
+            <div class="info-box info-box--dark">
+              <span class="info-box__label">Ausgewählt</span>
+              <h3 class="info-box__title">Grundkurs</h3>
+              <p class="info-box__body">
+                Das Herzstück: Wahrnehmung, Materialverständnis
+                und gestalterisches Denken für alle Studierenden.
+                Im Grundkurs werden sämtliche Disziplinen erarbeitet.
+              </p>
+            </div>
+          </div>
+
+          <!-- Light -->
+          <div>
+            <span class="sg-label" style="margin-top:0;">Light · info-box--light</span>
+            <div class="info-box info-box--light">
+              <span class="info-box__label">Ausgewählt</span>
+              <h3 class="info-box__title">Grundkurs</h3>
+              <p class="info-box__body">
+                Das Herzstück: Wahrnehmung, Materialverständnis
+                und gestalterisches Denken für alle Studierenden.
+                Im Grundkurs werden sämtliche Disziplinen erarbeitet.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =====================================================
+           5. CARDS
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">05 — Cards</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sq-3);">
+
+          <div>
+            <span class="sg-label" style="margin-top:0;">Standard · card</span>
+            <div class="card">
+              <span class="card__label">Modul 01</span>
+              <div class="card__title">Grundkurs</div>
+              <p class="card__body">Kurze Beschreibung des Moduls oder Themas.</p>
+            </div>
+          </div>
+
+          <div>
+            <span class="sg-label" style="margin-top:0;">Dark · card--dark</span>
+            <div class="card card--dark">
+              <span class="card__label">Modul 02</span>
+              <div class="card__title">Ulmer Modell</div>
+              <p class="card__body">Kurze Beschreibung des Moduls oder Themas.</p>
+            </div>
+          </div>
+
+          <div>
+            <span class="sg-label" style="margin-top:0;">Mit Button</span>
+            <div class="card">
+              <span class="card__label">Modul 03</span>
+              <div class="card__title">Produktdesign</div>
+              <p class="card__body">Kurze Beschreibung des Moduls.</p>
+              <button class="btn btn--black btn--pill btn--md" style="margin-top: var(--sq-5);">Mehr erfahren</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- =====================================================
+           6. BULLET-LISTE
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">06 — Bullet-Liste</span>
+        <span class="sg-label" style="margin-top:0;">ul.styled-list</span>
+        <ul class="styled-list" style="max-width: 500px;">
+          <li>funktionales und minimalistisches Design</li>
+          <li>klare Formen und einfache Bedienung</li>
+          <li>Verbindung von Design, Technik und Gesellschaft</li>
+          <li>nutzerorientiertes Denken</li>
+          <li>interdisziplinäre Zusammenarbeit</li>
+        </ul>
+      </div>
+
+
+      <!-- =====================================================
+           7. BILD-CONTAINER
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">07 — Bilder</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--sq-3);">
+
+          <div>
+            <span class="sg-label" style="margin-top:0;">Standard · image-block</span>
+            <div class="image-block" style="height: 280px;">
+              <div class="image-placeholder" style="height: 100%;">Bild</div>
+              <!-- Echtes Bild: <img src="../assets/images/dateiname.jpg" alt="Beschreibung"> -->
+            </div>
+          </div>
+
+          
+
+        </div>
+      </div>
+
+
+      
+
+      <!-- =====================================================
+           10. ZITAT / FOKUS
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">10 — Zitat / Fokus-Element</span>
+        <span class="sg-label" style="margin-top:0;">div.quote-section</span>
+        <div class="quote-section">
+          <div class="quote-section__line"></div>
+          <blockquote class="quote-section__text">
+            „Gestaltung sollte funktional, verständlich und
+            gesellschaftlich relevant sein."
+          </blockquote>
+          <cite class="quote-section__source">Otl Aicher, HfG Ulm</cite>
+        </div>
+      </div>
+
+
+      <!-- =====================================================
+           11. RASTER
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">11 — 12-Spalten-Raster</span>
+        <span class="sg-label" style="margin-top: 0; margin-bottom: var(--sq-5);">
+          div.grid · column-gap: 20px · 12 Spalten
+        </span>
+
+        <!-- Alle 12 Spalten sichtbar -->
+        <div class="sg-grid-demo" style="margin-bottom: var(--sq-5);">
+          <div class="sg-grid-col">1</div>
+          <div class="sg-grid-col">2</div>
+          <div class="sg-grid-col">3</div>
+          <div class="sg-grid-col">4</div>
+          <div class="sg-grid-col">5</div>
+          <div class="sg-grid-col">6</div>
+          <div class="sg-grid-col">7</div>
+          <div class="sg-grid-col">8</div>
+          <div class="sg-grid-col">9</div>
+          <div class="sg-grid-col">10</div>
+          <div class="sg-grid-col">11</div>
+          <div class="sg-grid-col">12</div>
+        </div>
+
+        <!-- Beispiel-Layouts -->
+        <span class="sg-label" style="margin-top:0;">Beispiel: col-6 + col-6</span>
+        <div class="grid" style="margin-bottom: var(--sq-5);">
+          <div class="col-6" style="background: rgba(255,123,0,0.08); border-radius: 4px; padding: var(--sq-6); text-align:center;">
+            <span style="font-size: 12px; color: var(--color-orange); font-weight: 600;">col-6</span>
+          </div>
+          <div class="col-6" style="background: rgba(255,123,0,0.08); border-radius: 4px; padding: var(--sq-6); text-align:center;">
+            <span style="font-size: 12px; color: var(--color-orange); font-weight: 600;">col-6</span>
+          </div>
+        </div>
+
+        <span class="sg-label" style="margin-top:0;">Beispiel: col-5 + col-7</span>
+        <div class="grid" style="margin-bottom: var(--sq-5);">
+          <div class="col-5" style="background: rgba(255,123,0,0.08); border-radius: 4px; padding: var(--sq-6); text-align:center;">
+            <span style="font-size: 12px; color: var(--color-orange); font-weight: 600;">col-5</span>
+          </div>
+          <div class="col-7" style="background: rgba(255,123,0,0.14); border-radius: 4px; padding: var(--sq-6); text-align:center;">
+            <span style="font-size: 12px; color: var(--color-orange); font-weight: 600;">col-7</span>
+          </div>
+        </div>
+
+        <span class="sg-label" style="margin-top:0;">Beispiel: col-start-3-end-11 (zentriert mit Rand)</span>
+        <div class="grid">
+          <div class="col-start-3-end-11" style="background: rgba(255,123,0,0.08); border-radius: 4px; padding: var(--sq-6); text-align:center;">
+            <span style="font-size: 12px; color: var(--color-orange); font-weight: 600;">col-start-3-end-11</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- =====================================================
+           12. RED-SQUARE-METHODE (Abstände)
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">12 — Red-Square-Methode · Abstände</span>
+        <span class="sg-label" style="margin-top:0;">Alle Abstände orientieren sich an diesen 6 Quadraten</span>
+
+        <div class="sg-row" style="align-items: flex-end; gap: var(--sq-5);">
+
+          <div class="sg-item">
+            <div class="sg-sq" style="width: var(--sq-1); height: var(--sq-1);">
+              <span>--sq-1</span>
+            </div>
+            <span class="sg-label">--sq-1 · 210px<br>Große Sektionsabstände</span>
+          </div>
+
+          <div class="sg-item">
+            <div class="sg-sq" style="width: var(--sq-2); height: var(--sq-2);">
+              <span>--sq-2</span>
+            </div>
+            <span class="sg-label">--sq-2 · 110px<br>Zwischen Blöcken / nach H1</span>
+          </div>
+
+          <div class="sg-item">
+            <div class="sg-sq" style="width: var(--sq-3); height: var(--sq-3);">
+              <span>--sq-3</span>
+            </div>
+            <span class="sg-label">--sq-3 · 55px<br>Zwischen Elementen / nach H2</span>
+          </div>
+
+          <div class="sg-item">
+            <div class="sg-sq" style="width: var(--sq-4); height: var(--sq-4);">
+              <span>--sq-4</span>
+            </div>
+            <span class="sg-label">--sq-4 · 40px<br>Interne Abstände / nach H3</span>
+          </div>
+
+          <div class="sg-item">
+            <div class="sg-sq" style="width: var(--sq-5); height: var(--sq-5);">
+              <span>--sq-5</span>
+            </div>
+            <span class="sg-label">--sq-5 · 28px<br>Kleine Lücken</span>
+          </div>
+
+          <div class="sg-item">
+            <div class="sg-sq" style="width: var(--sq-6); height: var(--sq-6);">
+              <span>--sq-6</span>
+            </div>
+            <span class="sg-label">--sq-6 · 14px<br>Micro-Abstände</span>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- =====================================================
+           13. BREAK-BOX · SEKTIONSBRUCH
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">13 — Break-Box · Sektionsbruch</span>
+
+        <span class="sg-label" style="margin-top:0;">Standard · break-box</span>
+        <div class="break-box">
+          <span class="label label--orange">Neue Sektion</span>
+          <h2>Eine neue Überschrift</h2>
+        </div>
+
+        <span class="sg-label">Kompakt · break-box break-box--sm</span>
+        <div class="break-box break-box--sm">
+          <span class="label label--orange">Lehre · Teil 2</span>
+          <h2 style="margin: 0;">ulmer modell</h2>
+        </div>
+
+        <span class="sg-label">Groß / Zitat · break-box break-box--lg</span>
+        <div class="break-box break-box--lg">
+          <div class="quote-section" style="padding: 0;">
+            <div class="quote-section__line" style="background: rgba(255,255,255,0.2);"></div>
+            <blockquote class="quote-section__text">
+              „Gestaltung sollte funktional, verständlich und
+              gesellschaftlich relevant sein."
+            </blockquote>
+            <cite class="quote-section__source" style="color: rgba(255,255,255,0.5);">
+              Otl Aicher, HfG Ulm
+            </cite>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- =====================================================
+           14. IMAGE-BREAK · VOLLFLÄCHIGES TRENNBILD
+      ===================================================== -->
+      <div class="sg-section">
+        <span class="sg-title">14 — Image-Break · Foto-Trenner</span>
+
+        <span class="sg-label" style="margin-top:0;">Klein · image-break--sm</span>
+        <div class="image-break image-break--sm">
+          <img src="../assets/images/HfG-Grundlehre-Tomás-Maldonado-in-der-Grundlehre-Foto-Ernst-Hahn-HfG-Archiv-480x342.jpg" alt="Beschreibung">
+        </div>
+
+        <span class="sg-label">Mittel · image-break--md</span>
+        <div class="image-break image-break--md">
+          <img src="../assets/images/HfG-Grundlehre-Tomás-Maldonado-in-der-Grundlehre-Foto-Ernst-Hahn-HfG-Archiv-480x342.jpg" alt="Beschreibung">
+        </div>
+
+        <span class="sg-label">Groß · image-break--lg</span>
+        <div class="image-break image-break--lg">
+          <img src="../assets/images/HfG-Grundlehre-Tomás-Maldonado-in-der-Grundlehre-Foto-Ernst-Hahn-HfG-Archiv-480x342.jpg" alt="Beschreibung">
+        </div>
+      </div>
+
+
+      <!-- =====================================================
+           15. WIE NUTZE ICH DIESE VORLAGE?
+      ===================================================== -->
+      <div class="sg-section" style="border-bottom: none;">
+        <span class="sg-title">15 — Wie nutze ich diese Vorlage?</span>
+        <div style="max-width: 700px;">
+          <p class="body-text">
+            Gewünschte Komponente oben finden → im Browser-Code (Rechtsklick → Untersuchen)
+            den HTML-Block der Komponente kopieren → in die eigene Seite einfügen →
+            Texte und Bilder anpassen.
+          </p>
+          <p class="body-text">
+            Abstände immer mit <strong>var(--sq-1)</strong> bis <strong>var(--sq-6)</strong> setzen,
+            nie mit festen Pixelwerten. Farben immer mit <strong>var(--color-...)</strong>.
+            Eigene Styles kommen in <strong>css/seiten/[seite]-[name].css</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           14 — BEISPIEL-SEITE
+           So könnte eine fertige Unterseite aussehen.
+           Diesen Block als Inspiration in die eigene Seite kopieren.
+      ===================================================== -->
+      <div class="sg-section" style="border-bottom: none; padding-top: var(--sq-2); padding-left: (var--sq2)">
+        <span class="sg-title">14 — Beispiel-Layout einer Unterseite</span>
+      </div>
+
+      <!-- HERO -->
+      <section style="padding: 0 var(--sq-3) var(--sq-2);">
+        <span class="label label--orange">Lehre · Teil 1</span>
+        <h1>hauptkurse</h1>
+      </section>
+
+      <!-- TEXT + BILD -->
+      <section style="padding: 0 var(--sq-3) var(--sq-2);">
+        <div class="grid" style="align-items: start; gap: var(--sq-3);">
+
+          <div class="col-5">
+            <h2>Die Grundlehre der HfG</h2>
+            <p class="body-text">
+              Das Herzstück: Wahrnehmung, Materialverständnis und
+              gestalterisches Denken für alle Studierenden. Im Grundkurs
+              werden sämtliche Disziplinen gemeinsam erarbeitet.
+            </p>
+            <ul class="styled-list">
+              <li>funktionales und minimalistisches Design</li>
+              <li>klare Formen und einfache Bedienung</li>
+              <li>Verbindung von Design, Technik und Gesellschaft</li>
+            </ul>
+            <button class="btn btn--black btn--pill btn--lg" style="margin-top: var(--sq-4);">
+              Mehr erfahren
+            </button>
+          </div>
+
+          <div class="col-7">
+            <div class="image-block" style="height: 420px;">
+              <div class="image-placeholder" style="height: 100%;">Bild</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- INFO-BOX + MINDMAP NEBENEINANDER -->
+      <section style="padding: 0 var(--sq-3) var(--sq-2);">
+        <div class="grid" style="align-items: start; gap: var(--sq-3);">
+
+          <div class="col-5">
+            <div class="info-box info-box--light">
+              <span class="info-box__label">Ausgewählt</span>
+              <h3 class="info-box__title">Grundkurs</h3>
+              <p class="info-box__body">
+                Das Herzstück: Wahrnehmung, Materialverständnis
+                und gestalterisches Denken für alle Studierenden.
+                Im Grundkurs werden sämtliche Disziplinen erarbeitet.
+              </p>
+            </div>
+            <div style="margin-top: var(--sq-4); display: flex; gap: var(--sq-5);">
+              <button class="btn btn--black btn--pill btn--lg">Weiter</button>
+              <button class="btn btn--ghost btn--pill btn--md">Zurück</button>
+            </div>
+          </div>
+
+          <div class="col-7">
+            <div class="image-block" style="height: 320px;">
+              <div class="image-placeholder" style="height: 100%;">Bild</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    
+
+      <!-- ZITAT -->
+      <section style="padding: 0 var(--sq-3) var(--sq-2);">
+        <div class="quote-section">
+          <div class="quote-section__line"></div>
+          <blockquote class="quote-section__text">
+            „Gestaltung sollte funktional, verständlich und
+            gesellschaftlich relevant sein."
+          </blockquote>
+          <cite class="quote-section__source">Otl Aicher, HfG Ulm</cite>
+        </div>
+      </section>
+
+      
+    </main>
+  </div>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/quiz.js"></script>
+  <script src="../js/hotspot.js"></script>
+
+</body>
+</html>

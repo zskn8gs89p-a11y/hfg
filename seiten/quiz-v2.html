@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1366">
+  <title>HfG Ulm — Interaktive Übungen</title>
+
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Projekt-CSS (Reihenfolge beibehalten) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/quiz-v2.css">
+</head>
+<body>
+
+  <!-- FORTSCHRITTSBALKEN (linke Seite) -->
+  <aside class="progress-sidebar" aria-label="Lesefortschritt">
+    <span class="progress-sidebar__label">Fortschritt</span>
+    <div class="progress-sidebar__track">
+      <div class="progress-sidebar__fill"></div>
+      <div class="progress-sidebar__marker"></div>
+    </div>
+    <span class="progress-sidebar__pct">0%</span>
+  </aside>
+
+  <!-- HAUPTNAVIGATION -->
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <div class="nav-bar">
+      <a class="nav-link" href="start.html"      data-page="start">Start</a>
+      <a class="nav-link" href="geschichte.html" data-page="geschichte">Geschichte</a>
+      <a class="nav-link" href="lehre.html"      data-page="lehre">Lehre</a>
+      <a class="nav-link" href="design.html"     data-page="design">Design</a>
+      <a class="nav-link" href="erbe.html"       data-page="erbe">Erbe</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <main class="main-content">
+
+      <!-- SEITENEINLEITUNG -->
+      <div class="section-inner" style="padding-top: var(--sq-2); padding-bottom: var(--sq-3);">
+        <span class="label label--orange">HfG Ulm · Interaktive Übungen</span>
+        <h1 style="margin-top: var(--space-xs);">Wissen testen</h1>
+        <p class="body-text body-text--muted" style="margin-top: var(--space-sm); max-width: 480px;">
+          Vier Übungsformate zum Ulmer Designverständnis.
+          Multiple Choice, Richtig/Falsch, Memory und Lückentext.
+        </p>
+      </div>
+
+
+      <!-- ====================================================
+           01 · MULTIPLE CHOICE
+      ==================================================== -->
+      <section class="section section--sm section-inner" id="qv2-mc" aria-label="Multiple Choice Quiz">
+
+        <div class="qv2-section-head">
+          <span class="label label--orange">01</span>
+          <h2>Multiple Choice</h2>
+        </div>
+
+        <!-- Aktiver Quiz-Bereich -->
+        <div id="mc-active">
+          <div class="quiz">
+            <div class="quiz__counter">Frage <span id="mc-current">01</span> / 05</div>
+            <div class="quiz__question" id="mc-question"></div>
+            <div class="quiz__options"  id="mc-options"></div>
+            <div class="quiz__feedback" id="mc-feedback"></div>
+            <div class="quiz__footer"   id="mc-footer" style="display: none;">
+              <button class="btn btn--black btn--pill btn--lg" id="mc-next-btn">Nächste Frage</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ergebnis-Ansicht (initial verborgen) -->
+        <div class="card card--dark qv2-result" id="mc-result" style="display: none;" aria-live="polite">
+          <span class="card__label">Ergebnis</span>
+          <div class="qv2-result__score" id="mc-score-display">0 / 5</div>
+          <p class="card__title" id="mc-result-title"></p>
+          <p class="card__body"  id="mc-result-text"></p>
+          <button class="btn btn--ghost btn--pill btn--lg qv2-result__retry" id="mc-retry">↺ Nochmal</button>
+        </div>
+
+      </section>
+
+
+      <!-- ====================================================
+           02 · RICHTIG / FALSCH
+      ==================================================== -->
+      <section class="section section--sm section-inner" id="qv2-rf" aria-label="Richtig oder Falsch Quiz">
+
+        <div class="qv2-section-head">
+          <span class="label label--orange">02</span>
+          <h2>Richtig / Falsch</h2>
+        </div>
+
+        <!-- Aktiver Quiz-Bereich -->
+        <div id="rf-active">
+          <div class="quiz">
+            <div class="quiz__counter">Aussage <span id="rf-current">01</span> / 05</div>
+            <div class="quiz__question" id="rf-question"></div>
+            <div class="qv2-tf-opts">
+              <button class="btn btn--ghost btn--pill btn--lg qv2-tf-btn" id="rf-btn-true">Richtig</button>
+              <button class="btn btn--ghost btn--pill btn--lg qv2-tf-btn" id="rf-btn-false">Falsch</button>
+            </div>
+            <div class="quiz__feedback" id="rf-feedback"></div>
+            <div class="quiz__footer"   id="rf-footer" style="display: none;">
+              <button class="btn btn--black btn--pill btn--lg" id="rf-next-btn">Nächste Aussage</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ergebnis-Ansicht -->
+        <div class="card card--dark qv2-result" id="rf-result" style="display: none;" aria-live="polite">
+          <span class="card__label">Ergebnis</span>
+          <div class="qv2-result__score" id="rf-score-display">0 / 5</div>
+          <p class="card__title" id="rf-result-title"></p>
+          <p class="card__body"  id="rf-result-text"></p>
+          <button class="btn btn--ghost btn--pill btn--lg qv2-result__retry" id="rf-retry">↺ Nochmal</button>
+        </div>
+
+      </section>
+
+
+      <!-- ====================================================
+           03 · MEMORY
+      ==================================================== -->
+      <section class="section section--sm section-inner" id="qv2-mem" aria-label="Memory Spiel">
+
+        <div class="qv2-section-head">
+          <span class="label label--orange">03</span>
+          <h2>Memory</h2>
+        </div>
+
+        <p class="body-text body-text--muted" style="margin-bottom: var(--space-md);">
+          Acht Karten, vier Paare. Gestalter &amp; Produkt — finde, was zusammengehört.
+        </p>
+
+        <!-- Spielfeld (wird per JS befüllt) -->
+        <div class="qv2-mem-board" id="mem-board" role="list" aria-label="Memory-Spielfeld"></div>
+
+        <!-- Statistik + Reset -->
+        <div class="qv2-mem-footer">
+          <div class="qv2-mem-stats">
+            <div>
+              <span class="label">Züge</span>
+              <strong id="mem-moves">0</strong>
+            </div>
+            <div>
+              <span class="label">Paare</span>
+              <strong><span id="mem-found">0</span> / 4</strong>
+            </div>
+          </div>
+          <button class="btn btn--black btn--pill btn--lg" id="mem-reset">↺ Neu mischen</button>
+        </div>
+
+        <!-- Abschluss-Banner (initial verborgen) -->
+        <div class="card card--dark qv2-mem-complete" id="mem-complete" style="display: none;" aria-live="polite">
+          <span class="card__label">Geschafft!</span>
+          <p class="card__title">Alle vier Paare gefunden.</p>
+          <p class="card__body" id="mem-complete-text"></p>
+          <button class="btn btn--ghost btn--pill btn--lg qv2-result__retry" id="mem-reset-2">↺ Nochmal</button>
+        </div>
+
+      </section>
+
+
+      <!-- ====================================================
+           04 · LÜCKENTEXT
+      ==================================================== -->
+      <section class="section section--sm section-inner" id="qv2-gap" aria-label="Lückentext Drag and Drop">
+
+        <div class="qv2-section-head">
+          <span class="label label--orange">04</span>
+          <h2>Lückentext</h2>
+        </div>
+
+        <div class="quiz">
+          <div class="quiz__counter">Drag &amp; Drop</div>
+          <p class="body-text body-text--muted" style="margin-bottom: var(--space-md);">
+            Ziehe die Begriffe in die passenden Lücken.
+          </p>
+
+          <!-- Wortbank -->
+          <div class="qv2-gap-bank" id="gap-bank" aria-label="Verfügbare Begriffe">
+            <div class="qv2-gap-chip" draggable="true" data-word="Ulmer Hocker">Ulmer Hocker</div>
+            <div class="qv2-gap-chip" draggable="true" data-word="Rundstab">Rundstab</div>
+            <div class="qv2-gap-chip" draggable="true" data-word="Technik">Technik</div>
+            <div class="qv2-gap-chip" draggable="true" data-word="Ornament">Ornament</div>
+          </div>
+
+          <!-- Satz mit Lücken -->
+          <p class="qv2-gap-text">
+            Der
+            <span class="qv2-gap-slot" data-answer="Ulmer Hocker" id="slot-1">&nbsp;</span>
+            besteht aus vier Holzteilen und einem
+            <span class="qv2-gap-slot" data-answer="Rundstab" id="slot-2">&nbsp;</span>.
+            Das SK 4 Radio macht
+            <span class="qv2-gap-slot" data-answer="Technik" id="slot-3">&nbsp;</span>
+            sichtbar, anstatt sie zu verstecken.
+          </p>
+
+          <div class="quiz__feedback" id="gap-feedback" aria-live="polite"></div>
+          <div class="quiz__footer">
+            <button class="btn btn--ghost btn--pill btn--lg" id="gap-reset">↺ Zurücksetzen</button>
+            <button class="btn btn--black btn--pill btn--lg" id="gap-check" style="margin-left: var(--space-sm);">Überprüfen</button>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ====================================================
+           05 · PRODUKT-EXPLORER
+      ==================================================== -->
+      <section class="section section--sm section-inner" id="qv2-explorer" aria-label="Produkt-Explorer">
+
+        <div class="qv2-section-head">
+          <span class="label label--orange">05</span>
+          <div>
+            <h2>Produkte erkunden</h2>
+            <p class="qv2-expl-intro">Sechs Entwürfe, ein gemeinsamer Gedanke: Gestaltung wird zum System.</p>
+          </div>
+        </div>
+
+        <div class="qv2-expl-wrap">
+          <div class="qv2-expl-map" id="expl-map" role="group" aria-label="Produktauswahl"></div>
+          <div class="qv2-expl-panel" id="expl-panel" aria-live="polite">
+            <p class="body-text body-text--muted">Wähle ein Produkt aus der Karte.</p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ====================================================
+           06 · EIN TAG AN DER HFG
+      ==================================================== -->
+      <section class="section section--sm section-inner qv2-day" id="qv2-day" aria-labelledby="qv2-day-title">
+
+        <div class="qv2-section-head">
+          <span class="label label--orange">06</span>
+          <div>
+            <h2 id="qv2-day-title">Erlebe einen Tag an der HfG.</h2>
+            <p class="qv2-expl-intro">Entdecke den Hochschulalltag zwischen Grundkurs, Austausch und gemeinsamer Kritik.</p>
+          </div>
+        </div>
+
+        <div class="qv2-day-layout">
+          <div class="qv2-day-experience">
+            <div class="hotspot-container qv2-day-stage" id="qv2-day-stage">
+              <img
+                id="qv2-day-image"
+                src="../assets/images/HfG-Grundlehre-Tomás-Maldonado-in-der-Grundlehre-Foto-Ernst-Hahn-HfG-Archiv-480x342.jpg"
+                alt="Studierende und Lehrende bei der gemeinsamen Arbeit in der HfG Ulm"
+                style="object-position: center 52%;">
+
+              <button class="hotspot-trigger qv2-day-hotspot"
+                      id="qv2-day-hotspot"
+                      type="button"
+                      style="top: 25%; left: 72%"
+                      data-qv2-day-hotspot="qv2-day-popup"
+                      aria-expanded="false"
+                      aria-controls="qv2-day-popup"
+                      aria-label="Zusatzinformation öffnen">
+                <span class="hotspot-trigger__icon" aria-hidden="true"></span>
+              </button>
+
+              <div class="hotspot-popup qv2-day-popup qv2-day-popup--left"
+                   id="qv2-day-popup"
+                   style="top: 25%; left: 72%">
+                <span class="hotspot-popup__label" id="qv2-day-popup-label"></span>
+                <div class="hotspot-popup__title" id="qv2-day-popup-title"></div>
+                <p class="hotspot-popup__body" id="qv2-day-popup-body"></p>
+              </div>
+
+              <button class="hotspot-trigger qv2-day-hotspot"
+                      type="button"
+                      style="top: 82%; left: 25%"
+                      data-qv2-day-hotspot="qv2-day-popup-material"
+                      aria-expanded="false"
+                      aria-controls="qv2-day-popup-material"
+                      aria-label="Information zu Arbeitsmaterial öffnen">
+                <span class="hotspot-trigger__icon" aria-hidden="true"></span>
+              </button>
+
+              <div class="hotspot-popup qv2-day-popup qv2-day-popup--above"
+                   id="qv2-day-popup-material"
+                   style="top: 82%; left: 25%">
+                <span class="hotspot-popup__label">Arbeitsmaterial</span>
+                <div class="hotspot-popup__title">Modelle und Versuche</div>
+                <p class="hotspot-popup__body">An den Tischen werden Formen direkt geprüft, verändert und erneut diskutiert.</p>
+              </div>
+
+              <button class="hotspot-trigger qv2-day-hotspot"
+                      type="button"
+                      style="top: 58%; left: 54%"
+                      data-qv2-day-hotspot="qv2-day-popup-team"
+                      aria-expanded="false"
+                      aria-controls="qv2-day-popup-team"
+                      aria-label="Information zur Zusammenarbeit öffnen">
+                <span class="hotspot-trigger__icon" aria-hidden="true"></span>
+              </button>
+
+              <div class="hotspot-popup qv2-day-popup qv2-day-popup--left"
+                   id="qv2-day-popup-team"
+                   style="top: 58%; left: 54%">
+                <span class="hotspot-popup__label">Zusammenarbeit</span>
+                <div class="hotspot-popup__title">Lernen im Team</div>
+                <p class="hotspot-popup__body">Austausch und gegenseitige Kritik gehören fest zum Ulmer Modell.</p>
+              </div>
+            </div>
+
+            <div class="qv2-day-tabs" role="tablist" aria-label="Tageszeit auswählen">
+              <button class="qv2-day-tab" type="button" role="tab" aria-selected="false" data-day="morning">Morgens</button>
+              <button class="qv2-day-tab" type="button" role="tab" aria-selected="false" data-day="midday">Mittags</button>
+              <button class="qv2-day-tab" type="button" role="tab" aria-selected="false" data-day="evening">Abends</button>
+            </div>
+
+            <article class="qv2-day-summary" aria-live="polite" style="display: none; opacity: 0;">
+              <span class="label label--orange" id="qv2-day-label"></span>
+              <h3 id="qv2-day-summary-title"></h3>
+              <p class="body-text" id="qv2-day-summary-body"></p>
+            </article>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/navigation.js"></script>
+  <script src="../js/quiz-v2.js"></script>
+
+</body>
+</html>

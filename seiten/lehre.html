@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1366">
+  <title>HfG Ulm — Lehre</title>
+
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Projekt-CSS -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/kapitel-hero.css">
+  <link rel="stylesheet" href="../css/quiz-v2.css">
+  <link rel="stylesheet" href="../css/lehre-beccy.css">
+</head>
+
+<body class="inhalt-gesperrt">
+
+  <!-- FORTSCHRITTSBALKEN -->
+  <aside class="progress-sidebar" aria-label="Lesefortschritt">
+    <span class="progress-sidebar__label">Fortschritt</span>
+    <div class="progress-sidebar__track">
+      <div class="progress-sidebar__fill"></div>
+      <div class="progress-sidebar__marker"></div>
+    </div>
+    <span class="progress-sidebar__pct">0%</span>
+  </aside>
+
+  <!-- NAVIGATION -->
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <div class="nav-bar">
+      <a class="nav-link" href="start.html" data-page="start">Start</a>
+      <a class="nav-link" href="geschichte.html" data-page="geschichte">Geschichte</a>
+      <a class="nav-link is-active" href="lehre.html" data-page="lehre">Lehre</a>
+      <a class="nav-link" href="design.html" data-page="design">Design</a>
+      <a class="nav-link" href="erbe.html" data-page="erbe">Erbe</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <main class="main-content">
+
+      <!-- =====================================================
+           KAPITEL-HERO
+      ====================================================== -->
+      <section class="kapitel-hero" id="kapitel-hero">
+        <div class="kapitel-hero__visual">
+          <svg class="kapitel-hero__d-svg" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0 0 L 190 0 Q 380 0 380 190 Q 380 380 190 380 L 0 380 Z" fill="#FF7B00"/>
+            <image href="../assets/svg/Figur_denken.svg" x="-15" y="10" width="450" height="350"/>
+          </svg>
+        </div>
+
+        <div class="kapitel-hero__title">
+          <span class="kapitel-hero__title-line kapitel-hero__title-line--orange">Lehre</span>
+          <span class="kapitel-hero__title-line">als System</span>
+        </div>
+
+        <div class="kapitel-hero__content">
+          <div class="kapitel-hero__content-left">
+            <span class="label label--orange">Kapitel 02 · Lehre</span>
+            <h2 style="margin-top: var(--sq-6);">Theorie vereint mit Praxis</h2>
+            <p class="body-text">
+              An der HfG Ulm wurde Gestaltung nicht nur unterrichtet.
+              Sie wurde untersucht, ausprobiert, diskutiert und immer wieder begründet.
+            </p>
+          </div>
+          <div class="kapitel-hero__content-right">
+            <a class="btn btn--orange btn--pill btn--lg" href="#inhalt" id="hero-btn">Lehre starten</a>
+          </div>
+        </div>
+      </section>
+
+      <div id="inhalt"></div>
+        <!-- =====================================================
+            EINSTIEG — DEIN WEG DURCH DIE HFG
+        ====================================================== -->
+       <section class="section section-inner" id="lehre-start">
+          <span class="label label--orange">Lehre · Schritt 1</span>
+          <h1 style="margin-top: var(--sq-6);">bewerbung</h1>
+
+          <div class="story-intro-guide history-guide history-guide--hero qv2-guide-demo qv2-guide-demo--left">
+            <div class="qv2-guide-figure">
+              <img class="story-guide-img" src="../assets/svg/Figur_winken.svg" alt="Picto">
+            </div>
+
+            <div class="qv2-guide-bubble">
+              <span class="qv2-guide-kicker">Picto</span>
+              <p>
+                Willkommen an der HfG Ulm. Ich begleite dich durch deinen Weg als Student:
+                von der Bewerbung über die Grundlehre bis zum Diplom.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =====================================================
+            SCHRITT 1 — BEWERBUNG
+        ====================================================== -->
+        <section class="section section-inner" id="bewerbung">
+
+          <div class="grid" style="margin-top: var(--sq-3); align-items:center;">
+            <div class="col-start-1-end-6">
+              <span class="label label--orange">Lehre · Schritt 1</span>
+
+              <h2 style="margin-top: var(--sq-6);">
+                Bewerbung<span style="color: var(--color-orange);">.</span>
+              </h2>
+
+              <p class="body-text" style="margin-top: var(--sq-5);">
+                Bevor dein Studium beginnen konnte, musstest du dich bewerben.
+                Die HfG suchte keine reinen Künstlerinnen und Künstler,
+                sondern Menschen mit Neugier, Eigeninitiative und der Bereitschaft,
+                Gestaltung neu zu denken.
+              </p>
+            </div>
+
+            <div class="col-start-7-end-13">
+              <article class="card">
+                <span class="card__label">Archivdokument</span>
+                <h3 class="card__title">Aufnahmebedingungen</h3>
+                <p class="card__body">
+                  Vorbildung, Begabung und die Bereitschaft zur methodischen Arbeit
+                  waren wichtige Voraussetzungen.
+                </p>
+                <figure class="image-frame">
+                  <img src="../assets/images/lehre/archivmaterial/zulassung_verlauf.JPG"  class="zoom-image" alt="Aufnahmebedingungen der HfG Ulm">
+                  
+                </figure>
+              </article>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =====================================================
+            SCHRITT 2 — PROBEZEIT
+        ====================================================== -->
+        <section class="section section-inner" id="probezeit">
+          <div class="info-box info-box--dark">
+            <div class="grid" style="align-items:center;">
+              <div class="col-start-1-end-5">
+                <span class="info-box__label">Lehre · Schritt 2</span>
+                <h3 class="info-box__title">Erst einmal auf Probe.</h3>
+              </div>
+
+              <div class="col-start-6-end-13">
+                <p class="info-box__body">
+                  Nach der Aufnahme begann das Studium mit einer Probezeit.
+                  Erst danach zeigte sich, ob du wirklich an der HfG bleiben konntest.
+                  Die Schule prüfte nicht nur Können, sondern auch Haltung, Denken und Arbeitsweise.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =====================================================
+            SCHRITT 3 — GRUNDLEHRE
+        ====================================================== -->
+       <section class="section section-inner" id="grundlehre">
+        <span class="label label--orange">Lehre · Schritt 3</span>
+        <h1 style="margin-top: var(--sq-6);">grundlehre</h1>
+
+        <div class="grid grundlehre-intro-grid">
+          <div class="col-start-1-end-6">
+            <h3 class="grundlehre-intro-title">
+              Alle Studierenden begannen gemeinsam.
+            </h3>
+
+            <p class="body-text grundlehre-intro-text">
+              In der Grundlehre ging es nicht darum, einen Beruf zu lernen.
+              Ziel war es, Beobachtung, Denken und Gestaltung als zusammenhängendes
+              System zu verstehen. Erst danach folgte die Spezialisierung.
+            </p>
+          </div>
+
+          <div class="col-start-7-end-13">
+            <div class="grundlehre-guide qv2-guide-demo qv2-guide-demo--left">
+              <div class="qv2-guide-figure">
+                <img src="../assets/svg/Figur_denken.svg" alt="Picto">
+              </div>
+
+              <div class="qv2-guide-bubble">
+                <span class="qv2-guide-kicker">Picto</span>
+                <p>
+                  Die Grundlehre vermittelt keine Rezepte.
+                  Sie zeigt dir, wie Gestaltung durch Beobachtung,
+                  Analyse und Experiment entsteht.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+        <!-- =====================================================
+            GRUNDLEHRE — EXPLORER AUS QUIZ-V2
+            WICHTIG: nutzt vorhandene qv2-Explorer-Struktur
+        ====================================================== -->
+        <section class="section section--sm section-inner" id="qv2-explorer" aria-label="Grundlehre-Explorer">
+
+          <div class="qv2-section-head">
+            <span class="label label--orange">Explorer</span>
+            <div>
+              <h2>Fächer der Grundlehre</h2>
+              <p class="qv2-expl-intro">
+                Tippe auf einen Bereich und entdecke, welche Grundlagen an der HfG vermittelt wurden.
+              </p>
+            </div>
+          </div>
+
+          <div class="qv2-expl-wrap">
+            <div class="qv2-expl-map" id="expl-map" role="group" aria-label="Fächer der Grundlehre"></div>
+
+            <div class="qv2-expl-panel" id="expl-panel" aria-live="polite">
+              <p class="body-text body-text--muted">Wähle ein Fach aus der Karte.</p>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- =====================================================
+            SCHRITT 4 — AUFGABEN DER GRUNDLEHRE
+        ====================================================== -->
+        <section class="section section-inner" id="aufgaben">
+          <span class="label label--orange">Lehre · Schritt 4</span>
+          <h1 style="margin-top: var(--sq-6);">aufgaben</h1>
+
+          <div class="grid" style="margin-top: var(--sq-3);">
+            <div class="col-start-1-end-5">
+              <article class="card">
+                <span class="card__label">Aufgabe 01</span>
+                <h3 class="card__title">Symmetrie</h3>
+                <p class="card__body">
+                  Studierende untersuchten Spiegelung, Ordnung und Beziehungen zwischen Formen.
+                </p>
+              </article>
+            </div>
+
+            <div class="col-start-5-end-9">
+              <article class="card">
+                <span class="card__label">Aufgabe 02</span>
+                <h3 class="card__title">Genauigkeit</h3>
+                <p class="card__body">
+                  Aufgaben wie „Ungenauigkeit durch Genauigkeit“ machten Methode sichtbar.
+                </p>
+              </article>
+            </div>
+
+            <div class="col-start-9-end-13">
+              <article class="card">
+                <span class="card__label">Aufgabe 03</span>
+                <h3 class="card__title">Zeichensystem</h3>
+                <p class="card__body">
+                  Zeichen wurden nicht einzeln gestaltet, sondern als zusammenhängendes System gedacht.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =====================================================
+            SCHRITT 5 — SPEZIALISIERUNG
+        ====================================================== -->
+       <section class="section section-inner" id="spezialisierung">
+          <span class="label label--orange">Lehre · Schritt 5</span>
+          <h1 style="margin-top: var(--sq-6);">spezialisierung</h1>
+
+          <div class="grid spezialisierung-intro">
+            <div class="col-start-1-end-6">
+              <div class="spezialisierung-guide qv2-guide-demo qv2-guide-demo--left">
+                <div class="qv2-guide-figure">
+                  <img src="../assets/svg/Figur_neutral.svg" alt="Picto">
+                </div>
+
+                <div class="qv2-guide-bubble">
+                  <span class="qv2-guide-kicker">Picto</span>
+                  <p>
+                    Nach der Grundlehre entscheidest du dich für eine Richtung.
+                    Aus der gemeinsamen Basis wird dein eigener Schwerpunkt.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-start-7-end-13">
+              <h3 class="spezialisierung-lead">
+                Jetzt beginnt dein Hauptkurs.
+              </h3>
+              <p class="body-text">
+                Die Hauptkurse führten in unterschiedliche Bereiche der Gestaltung.
+                Trotzdem blieb die Verbindung von Theorie, Praxis und gesellschaftlicher
+                Verantwortung bestehen.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid spezialisierung-cards">
+            <article class="card col-start-1-end-5">
+              <span class="card__label">Hauptkurs</span>
+              <h3 class="card__title">Produktgestaltung</h3>
+              <p class="card__body">Geräte, Möbel, Werkzeuge und Produkte des Alltags.</p>
+            </article>
+
+            <article class="card col-start-5-end-9">
+              <span class="card__label">Hauptkurs</span>
+              <h3 class="card__title">Visuelle Kommunikation</h3>
+              <p class="card__body">Typografie, Fotografie, Plakat, Verpackung und Zeichen.</p>
+            </article>
+
+            <article class="card col-start-9-end-13">
+              <span class="card__label">Hauptkurs</span>
+              <h3 class="card__title">Bauen</h3>
+              <p class="card__body">Architektur, Stadtbau, Wohnbau und Lebensräume.</p>
+            </article>
+
+            <article class="card col-start-3-end-7">
+              <span class="card__label">Hauptkurs</span>
+              <h3 class="card__title">Information</h3>
+              <p class="card__body">Redaktion, Reportage, Text, Medien und Vermittlung.</p>
+            </article>
+
+            <article class="card col-start-7-end-11">
+              <span class="card__label">Hauptkurs</span>
+              <h3 class="card__title">Film</h3>
+              <p class="card__body">Bewegtes Bild, Erzählung, Montage und visuelle Sprache.</p>
+            </article>
+          </div>
+        </section>
+
+      
+<!-- =====================================================
+     ÜBUNG — HAUPTKURSE ZUORDNEN
+====================================================== -->
+<span class="label label--orange">Lehre · Übung</span>
+
+<h2 style="margin-top: var(--sq-6);">
+  Welcher Hauptkurs passt dazu?
+</h2>
+
+<p class="body-text">
+  Ordne jeder Studienrichtung das passende Arbeitsfeld zu.
+</p>
+
+  
+
+  <div class="quiz lehre-sort-quiz">
+
+    <div class="quiz__counter">
+      Drag &amp; Drop · Zuordnung
+    </div>
+
+    <!-- Verschiebbare Beschreibungen -->
+    <div
+      class="lehre-sort-bank"
+      id="lehre-sort-bank"
+      aria-label="Verfügbare Beschreibungen">
+
+      <button
+        class="lehre-sort-chip"
+        type="button"
+        draggable="true"
+        data-id="produkte">
+        Geräte, Möbel und Werkzeuge
+      </button>
+
+      <button
+        class="lehre-sort-chip"
+        type="button"
+        draggable="true"
+        data-id="medien">
+        Typografie, Plakat und Fotografie
+      </button>
+
+      <button
+        class="lehre-sort-chip"
+        type="button"
+        draggable="true"
+        data-id="raeume">
+        Architektur und Lebensräume
+      </button>
+
+      <button
+        class="lehre-sort-chip"
+        type="button"
+        draggable="true"
+        data-id="vermittlung">
+        Redaktion, Text und Vermittlung
+      </button>
+
+      <button
+        class="lehre-sort-chip"
+        type="button"
+        draggable="true"
+        data-id="bewegtbild">
+        Bewegung, Montage und Erzählung
+      </button>
+
+    </div>
+
+    <!-- Ablagefelder -->
+    <div
+      class="lehre-sort-slots"
+      id="lehre-sort-slots">
+
+      <div
+        class="lehre-sort-slot"
+        data-pos="1"
+        data-title="Produktgestaltung"
+        data-answer="produkte"
+        tabindex="0"
+        role="button">
+        <span class="lehre-sort-slot__number">01</span>
+        <strong class="lehre-sort-slot__title">Produktgestaltung</strong>
+        <span class="lehre-sort-slot__placeholder">hier ablegen</span>
+      </div>
+
+      <div
+        class="lehre-sort-slot"
+        data-pos="2"
+        data-title="Visuelle Kommunikation"
+        data-answer="medien"
+        tabindex="0"
+        role="button">
+        <span class="lehre-sort-slot__number">02</span>
+        <strong class="lehre-sort-slot__title">Visuelle Kommunikation</strong>
+        <span class="lehre-sort-slot__placeholder">hier ablegen</span>
+      </div>
+
+      <div
+        class="lehre-sort-slot"
+        data-pos="3"
+        data-title="Bauen"
+        data-answer="raeume"
+        tabindex="0"
+        role="button">
+        <span class="lehre-sort-slot__number">03</span>
+        <strong class="lehre-sort-slot__title">Bauen</strong>
+        <span class="lehre-sort-slot__placeholder">hier ablegen</span>
+      </div>
+
+      <div
+        class="lehre-sort-slot"
+        data-pos="4"
+        data-title="Information"
+        data-answer="vermittlung"
+        tabindex="0"
+        role="button">
+        <span class="lehre-sort-slot__number">04</span>
+        <strong class="lehre-sort-slot__title">Information</strong>
+        <span class="lehre-sort-slot__placeholder">hier ablegen</span>
+      </div>
+
+      <div
+        class="lehre-sort-slot"
+        data-pos="5"
+        data-title="Film"
+        data-answer="bewegtbild"
+        tabindex="0"
+        role="button">
+        <span class="lehre-sort-slot__number">05</span>
+        <strong class="lehre-sort-slot__title">Film</strong>
+        <span class="lehre-sort-slot__placeholder">hier ablegen</span>
+      </div>
+
+    </div>
+
+    <div
+      class="quiz__feedback"
+      id="lehre-sort-feedback"
+      aria-live="polite">
+    </div>
+
+    <div class="quiz__footer lehre-sort-footer">
+      <button
+        class="btn btn--ghost btn--pill btn--lg"
+        id="lehre-sort-reset"
+        type="button">
+        ↺ Zurücksetzen
+      </button>
+
+      <button
+        class="btn btn--black btn--pill btn--lg"
+        id="lehre-sort-check"
+        type="button">
+        Prüfen
+      </button>
+    </div>
+
+  </div>
+</section>
+
+      </section>
+
+
+        <!-- =====================================================
+            SCHRITT 6 — Ulmer Modell
+        ====================================================== -->
+
+        <section class="section section-inner" id="ulmer-modell">
+  <span class="label label--orange">Lehre · Schritt 6</span>
+  <h1 style="margin-top: var(--sq-6);">ulmer modell</h1>
+
+  <div class="grid ulmer-modell-intro">
+    <div class="col-start-1-end-6">
+      <h3 class="ulmer-modell-lead">
+        Design war an der HfG keine Geschmacksfrage.
+      </h3>
+
+      <p class="body-text">
+        Das Ulmer Modell verband Gestaltung mit Wissenschaft, Technik und gesellschaftlicher Verantwortung.
+        Entwürfe sollten nicht nur schön aussehen, sondern begründet, überprüfbar und nutzbar sein.
+      </p>
+    </div>
+
+    <div class="col-start-7-end-13">
+      <div class="ulmer-modell-guide qv2-guide-demo qv2-guide-demo--left">
+        <div class="qv2-guide-figure">
+          <img src="../assets/svg/Figur_denken.svg" alt="Picto">
+        </div>
+
+        <div class="qv2-guide-bubble">
+          <span class="qv2-guide-kicker">Picto</span>
+          <p>
+            Kurz gesagt: nicht dekorieren, sondern analysieren, testen und verbessern.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="history-flip-grid ulmer-modell-cards">
+
+  <button class="history-flip-card" type="button">
+    <div class="history-flip-face history-flip-front">
+      <span class="history-flip-num">01</span>
+      <div>
+        <h3>Intuition</h3>
+        <p>wird zu Analyse</p>
+      </div>
+      <span class="history-flip-tap">Tippen</span>
+    </div>
+    <div class="history-flip-face history-flip-back">
+      <p>Gestaltung beginnt nicht beim Bauchgefühl, sondern bei Beobachtung, Recherche und begründeten Entscheidungen.</p>
+    </div>
+  </button>
+
+  <button class="history-flip-card" type="button">
+    <div class="history-flip-face history-flip-front">
+      <span class="history-flip-num">02</span>
+      <div>
+        <h3>Einzelstück</h3>
+        <p>wird zu System</p>
+      </div>
+      <span class="history-flip-tap">Tippen</span>
+    </div>
+    <div class="history-flip-face history-flip-back">
+      <p>Die HfG dachte Gestaltung als System: Produkte, Zeichen und Informationen sollten zusammenhängend funktionieren.</p>
+    </div>
+  </button>
+
+  <button class="history-flip-card" type="button">
+    <div class="history-flip-face history-flip-front">
+      <span class="history-flip-num">03</span>
+      <div>
+        <h3>Dekoration</h3>
+        <p>wird zu Funktion</p>
+      </div>
+      <span class="history-flip-tap">Tippen</span>
+    </div>
+    <div class="history-flip-face history-flip-back">
+      <p>Form sollte nicht verzieren, sondern Orientierung geben, Abläufe erleichtern und Probleme lösen.</p>
+    </div>
+  </button>
+
+  </div>
+</section>
+
+<!-- =====================================================
+     LÜCKENTEXT
+====================================================== -->
+
+<section class="section section--sm section-inner" id="ulmer-luecke">
+
+    <span class="label label--orange">Lehre · Übung</span>
+
+    <h2 style="margin-top:var(--sq-6);">
+        Das Ulmer Modell
+    </h2>
+
+    <p class="body-text">
+        Ergänze den Satz.
+    </p>
+
+    <section class="section section--sm section-inner" id="qv2-gap" aria-label="Lückentext Drag and Drop">
+
+ 
+
+        <div class="quiz">
+          <div class="quiz__counter">Drag &amp; Drop</div>
+          <p class="body-text body-text--muted" style="margin-bottom: var(--space-md);">
+            Ziehe die Begriffe in die passenden Lücken.
+          </p>
+
+          <!-- Wortbank -->
+          <div class="qv2-gap-bank" id="gap-bank" aria-label="Verfügbare Begriffe">
+            <div class="qv2-gap-chip" draggable="true" data-word="Ulmer Hocker">Wissenschaft</div>
+            <div class="qv2-gap-chip" draggable="true" data-word="Rundstab">Dekoration</div>
+            <div class="qv2-gap-chip" draggable="true" data-word="Technik">Zufall</div>
+          </div>
+
+          <!-- Satz mit Lücken -->
+          <p class="qv2-gap-text">
+            Das Ulmer Modell verband
+            <span class="qv2-gap-slot" data-answer="Ulmer Hocker" id="slot-1">&nbsp;</span>
+            , Technik und gesellschaftliche Verantwortung.
+          </p>
+
+          <div class="quiz__feedback" id="gap-feedback" aria-live="polite"></div>
+          <div class="quiz__footer">
+            <button class="btn btn--ghost btn--pill btn--lg" id="gap-reset">↺ Zurücksetzen</button>
+            <button class="btn btn--black btn--pill btn--lg" id="gap-check" style="margin-left: var(--space-sm);">Überprüfen</button>
+          </div>
+        </div>
+
+      </section>
+
+
+</section>
+
+
+        <!-- =====================================================
+            SCHRITT 7 — WERKSTÄTTEN
+        ====================================================== -->
+        <section class="section section-inner" id="werkstaetten">
+          <span class="label label--orange">Lehre · Schritt 7</span>
+          <h1 style="margin-top: var(--sq-6);">werkstätten</h1>
+
+          <div class="grid" style="margin-top: var(--sq-3);">
+            <div class="col-start-1-end-6">
+              <p class="body-text">
+                Theorie allein genügte nicht. In den Werkstätten wurde Material geprüft,
+                gebaut, verworfen und verbessert. Gestaltung entstand durch Denken und Machen.
+              </p>
+            </div>
+          </div>
+
+          <div class="hotspot-container" style="margin-top: var(--sq-3);">
+            <div class="qv2-day-stage" id="qv2-day-stage" style="margin-top: var(--sq-3); position: relative;">
+          <img
+            id="qv2-day-image"
+            src="../assets/images/lehre/holzwerkstatt.png"
+            alt="Werkstatt an der HfG Ulm"
+            style="width:100%; height:100%; object-fit:cover;"
+          >
+
+          <button
+            class="hotspot-trigger qv2-day-hotspot"
+            type="button"
+            style="top:46%; left:28%; position:absolute;"
+            data-qv2-day-hotspot="werkstatt-popup-holz"
+            aria-label="Holz öffnen"
+            aria-expanded="false">
+            <span class="hotspot-trigger__icon"></span>
+          </button>
+
+          <div
+            class="hotspot-popup qv2-day-popup"
+            id="werkstatt-popup-holz"
+            style="top:42%; left:34%; position:absolute;">
+            <span class="hotspot-popup__label label label--orange">Werkstatt</span>
+            <h3 class="hotspot-popup__title">Holz</h3>
+            <p class="hotspot-popup__body">
+              Material, Verbindung und Modellbau wurden praktisch erprobt.
+            </p>
+          </div>
+
+          <button
+            class="hotspot-trigger qv2-day-hotspot"
+            type="button"
+            style="top:62%; left:54%; position:absolute;"
+            data-qv2-day-hotspot="werkstatt-popup-metall"
+            aria-label="Metall öffnen"
+            aria-expanded="false">
+            <span class="hotspot-trigger__icon"></span>
+          </button>
+
+          <div
+            class="hotspot-popup qv2-day-popup qv2-day-popup--left"
+            id="werkstatt-popup-metall"
+            style="top:58%; left:50%; position:absolute;">
+            <span class="hotspot-popup__label label label--orange">Werkstatt</span>
+            <h3 class="hotspot-popup__title">Metall</h3>
+            <p class="hotspot-popup__body">
+              Studierende lernten Werkzeuge, Verfahren und Konstruktion kennen.
+            </p>
+          </div>
+
+          <button
+            class="hotspot-trigger qv2-day-hotspot"
+            type="button"
+            style="top:35%; left:70%; position:absolute;"
+            data-qv2-day-hotspot="werkstatt-popup-druck"
+            aria-label="Druck öffnen"
+            aria-expanded="false">
+            <span class="hotspot-trigger__icon"></span>
+          </button>
+
+          <div
+            class="hotspot-popup qv2-day-popup qv2-day-popup--left"
+            id="werkstatt-popup-druck"
+            style="top:30%; left:66%; position:absolute;">
+            <span class="hotspot-popup__label label label--orange">Werkstatt</span>
+            <h3 class="hotspot-popup__title">Druck</h3>
+            <p class="hotspot-popup__body">
+              Druck, Schrift und Reproduktion waren zentrale Felder der visuellen Kommunikation.
+            </p>
+          </div>
+        </div>
+        </section>
+
+
+        <!-- =====================================================
+            SCHRITT 8 — DIPLOM
+        ====================================================== -->
+        <section class="section section-inner" id="diplom">
+          <span class="label label--orange">Lehre · Schritt 8</span>
+          <h1 style="margin-top: var(--sq-6);">diplom</h1>
+
+          <div class="diplom-big-guide history-guide history-guide--hero qv2-guide-demo qv2-guide-demo--left">
+            <div class="qv2-guide-figure">
+              <img src="../assets/svg/Figur_winken.svg" alt="Picto">
+            </div>
+
+            <div class="qv2-guide-bubble">
+              <span class="qv2-guide-kicker">Picto</span>
+              <p>
+                Geschafft! Nach vier Jahren hältst du dein Diplom in den Händen.
+                Die HfG wollte dir aber mehr mitgeben als einen Abschluss:
+                eine Methode, mit der du die Welt gestalten kannst.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid diplom-text-grid">
+            <div class="col-start-1-end-6">
+              <h3 class="diplom-lead">Vom Studium zur Haltung.</h3>
+
+              <p class="body-text">
+                Am Ende des Studiums stand das Diplom. Es zeigte,
+                dass Studierende ihre gestalterische Arbeit nicht nur ausführen,
+                sondern auch erklären, begründen und systematisch entwickeln konnten.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =====================================================
+            SCHRITT 9 — INTERNATIONALE HOCHSCHULE
+        ====================================================== -->
+       <section class="section section-inner" id="international">
+        <span class="label label--orange">Lehre · Abschluss</span>
+        <h1 style="margin-top: var(--sq-6);">international</h1>
+
+        <div class="grid international-intro">
+          <div class="col-start-1-end-6">
+            <h3 class="international-lead">
+              Die HfG war klein — aber international.
+            </h3>
+            <p class="body-text">
+              Studierende kamen aus vielen Ländern nach Ulm. Die Schule wurde dadurch
+              zu einem Ort, an dem Gestaltung über nationale Grenzen hinaus gedacht wurde.
+            </p>
+          </div>
+        </div>
+
+        <div class="qv2-day-stage international-hotspot" style="margin-top: var(--sq-3); position: relative;">
+          <img
+            src="../assets/images/lehre/international-statistik.jpg"
+            alt="Statistik internationaler Studierender der HfG Ulm"
+            class="zoom-image"
+          >
+
+          <button
+            class="hotspot-trigger qv2-day-hotspot"
+            type="button"
+            style="top:32%; left:24%; position:absolute;"
+            data-qv2-day-hotspot="international-popup-gesamt"
+            aria-label="Gesamtzahl öffnen"
+            aria-expanded="false">
+            <span class="hotspot-trigger__icon"></span>
+          </button>
+
+          <div
+            class="hotspot-popup qv2-day-popup"
+            id="international-popup-gesamt"
+            style="top:28%; left:30%; position:absolute;">
+            <span class="label label--orange">1965</span>
+            <h3>157 Studierende</h3>
+            <p>Die HfG war vergleichsweise klein, aber international sichtbar.</p>
+          </div>
+
+          <button
+            class="hotspot-trigger qv2-day-hotspot"
+            type="button"
+            style="top:52%; left:48%; position:absolute;"
+            data-qv2-day-hotspot="international-popup-ausland"
+            aria-label="Ausländische Studierende öffnen"
+            aria-expanded="false">
+            <span class="hotspot-trigger__icon"></span>
+          </button>
+
+          <div
+            class="hotspot-popup qv2-day-popup"
+            id="international-popup-ausland"
+            style="top:48%; left:54%; position:absolute;">
+            <span class="label label--orange">59</span>
+            <h3>ausländische Studierende</h3>
+            <p>Ein großer Teil der Studierenden kam aus anderen Ländern nach Ulm.</p>
+          </div>
+
+          <button
+            class="hotspot-trigger qv2-day-hotspot"
+            type="button"
+            style="top:68%; left:72%; position:absolute;"
+            data-qv2-day-hotspot="international-popup-lernort"
+            aria-label="Internationaler Lernort öffnen"
+            aria-expanded="false">
+            <span class="hotspot-trigger__icon"></span>
+          </button>
+
+          <div
+            class="hotspot-popup qv2-day-popup qv2-day-popup--left"
+            id="international-popup-lernort"
+            style="top:60%; left:54%; position:absolute;">
+            <span class="label label--orange">Picto</span>
+            <h3>Ein internationaler Lernort.</h3>
+            <p>Die Lehre der HfG wirkte weit über Ulm hinaus.</p>
+          </div>
+        </div>
+      </section>
+
+
+        <!-- =====================================================
+     ABSCHLUSSQUIZ — LEHRE
+     Struktur aus quiz-v2
+====================================================== -->
+    <section
+      class="section section--sm section-inner"
+      id="lehre-quiz"
+      aria-label="Abschlussquiz zur Lehre">
+
+      <div class="qv2-section-head">
+        <span class="label label--orange">Quiz</span>
+
+        <div>
+          <h2>Was ist hängen geblieben?</h2>
+          <p class="qv2-expl-intro">
+            Prüfe zum Abschluss, was du über deinen Weg durch das Studium
+            an der HfG Ulm gelernt hast.
+          </p>
+        </div>
+      </div>
+
+      <!-- Aktiver Quizbereich -->
+      <div id="lehre-mc-active">
+        <div class="quiz">
+
+          <div class="quiz__counter">
+            Frage
+            <span id="lehre-mc-current">01</span>
+            /
+            <span id="lehre-mc-total">05</span>
+          </div>
+
+          <div
+            class="quiz__question"
+            id="lehre-mc-question">
+          </div>
+
+          <div
+            class="quiz__options"
+            id="lehre-mc-options">
+          </div>
+
+          <div
+            class="quiz__feedback"
+            id="lehre-mc-feedback"
+            aria-live="polite">
+          </div>
+
+          <div
+            class="quiz__footer"
+            id="lehre-mc-footer"
+            style="display: none;">
+
+            <button
+              class="btn btn--black btn--pill btn--lg"
+              id="lehre-mc-next-btn"
+              type="button">
+              Nächste Frage
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Ergebnisansicht -->
+      <div
+        class="card card--dark qv2-result"
+        id="lehre-mc-result"
+        style="display: none;"
+        aria-live="polite">
+
+        <span class="card__label">Ergebnis</span>
+
+        <div
+          class="qv2-result__score"
+          id="lehre-mc-score-display">
+          0 / 5
+        </div>
+
+        <p
+          class="card__title"
+          id="lehre-mc-result-title">
+        </p>
+
+        <p
+          class="card__body"
+          id="lehre-mc-result-text">
+        </p>
+
+        <button
+          class="btn btn--ghost btn--pill btn--lg qv2-result__retry"
+          id="lehre-mc-retry"
+          type="button">
+          ↺ Nochmal
+        </button>
+      </div>
+
+    </section>
+
+
+        <!-- =====================================================
+            CTA — WEITER ZUR DESIGNSEITE
+        ====================================================== -->
+        <section class="section section-inner">
+          <div class="info-box info-box--light">
+            <div class="grid" style="align-items:center;">
+              <div class="col-start-1-end-3">
+                <img src="../assets/svg/Figur_winken.svg" alt="Picto" style="width:100%;">
+              </div>
+
+              <div class="col-start-3-end-9">
+                <span class="info-box__label">Weiter</span>
+                <h3 class="info-box__title">Was entstand aus dieser Ausbildung?</h3>
+                <p class="info-box__body">
+                  Im nächsten Kapitel entdeckst du Produkte, Zeichen und Systeme,
+                  die aus dem Ulmer Denken hervorgingen.
+                </p>
+              </div>
+
+              <div class="col-start-10-end-13">
+                <a class="btn btn--black btn--pill btn--lg" href="design.html">Zum Design</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+    </main>
+  </div>
+
+  <div id="image-lightbox" class="lightbox">
+    <button class="lightbox-close">✕</button>
+    <img id="lightbox-image" src="" alt="">
+</div>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/kapitel-hero.js"></script>
+  <script src="../js/quiz-v2.js"></script>
+  <script src="../js/hotspot.js"></script>
+  <script src="../js/lehre-beccy.js"></script>
+</body>
+</html>

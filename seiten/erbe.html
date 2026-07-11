@@ -1,0 +1,2907 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1366">
+  <title>HfG Ulm — Erbe</title>
+
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!--
+    CSS-Pfade: Von /seiten/ aus eine Ebene nach oben (../)
+    WICHTIG: Nicht ändern, sonst findet der Browser das CSS nicht!
+  -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/quiz-v2.css">
+  <link rel="stylesheet" href="../css/kapitel-hero.css">
+
+  <!-- Seiten-spezifisches CSS: Editorial-Layout für Kapitel „Erbe" (inline) -->
+  <style>
+/* =============================================================
+   ERBE-EDITORIAL.CSS — Seiten-Styles für seiten/erbe.html
+   HfG Ulm E-Learning · Kapitel 04 „Erbe"
+
+   Editorial / Swiss Style:
+   – große typografische Kontraste, klare Raster
+   – Schwarz/Weiß + Orange (#FF7B00) als einziger Akzent
+   – große Kapitelnummern im Hintergrund (01–04)
+   – asymmetrische Layouts, überlappende Bild-/Textflächen
+   – feine Linien (1px Schwarz) als Ordnungselement
+
+   Präfix aller Klassen: .ee-  (erbe editorial)
+   Nutzt ausschließlich Tokens aus tokens.css.
+   ============================================================= */
+
+
+/* -------------------------------------------------------------
+   GEMEINSAME BAUSTEINE
+   ------------------------------------------------------------- */
+
+/* iPad: importierte Hover-Zustände auf dieser Seite neutralisieren */
+.nav-link:hover {
+  background: transparent;
+}
+
+.nav-link.is-active:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn--black:hover {
+  background: var(--color-black);
+}
+
+.btn--orange:hover {
+  background: var(--color-orange);
+}
+
+.btn--ghost:hover {
+  background: transparent;
+}
+
+/* Grundsektion: voller Canvas, seitliches Standard-Padding */
+.ee-section {
+  position: relative;
+  padding: var(--sq-2) var(--sq-3);
+  overflow: hidden;
+}
+
+/* Riesige Kapitelnummer im Hintergrund (01, 02, 03, 04) */
+/* Kicker-Zeile über Headlines: Label + feine Linie */
+.ee-kicker {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--sq-5);
+  margin-bottom: var(--sq-4);
+}
+
+.ee-kicker::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-black);
+}
+
+.ee-kicker--light::after {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Große Editorial-Headline */
+.ee-headline {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 72px;
+  font-weight: var(--fw-bold);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.ee-headline--light {
+  color: var(--color-text-light);
+}
+
+/* Oranger Punkt am Satzende einer Headline */
+.ee-dot {
+  color: var(--color-orange);
+}
+
+/* Etwas größerer Einleitungstext */
+.ee-lead {
+  font-size: 21px;
+  line-height: 1.55;
+  max-width: 46ch;
+}
+
+/* Scroll-Reveal: Elemente blenden beim Scrollen sanft ein */
+.ee-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.ee-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ee-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+/* =============================================================
+   OPENER — Anker #inhalt (ERBE · TEIL 1 / „erbe")
+   ============================================================= */
+
+.ee-opener {
+  padding-bottom: var(--sq-3);
+}
+
+/* Meta-Zeile unter dem H1: Kapitel · Zeitspanne · Umfang */
+.ee-opener__meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sq-4);
+  margin-top: var(--sq-4);
+  padding-top: var(--sq-5);
+  border-top: 1px solid var(--color-black);
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+}
+
+.ee-opener__meta span:last-child {
+  margin-left: auto;
+  color: var(--color-orange);
+}
+
+
+/* =============================================================
+   SECTION 01 — DAS ERBE DER HFG ULM
+   Riesige Typo „1968 → heute", links Text, rechts S/W-Bild
+   ============================================================= */
+
+.ee-s01 {
+  padding-top: var(--sq-3);
+}
+
+/* Zeitspanne als riesige Display-Zeile */
+.ee-s01__years {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: var(--sq-4);
+  font-family: var(--font-heading);
+  font-size: 150px;
+  font-weight: var(--fw-bold);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--sq-3);
+}
+
+.ee-s01__years .ee-arrow {
+  color: var(--color-orange);
+  font-weight: var(--fw-regular);
+}
+
+/* Asymmetrisches Raster: Text 5/12, Bild 7/12 */
+.ee-s01__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  column-gap: var(--sq-3);
+  align-items: start;
+}
+
+.ee-s01__text .ee-lead {
+  margin-top: var(--sq-5);
+}
+
+/* Bullets als nummerierte Zeilen mit feiner Linie */
+.ee-lines {
+  list-style: none;
+  counter-reset: ee-line;
+  margin: var(--sq-4) 0 0;
+  padding: 0;
+}
+
+.ee-lines li {
+  counter-increment: ee-line;
+  display: flex;
+  align-items: baseline;
+  gap: var(--sq-5);
+  padding: var(--sq-6) 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.9);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  line-height: 1.35;
+}
+
+.ee-lines li:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+}
+
+.ee-lines li::before {
+  content: counter(ee-line, decimal-leading-zero);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  color: var(--color-orange);
+  flex-shrink: 0;
+}
+
+/* Bildunterkante schließt mit der letzten Linie der Textspalte ab */
+.ee-s01__figure {
+  position: relative;
+  align-self: end;
+  margin: 0;
+}
+
+.ee-s01__figure img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08);
+}
+
+.ee-s01__figure figcaption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sq-4);
+  margin-top: var(--sq-6);
+  font-size: var(--fs-detail);
+  color: var(--color-text-muted);
+}
+
+
+/* =============================================================
+   SECTION 02 — WICHTIGE MERKMALE
+   Merkmale als nummerierte Typo-Statements, keine normale Liste
+   ============================================================= */
+
+.ee-s02 {
+  background: var(--color-white);
+  color: var(--color-black);
+  padding-top: var(--sq-2);
+  padding-bottom: var(--sq-2);
+}
+
+.ee-s02 .ee-headline {
+  max-width: 12ch;
+}
+
+/* Kopfbereich: Headline links, Denkweise-Text rechts */
+.ee-s02__head {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  column-gap: var(--sq-3);
+  align-items: end;
+  margin-bottom: var(--sq-3);
+}
+
+.ee-s02__head p {
+  color: var(--color-text-muted);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+.ee-s02__head p strong {
+  color: var(--color-black);
+}
+
+/* Statements: große horizontale Typo-Zeilen */
+.ee-statements {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  counter-reset: ee-stmt;
+  margin: 0;
+  padding: 0;
+}
+
+.ee-statements li {
+  counter-increment: ee-stmt;
+  display: flex;
+  align-items: baseline;
+  gap: var(--sq-4);
+  padding: var(--sq-3) 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: var(--fw-bold);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  transition: color 0.4s ease, padding-left 0.4s ease;
+}
+
+.ee-statements li:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.ee-statements li::before {
+  content: counter(ee-stmt, decimal-leading-zero);
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  color: var(--color-orange);
+  flex-shrink: 0;
+}
+
+/* Fußzeile des schwarzen Blocks */
+.ee-s02__foot {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--sq-3);
+}
+
+.ee-s02__foot p {
+  max-width: 78ch;
+  color: var(--color-text-muted);
+  font-size: var(--fs-detail);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+
+/* =============================================================
+   SECTION 03 — EINFLUSS AUF MODERNES PRODUKTDESIGN
+   Split-Composition + großes Zitat „Weniger Dekoration. Mehr Logik."
+   ============================================================= */
+
+.ee-s03 {
+  padding-top: calc(var(--sq-2) + var(--sq-3));
+}
+
+.ee-s03 .ee-bignum {
+  position: absolute;
+  top: -40px;
+  right: 40px;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: 360px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: rgba(26, 10, 0, 0.045);
+}
+
+.ee-s03__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  column-gap: var(--sq-3);
+  align-items: center;
+}
+
+.ee-s03__figure {
+  position: relative;
+  margin: 0;
+  margin-left: calc(-1 * var(--sq-3));
+}
+
+.ee-s03__figure img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+.ee-s03__text {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ee-s03 .ee-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+.ee-s03 .ee-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 56px;
+  height: 1.5px;
+  background: var(--color-orange);
+}
+
+.ee-s03 .ee-h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 68px;
+  font-weight: var(--fw-bold);
+  line-height: 1.02;
+  color: var(--color-black);
+}
+
+.ee-s03 .ee-lead {
+  max-width: 60ch;
+}
+
+.ee-s03 .ee-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ee-s03 .ee-list li {
+  position: relative;
+  padding-left: 26px;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-black);
+}
+
+.ee-s03 .ee-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 9px;
+  height: 9px;
+  background: var(--color-orange);
+}
+
+.ee-mark {
+  background-image: linear-gradient(var(--color-orange), var(--color-orange));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0% 42%;
+  padding: 0 3px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.ee-mark.is-active {
+  background-size: 100% 42%;
+}
+
+/* Zitat quer über die volle Breite */
+.ee-s03 .ee-quote {
+  position: relative;
+  z-index: 1;
+  margin: var(--sq-2) 0 0;
+  padding-left: var(--sq-3);
+  border-left: 4px solid var(--color-orange);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: 92px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--color-black);
+  max-width: none;
+}
+
+.ee-s03 .ee-quote em {
+  font-style: normal;
+  color: var(--color-orange);
+}
+
+.ee-reveal-text .ee-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.ee-reveal-text .ee-word > span {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.ee-reveal-text.is-visible .ee-word > span {
+  transform: translateY(0);
+}
+
+.ee-reveal-text .ee-word:nth-of-type(1) > span { transition-delay: 0.00s; }
+.ee-reveal-text .ee-word:nth-of-type(2) > span { transition-delay: 0.06s; }
+.ee-reveal-text .ee-word:nth-of-type(3) > span { transition-delay: 0.12s; }
+.ee-reveal-text .ee-word:nth-of-type(4) > span { transition-delay: 0.18s; }
+.ee-reveal-text .ee-word:nth-of-type(5) > span { transition-delay: 0.24s; }
+.ee-reveal-text .ee-word:nth-of-type(n+6) > span { transition-delay: 0.30s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ee-reveal-text .ee-word > span {
+    transform: none;
+    transition: none;
+  }
+}
+
+
+/* =============================================================
+   SECTION 04 — CORPORATE DESIGN UND INFORMATIONSSYSTEME
+   Magazinraster: Systembausteine als Rasterzellen + Bildspalte
+   ============================================================= */
+
+.ee-s04__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  column-gap: var(--sq-3);
+  align-items: start;
+}
+
+.ee-s04 .ee-bignum {
+  position: absolute;
+  bottom: 0;
+  left: -20px;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: 360px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: rgba(26, 10, 0, 0.045);
+}
+
+.ee-s04__text {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.ee-s04 .ee-eyebrow,
+.ee-cases .ee-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+.ee-s04 .ee-eyebrow::before,
+.ee-cases .ee-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 56px;
+  height: 1.5px;
+  background: var(--color-orange);
+}
+
+.ee-s04 .ee-h2,
+.ee-cases .ee-h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 68px;
+  font-weight: var(--fw-bold);
+  line-height: 1.02;
+  color: var(--color-black);
+}
+
+.ee-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-loose);
+  color: var(--color-black);
+}
+
+.ee-text--muted {
+  color: var(--color-text-muted);
+}
+
+.ee-s04__figure {
+  position: relative;
+  margin: 40px 0 0;
+}
+
+.ee-s04__figure img {
+  display: block;
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.05);
+  border-radius: var(--radius-lg);
+}
+
+.ee-s04__figure .ee-figcap {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Systembausteine: 3×2-Raster nur aus feinen Linien */
+.ee-system {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin-top: var(--sq-2);
+  border-top: 1px solid var(--color-black);
+  border-left: 1px solid var(--color-black);
+}
+
+.ee-system__cell {
+  position: relative;
+  min-height: 220px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  perspective: 1200px;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ee-system__card {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.ee-system__cell.is-flipped .ee-system__card {
+  transform: rotateY(180deg);
+}
+
+.ee-system__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--sq-5);
+  border: 1.5px solid rgba(26, 10, 0, 0.12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.ee-system__front {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.ee-system__back {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+  transform: rotateY(180deg);
+}
+
+.ee-system__letter {
+  margin-bottom: auto;
+  font-size: 18px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  color: var(--color-orange);
+}
+
+.ee-system__title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 34px;
+  font-weight: var(--fw-bold);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.ee-system__back .ee-system__title {
+  color: var(--color-orange);
+  font-size: 27px;
+  margin-bottom: var(--sq-6);
+}
+
+.ee-system__copy {
+  display: block;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.ee-system__hint {
+  display: block;
+  margin-top: var(--sq-6);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.ee-system__back .ee-system__hint {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.ee-system__cell:focus-visible .ee-system__front {
+  border-color: var(--color-orange);
+}
+
+.ee-system__cell:focus-visible {
+  outline: 3px solid rgba(255, 123, 0, 0.35);
+  outline-offset: 4px;
+}
+
+/* =============================================================
+   CASE STUDIES — Horizontale Magazin-Teaser mit Aufklapp-Detail
+   ============================================================= */
+
+.ee-cases {
+  padding-top: var(--sq-1);
+  padding-bottom: var(--sq-1);
+}
+
+.ee-cases__head {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: var(--sq-3);
+  max-width: 780px;
+}
+
+.ee-case-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ee-case {
+  background: var(--color-white);
+  border: 1.5px solid rgba(0, 0, 0, 0.14);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(26, 10, 0, 0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.ee-case__teaser {
+  display: grid;
+  grid-template-columns: 120px 1fr 260px;
+  align-items: stretch;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ee-case:hover,
+.ee-case.is-current,
+.ee-case.is-open {
+  border-color: var(--color-orange);
+  box-shadow: 0 24px 60px rgba(26, 10, 0, 0.10);
+}
+
+.ee-case:hover {
+  transform: translateY(-3px);
+}
+
+.ee-case.is-open {
+  transform: none;
+}
+
+.ee-case__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: var(--fw-bold);
+  color: var(--color-black);
+  border-right: 1.5px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.ee-case__teaser:hover .ee-case__num,
+.ee-case.is-current .ee-case__num,
+.ee-case.is-open .ee-case__num {
+  background: var(--color-orange);
+  color: var(--color-white);
+}
+
+.ee-case__meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px var(--sq-4);
+}
+
+.ee-case__title {
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color-black);
+}
+
+.ee-case__subtitle {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+
+.ee-case__cta {
+  align-self: flex-start;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 46px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.ee-case__teaser:hover .ee-case__cta,
+.ee-case.is-current .ee-case__cta,
+.ee-case.is-open .ee-case__cta {
+  background: var(--color-orange);
+}
+
+.ee-case__cta:active {
+  transform: scale(0.97);
+}
+
+.ee-case__cta .ee-btn__arrow {
+  transition: transform 0.3s ease;
+}
+
+.ee-case.is-open .ee-case__cta .ee-btn__arrow {
+  transform: rotate(90deg);
+}
+
+.ee-case__figure {
+  position: relative;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+
+.ee-case__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.ee-case__teaser:hover .ee-case__figure img,
+.ee-case.is-current .ee-case__figure img,
+.ee-case.is-open .ee-case__figure img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.ee-case__detail {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  border-top: 1.5px solid transparent;
+  transition: max-height 0.6s ease, opacity 0.45s ease, border-color 0.45s ease;
+}
+
+.ee-case.is-open .ee-case__detail {
+  opacity: 1;
+  border-top-color: rgba(0, 0, 0, 0.12);
+}
+
+.ee-case__detail-inner {
+  overflow: hidden;
+}
+
+.ee-case__detail-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--sq-3);
+  padding: var(--sq-4) var(--sq-4) var(--sq-3);
+}
+
+.ee-case__detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ee-case__detail-lead {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--color-black);
+}
+
+.ee-cases .ee-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ee-cases .ee-list li {
+  position: relative;
+  padding-left: 26px;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-black);
+}
+
+.ee-cases .ee-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 9px;
+  height: 9px;
+  background: var(--color-orange);
+}
+
+.ee-case__detail-figure {
+  margin: 0;
+}
+
+.ee-case__detail-figure img {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  border-radius: var(--radius-md);
+}
+
+.ee-case__detail .ee-figcap {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+
+/* =============================================================
+   PIKTO-GUIDE — direkte Ansprache in Sprechblasen
+   ============================================================= */
+
+.ee-guide {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--sq-5);
+  padding: var(--sq-4) var(--sq-3);
+}
+
+.ee-guide--right {
+  flex-direction: row-reverse;
+}
+
+.ee-guide__figure {
+  flex: 0 0 150px;
+  width: 150px;
+  height: 180px;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.ee-guide__figure[src$="Figur_neutral.svg"] {
+  object-fit: cover;
+}
+
+.ee-guide__bubble {
+  position: relative;
+  width: min(720px, 70vw);
+  padding: var(--sq-5);
+  border: 1.5px solid rgba(26, 10, 0, 0.16);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: 0 16px 45px rgba(26, 10, 0, 0.08);
+}
+
+.ee-guide__bubble::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  bottom: 42px;
+  width: 20px;
+  height: 20px;
+  border-left: 1.5px solid rgba(26, 10, 0, 0.16);
+  border-bottom: 1.5px solid rgba(26, 10, 0, 0.16);
+  background: var(--color-white);
+  transform: rotate(45deg);
+}
+
+.ee-guide--right .ee-guide__bubble::before {
+  left: auto;
+  right: -11px;
+  border: 0;
+  border-top: 1.5px solid rgba(26, 10, 0, 0.16);
+  border-right: 1.5px solid rgba(26, 10, 0, 0.16);
+}
+
+.ee-guide__name {
+  display: block;
+  margin-bottom: var(--sq-6);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+.ee-guide__bubble p {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+.ee-guide__bubble strong {
+  font-weight: var(--fw-bold);
+}
+
+
+/* =============================================================
+   ABSCHLUSSQUIZ — adaptiert aus quiz-v2.html
+   ============================================================= */
+
+.ee-quiz {
+  padding-bottom: var(--sq-2);
+}
+
+.ee-quiz__head {
+  max-width: 760px;
+  margin: 0 0 var(--space-md);
+  text-align: left;
+}
+
+.ee-quiz__head h2 {
+  margin: var(--sq-6) 0;
+  font-size: 64px;
+  line-height: 1.05;
+}
+
+.ee-quiz__lead {
+  max-width: 62ch;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.ee-quiz__wrap {
+  max-width: none;
+  margin: 0;
+}
+
+.ee-quiz .quiz {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ee-quiz .quiz__option {
+  width: 100%;
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ee-quiz .quiz__option:hover {
+  border-color: rgba(26, 10, 0, 0.15);
+  background: var(--color-white);
+}
+
+.ee-quiz .quiz__option:disabled {
+  opacity: 1;
+}
+
+.ee-quiz .quiz__option.is-correct {
+  border-color: var(--color-orange);
+  background: rgba(255, 123, 0, 0.06);
+}
+
+.ee-quiz .quiz__option.is-wrong {
+  border-color: var(--color-black);
+  background: var(--color-black);
+}
+
+.ee-quiz .quiz__option.is-wrong .quiz__option-text {
+  color: var(--color-white);
+}
+
+.ee-quiz .quiz__option.is-correct .quiz__radio {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.ee-quiz .quiz__option.is-wrong .quiz__radio {
+  background: var(--color-white);
+  border-color: var(--color-black);
+}
+
+.ee-quiz .quiz__feedback--correct {
+  color: var(--color-text);
+  background: rgba(255, 123, 0, 0.06);
+  border: 1.5px solid var(--color-orange);
+}
+
+.ee-quiz .quiz__feedback--wrong {
+  color: var(--color-text);
+  background: var(--color-white);
+  border: 1.5px solid rgba(26, 10, 0, 0.35);
+}
+
+.ee-quiz .quiz__footer {
+  justify-content: flex-end;
+}
+
+.ee-quiz .qv2-result {
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.ee-quiz__guide {
+  margin-bottom: var(--space-md);
+}
+
+.qv2-guide-demo {
+  --qv2-guide-img: 168px;
+  --qv2-guide-figure-width: 96px;
+  --qv2-guide-bubble-width: 380px;
+  --qv2-guide-font: 16px;
+  --qv2-guide-pad-y: 18px;
+  --qv2-guide-pad-x: 20px;
+  --qv2-guide-gap: 26px;
+  --qv2-guide-figure-offset: 12px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--qv2-guide-gap);
+}
+
+.qv2-guide-bubble {
+  flex: 1 1 var(--qv2-guide-bubble-width);
+  width: min(100%, var(--qv2-guide-bubble-width));
+  max-width: var(--qv2-guide-bubble-width);
+  padding: var(--qv2-guide-pad-y) var(--qv2-guide-pad-x);
+  border: 1.5px solid var(--color-black);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: 0 12px 35px rgba(26, 10, 0, 0.07);
+  font-size: var(--qv2-guide-font);
+  line-height: 1.45;
+}
+
+.qv2-guide-kicker {
+  display: block;
+  margin-bottom: 8px;
+  font-size: max(9px, calc(var(--qv2-guide-font) * 0.7));
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+.qv2-guide-bubble p {
+  margin: 0;
+}
+
+.qv2-guide-figure {
+  width: var(--qv2-guide-figure-width);
+  height: var(--qv2-guide-img);
+  transform: translateY(var(--qv2-guide-figure-offset));
+  animation: qv2-guide-bob 4.8s ease-in-out infinite;
+}
+
+.qv2-guide-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+@keyframes qv2-guide-bob {
+  0%, 100% { transform: translateY(var(--qv2-guide-figure-offset)); }
+  50% { transform: translateY(calc(var(--qv2-guide-figure-offset) - 3px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ee-case__detail,
+  .ee-case__figure img,
+  .ee-case__title {
+    transition: none;
+  }
+}
+
+
+/* =============================================================
+   RESPONSIVE — schmalere Viewports (iPad hochkant / Desktopfenster)
+   Basis-Layout ist der 1366px-Canvas; darunter stapeln die Raster.
+   ============================================================= */
+
+@media (max-width: 1100px) {
+
+  .ee-headline { font-size: 54px; }
+  .ee-quiz__head h2 { font-size: 48px; }
+  .ee-s01__years { font-size: 96px; }
+  .ee-s03 .ee-quote { font-size: 64px; }
+  .ee-statements li { font-size: 28px; }
+
+  .ee-s01__grid,
+  .ee-s02__head,
+  .ee-s03__grid,
+  .ee-s04__grid,
+  .ee-case__detail-grid {
+    grid-template-columns: 1fr;
+    row-gap: var(--sq-4);
+  }
+
+  .ee-s01__figure { margin-top: var(--sq-4); }
+  .ee-s03 { padding-top: var(--sq-2); }
+  .ee-s03__figure {
+    margin-left: 0;
+  }
+
+  .ee-s03__figure img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .ee-s03 .ee-h2 {
+    font-size: 54px;
+  }
+
+  .ee-s03 .ee-list {
+    grid-template-columns: 1fr;
+  }
+  .ee-s04__figure img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .ee-case__teaser {
+    grid-template-columns: 90px 1fr 200px;
+  }
+
+  .ee-case__title { font-size: 36px; }
+
+  .ee-case__figure {
+    height: 160px;
+  }
+}
+
+@media (max-width: 760px) {
+  .ee-guide,
+  .ee-guide--right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ee-guide__figure {
+    width: 120px;
+    height: 145px;
+    flex-basis: 145px;
+  }
+
+  .ee-guide__bubble {
+    width: 100%;
+  }
+
+  .ee-guide__bubble::before,
+  .ee-guide--right .ee-guide__bubble::before {
+    left: 50%;
+    right: auto;
+    top: -11px;
+    bottom: auto;
+    border: 0;
+    border-left: 1.5px solid rgba(26, 10, 0, 0.16);
+    border-top: 1.5px solid rgba(26, 10, 0, 0.16);
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .ee-s04__grid,
+  .ee-system {
+    grid-template-columns: 1fr;
+  }
+
+  .ee-s04__figure img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .ee-case__teaser {
+    grid-template-columns: 1fr;
+  }
+
+  .ee-case__num {
+    min-height: 92px;
+    border-right: 0;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .qv2-guide-demo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* =============================================================
+   V2 — CORPORATE-ANPASSUNG + SCROLL-INTERAKTION (iPad)
+   1) Runde Ecken (radius-lg) wie image-block / info-box / card
+      auf den anderen Kapitelseiten
+   2) Effekte werden beim SCROLLEN ausgelöst statt per Hover —
+      Klassen .is-visible / .is-active / .is-inview setzt
+      js/erbe-editorial.js über IntersectionObserver & Scroll.
+   Überschreibt gezielt Regeln von oben.
+   ============================================================= */
+
+/* --- 1) Corporate: runde Ecken & weiche Flächen ------------- */
+
+.ee-s01__figure img,
+.ee-s03__figure img,
+.ee-s04__figure img,
+.ee-case__figure,
+.ee-case__detail-figure img {
+  border-radius: var(--radius-lg);   /* 24px — wie .image-block */
+}
+
+/* Merkmale-Block mit Rundung und seitlichem Einzug */
+.ee-s02 {
+  border-radius: var(--radius-lg);
+  margin-left: var(--sq-5);
+  margin-right: var(--sq-5);
+}
+
+/* Systemzellen: sanft gerundet wie Cards */
+.ee-system {
+  border: none;
+  gap: var(--sq-6);
+}
+
+/* --- 2) Scroll-getriebene Effekte statt Hover ---------------- */
+
+/* Stagger: Kinder eines .ee-stagger-Containers blenden
+   nacheinander ein (Delay setzt JS pro Kind) */
+.ee-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.ee-stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Statements: die Zeile in Bildschirmmitte wird beim Scrollen
+   aktiv (orange + Einzug) — ersetzt den Hover-Effekt */
+.ee-statements li.is-active {
+  color: var(--color-orange);
+  padding-left: var(--sq-4);
+}
+
+/* Case-Bilder: färben sich, sobald die Karte im Scroll-Fokus ist */
+.ee-case.is-current .ee-case__figure img {
+  filter: grayscale(0);
+  transform: scale(1.04);
+}
+
+/* Große Hintergrundnummern: Parallaxe beim Scrollen (JS) */
+@media (prefers-reduced-motion: reduce) {
+  .ee-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .ee-system__card {
+    transition: none;
+  }
+}
+
+/* -------------------------------------------------------------
+   Requested refinements: quieter editorial surface, scrollytelling
+   ------------------------------------------------------------- */
+
+.ee-bignum {
+  display: none;
+}
+
+.ee-scrolly {
+  position: relative;
+  padding: var(--sq-2) var(--sq-3);
+  background: var(--color-white);
+  color: var(--color-black);
+  overflow: visible;
+}
+
+.ee-scrolly__head {
+  max-width: 820px;
+  margin-bottom: var(--sq-3);
+}
+
+.ee-scrolly__head .ee-eyebrow {
+  display: inline-flex;
+  margin-bottom: var(--sq-5);
+}
+
+.ee-scrolly .ee-eyebrow--light {
+  color: var(--color-orange);
+}
+
+.ee-scrolly .ee-h2--light {
+  color: var(--color-black);
+}
+
+.ee-scrolly__inner {
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  gap: var(--sq-3);
+  align-items: start;
+}
+
+.ee-scrolly__visual {
+  position: sticky;
+  top: 132px;
+  height: min(620px, calc(100vh - 160px));
+  min-height: 500px;
+  overflow: hidden;
+  border: 1.5px solid rgba(26, 10, 0, 0.12);
+  border-radius: var(--radius-lg);
+  background: #f5f2ee;
+}
+
+.ee-scrolly__panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.985);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.ee-scrolly__panel.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ee-scrolly__panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.04);
+}
+
+.ee-scrolly__panel::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.44), transparent);
+}
+
+.ee-scrolly__panel-cap {
+  position: absolute;
+  left: 28px;
+  bottom: 26px;
+  z-index: 1;
+  padding: 10px 14px;
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+}
+
+.ee-scrolly__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sq-2);
+  padding: var(--sq-4) 0;
+}
+
+.ee-scrolly__step {
+  min-height: 66vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--sq-3) + 34px) var(--sq-3) var(--sq-3);
+  border-left: 0;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  opacity: 0.42;
+  transition: opacity 0.35s ease;
+}
+
+.ee-scrolly__step.is-active {
+  opacity: 1;
+  background: transparent;
+}
+
+.ee-scrolly__step-num {
+  margin-bottom: var(--sq-6);
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+.ee-scrolly__step-title {
+  margin: 0 0 var(--sq-5);
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: var(--fw-bold);
+  line-height: 1.05;
+  color: var(--color-black);
+}
+
+.ee-scrolly__step-text {
+  max-width: 44ch;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.ee-case {
+  box-shadow: none;
+}
+
+.ee-case:hover {
+  transform: none;
+  border-color: rgba(0, 0, 0, 0.14);
+  box-shadow: none;
+}
+
+.ee-case.is-current,
+.ee-case.is-open {
+  border-color: var(--color-orange);
+  box-shadow: none;
+}
+
+.ee-case__teaser:hover .ee-case__num {
+  background: transparent;
+  color: var(--color-black);
+}
+
+.ee-case__teaser:hover .ee-case__cta {
+  background: var(--color-black);
+}
+
+.ee-case__teaser:hover .ee-case__figure img {
+  filter: grayscale(100%);
+  transform: none;
+}
+
+.ee-case.is-current .ee-case__num,
+.ee-case.is-open .ee-case__num {
+  background: var(--color-orange);
+  color: var(--color-white);
+}
+
+.ee-case.is-current .ee-case__cta,
+.ee-case.is-open .ee-case__cta {
+  background: var(--color-orange);
+}
+
+.ee-case.is-current .ee-case__figure img,
+.ee-case.is-open .ee-case__figure img {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+
+.ee-case__detail-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 440px);
+  align-items: center;
+  gap: var(--sq-4);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.ee-case__detail-figure {
+  align-self: stretch;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #f5f2ee;
+}
+
+.ee-case__detail-figure img {
+  height: 100%;
+  min-height: 300px;
+  max-height: 380px;
+  filter: none;
+}
+
+.ee-chapter-next {
+  padding-top: 0;
+  padding-bottom: var(--sq-2);
+}
+
+.ee-chapter-next .info-box {
+  box-shadow: none;
+}
+
+.ee-chapter-next__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--sq-3);
+  align-items: center;
+}
+
+.ee-chapter-next__copy {
+  max-width: 720px;
+}
+
+.ee-chapter-next__action {
+  justify-self: end;
+}
+
+@media (max-width: 1100px) {
+  .ee-scrolly__inner,
+  .ee-case__detail-grid,
+  .ee-chapter-next__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ee-case__teaser {
+    grid-template-columns: 90px minmax(0, 1fr) 220px;
+    height: 236px;
+    min-height: 236px;
+  }
+
+  .ee-scrolly__visual {
+    position: relative;
+    top: auto;
+    height: 460px;
+    min-height: 0;
+  }
+
+  .ee-scrolly__step {
+    min-height: auto;
+  }
+
+  .ee-chapter-next__action {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 760px) {
+  .ee-case__teaser {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+  }
+
+  .ee-case__figure {
+    height: 220px;
+  }
+
+  .ee-case__figure img {
+    height: 100%;
+  }
+}
+
+.main-content img,
+.main-content svg image {
+  filter: grayscale(100%) contrast(1.04) !important;
+}
+
+  </style>
+</head>
+<body class ="inhalt-gesperrt">
+
+  <!-- FORTSCHRITTSBALKEN — fixed, direkt in body -->
+  <aside class="progress-sidebar" aria-label="Lesefortschritt">
+    <span class="progress-sidebar__label">Fortschritt</span>
+    <div class="progress-sidebar__track">
+      <div class="progress-sidebar__fill"></div>
+      <div class="progress-sidebar__marker"></div>
+    </div>
+    <span class="progress-sidebar__pct">0%</span>
+  </aside>
+
+  <!-- NAVIGATION — fixed, direkt in body -->
+  <nav class="main-nav" aria-label="Hauptnavigation">
+      <div class="nav-bar">
+        <a class="nav-link" href="start.html"      data-page="start">Start</a>
+        <a class="nav-link" href="geschichte.html" data-page="geschichte">Geschichte</a>
+        <a class="nav-link" href="lehre.html"      data-page="lehre">Lehre</a>
+        <a class="nav-link" href="design.html"     data-page="design">Design</a>
+        <a class="nav-link" href="erbe.html"       data-page="erbe">Erbe</a>
+      </div>
+  </nav>
+
+  <!-- SEITEN-WRAPPER -->
+  <div class="page-wrapper">
+    <main class="main-content">
+<!-- =====================================================
+     KAPITEL-HERO — Vollflächige Einführung (UNVERÄNDERT)
+     Button scrollt zum eigentlichen Inhalt runter.
+     D + Figur als Kapitelvisual
+===================================================== -->
+    <section class="kapitel-hero" id="kapitel-hero">
+
+      <!-- Linke Seite: D + Figur -->
+      <div class="kapitel-hero__visual">
+        <svg class="kapitel-hero__d-svg" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+      <!-- Halbkreis D — orange gefüllt -->
+      <path d="M 0 0 L 190 0 Q 380 0 380 190 Q 380 380 190 380 L 0 380 Z" fill="#FF7B00"/>
+
+      <image href="../assets/svg/Figur_dynamisch.svg"
+          x="-15" y="30" width="430" height="350"/>
+    </svg>
+      </div>
+
+      <!-- Rechte Seite: Titel -->
+      <div class="kapitel-hero__title">
+        <span class="kapitel-hero__title-line kapitel-hero__title-line--orange">Erbe</span>
+        <span class="kapitel-hero__title-line">vom System</span>
+      </div>
+
+      <!-- Unten links: Label + H2 + Text -->
+      <div class="kapitel-hero__content">
+        <div class="kapitel-hero__content-left">
+          <span class="label label--orange">Kapitel 04 · Erbe</span>
+          <h2 style="margin-top: var(--sq-6);">Wie sich die HfG heute noch zeigt</h2>
+          <p class="body-text">
+            Obwohl die HfG Ulm bereits 1968 geschlossen wurde, prägen ihre
+            Ideen Design, Architektur und visuelle Kommunikation bis heute –
+            funktional, verständlich und gesellschaftlich relevant.
+          </p>
+        </div>
+        <div class="kapitel-hero__content-right">
+          <a class="btn btn--orange btn--pill btn--lg" href="#inhalt" id="hero-btn">
+            Erbe starten
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+<!-- =====================================================
+     ★ EDITORIAL-OPENER — Scrollziel #inhalt
+     „ERBE · TEIL 1" + großes H1 + Meta-Zeile
+===================================================== -->
+      <section class="section section-inner ee-opener" id="inhalt" aria-labelledby="page-title">
+
+        <!-- Dekorative rote Rechtecke — Position anpassen -->
+        <div class="grid" style="padding-top: var(--sq-2);">
+
+          <!-- Abschnitts-Label -->
+          <div class="col-12" style="margin-bottom: var(--space-sm);">
+            <span class="label label--orange">
+              ERBE · TEIL 1
+            </span>
+          </div>
+
+          <!-- H1 Haupt-Titel (groß, lowercase) -->
+          <div class="col-12">
+            <h1 id="page-title">
+              erbe
+            </h1>
+          </div>
+
+          <!-- Meta-Zeile: Editorial-Inhaltsangabe des Kapitels -->
+          <div class="col-12">
+            <div class="ee-opener__meta">
+              <span>Kapitel 04</span>
+              <span>4 Themen</span>
+              <span>6 Fallstudien</span>
+              <span>1968 → heute</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+<!-- =====================================================
+     ★ SECTION 01 — DAS ERBE DER HFG ULM
+     Riesige Typo „1968 → heute", links Text + nummerierte
+     Zeilen, rechts großes S/W-Bild mit Orange-Fläche
+===================================================== -->
+      <section class="ee-section ee-s01" id="erbe-01" aria-labelledby="s01-title">
+
+        <div class="ee-s01__years ee-reveal ee-stagger" aria-hidden="true">
+          <span>1968</span><span class="ee-arrow">→</span><span>heute</span>
+        </div>
+
+        <div class="ee-s01__grid">
+
+          <div class="ee-s01__text ee-reveal">
+            <div class="ee-kicker">
+              <span class="label label--orange">Section 01 — Wirkung</span>
+            </div>
+            <h2 class="ee-headline" id="s01-title">Das Erbe der HfG&nbsp;Ulm<span class="ee-dot">.</span></h2>
+            <p class="ee-lead">
+              Auch nach der Schließung 1968 wirkt die HfG Ulm bis heute.
+              Ihre Arbeiten prägen Marken, Produktdesign und Beschilderung weltweit.
+            </p>
+            <ol class="ee-lines ee-stagger">
+              <li>Braun-Designsprache mit Dieter Rams</li>
+              <li>Lufthansa-Erscheinungsbild von Otl Aicher</li>
+              <li>Piktogramm-System der Olympischen Spiele 1972</li>
+              <li>Grundlagen des heutigen Service- &amp; Systemdesigns</li>
+            </ol>
+          </div>
+
+          <figure class="ee-s01__figure ee-reveal">
+            <img src="../public%20-%20Kopie/assets/hfg-building.jpg"
+                 alt="Das Gebäude der HfG Ulm auf dem Kuhberg, Schwarzweißaufnahme">
+            <figcaption>
+              <span>HfG-Gebäude, Kuhberg Ulm</span>
+              <span>Architektur: Max Bill, 1955</span>
+            </figcaption>
+          </figure>
+
+        </div>
+      </section>
+
+<!-- =====================================================
+     ★ SECTION 02 — WICHTIGE MERKMALE DER HFG ULM
+     Schwarzer Kontrastblock, Merkmale als große
+     nummerierte Typo-Statements statt normaler Liste
+===================================================== -->
+      <section class="ee-section ee-s02" id="erbe-02" aria-labelledby="s02-title">
+
+        <div class="ee-s02__head ee-reveal">
+          <div>
+            <div class="ee-kicker">
+              <span class="label label--orange">Section 02 — Denkweise</span>
+            </div>
+            <h2 class="ee-headline" id="s02-title">Wichtige Merkmale der HfG&nbsp;Ulm<span class="ee-dot">.</span></h2>
+          </div>
+          <p>
+            Das Erbe zeigt sich dabei weniger in einem bestimmten Stil,
+            sondern vielmehr in einer <strong>neuen Denkweise</strong>: Gestaltung sollte
+            funktional, verständlich und gesellschaftlich relevant sein.
+          </p>
+        </div>
+
+        <ol class="ee-statements ee-reveal ee-stagger">
+          <li>funktionales und minimalistisches Design</li>
+          <li>klare Formen und einfache Bedienung</li>
+          <li>Verbindung von Design, Technik und Gesellschaft</li>
+          <li>nutzerorientiertes Denken</li>
+          <li>interdisziplinäre Zusammenarbeit</li>
+        </ol>
+
+        <div class="ee-s02__foot ee-reveal">
+          <p>Nicht Stil, sondern Haltung — der Unterricht an der HfG verband Gestaltung, Wissenschaft und Alltag.</p>
+        </div>
+
+      </section>
+
+<!-- =====================================================
+     ★ SECTION 03 — EINFLUSS AUF MODERNES PRODUKTDESIGN
+     Split-Composition: Produktbühne links, Text rechts,
+     darunter großes Zitat „Weniger Dekoration. Mehr Logik."
+===================================================== -->
+      <section class="ee-scrolly" id="erbe-scrolly" aria-labelledby="ee-scrolly-title">
+        <div class="ee-scrolly__head">
+          <span class="ee-eyebrow ee-eyebrow--light ee-reveal">Scrollytelling - Von Ulm in die Welt</span>
+          <h2 id="ee-scrolly-title" class="ee-h2 ee-h2--light ee-reveal">Wie aus einer Idee ein System wurde</h2>
+        </div>
+
+        <div class="ee-scrolly__inner">
+          <div class="ee-scrolly__visual" aria-hidden="true">
+            <div class="ee-scrolly__panel is-active">
+              <img src="../assets/images/design/braun-sk4.webp" alt="">
+              <span class="ee-scrolly__panel-cap">01 &middot; Produktkultur</span>
+            </div>
+            <div class="ee-scrolly__panel">
+              <img src="../assets/images/otl_aicher.jpg" alt="">
+              <span class="ee-scrolly__panel-cap">02 &middot; Markenauftritt</span>
+            </div>
+            <div class="ee-scrolly__panel">
+              <img src="../assets/images/design/Bushaltestelle%201.jpeg.jpg" alt="">
+              <span class="ee-scrolly__panel-cap">03 &middot; Orientierung</span>
+            </div>
+            <div class="ee-scrolly__panel">
+              <img src="../assets/images/design/braun-t3-neu.png" alt="">
+              <span class="ee-scrolly__panel-cap">04 &middot; Digitale Gegenwart</span>
+            </div>
+          </div>
+
+          <div class="ee-scrolly__steps">
+            <div class="ee-scrolly__step is-active">
+              <span class="ee-scrolly__step-num">01</span>
+              <h3 class="ee-scrolly__step-title">Produktkultur</h3>
+              <p class="ee-scrolly__step-text">
+                Mit Braun wird die Ulmer Haltung zur Serienreife: reduzierte Formen,
+                klare Bedienung und ehrliche Materialien machen gutes Design
+                alltagstauglich.
+              </p>
+            </div>
+            <div class="ee-scrolly__step">
+              <span class="ee-scrolly__step-num">02</span>
+              <h3 class="ee-scrolly__step-title">Markenauftritt</h3>
+              <p class="ee-scrolly__step-text">
+                Otl Aicher entwickelt fuer Lufthansa das erste konsequent
+                durchgestaltete Erscheinungsbild: ein Baukasten aus Logo,
+                Typografie und Farbe.
+              </p>
+            </div>
+            <div class="ee-scrolly__step">
+              <span class="ee-scrolly__step-num">03</span>
+              <h3 class="ee-scrolly__step-title">Orientierung</h3>
+              <p class="ee-scrolly__step-text">
+                Piktogramme und Leitsysteme fuehren Menschen bis heute intuitiv
+                durch den oeffentlichen Raum: klar, wiederholbar und spracharm.
+              </p>
+            </div>
+            <div class="ee-scrolly__step">
+              <span class="ee-scrolly__step-num">04</span>
+              <h3 class="ee-scrolly__step-title">Digitale Gegenwart</h3>
+              <p class="ee-scrolly__step-text">
+                Von Interfaces bis Produktdesign: Die Prinzipien der HfG praegen,
+                wie wir heute Software, Geraete und Systeme gestalten und verstehen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ee-section ee-s03" id="erbe-03" aria-labelledby="ee-s03-title">
+
+        <div class="ee-s03__grid">
+          <figure class="ee-s03__figure ee-reveal">
+            <img src="../assets/images/design/braun-sk4.webp"
+                 alt="Braun Phonosuper SK 4 — reduziertes Produktdesign">
+          </figure>
+
+          <div class="ee-s03__text ee-reveal">
+            <span class="ee-eyebrow">Teil 03 — Produktdesign</span>
+            <h2 id="ee-s03-title" class="ee-h2">Einfluss auf modernes Produktdesign</h2>
+            <p class="ee-lead">
+              Besonders sichtbar ist das Erbe der HfG im Produktdesign. Produkte
+              sollen logisch aufgebaut, langlebig und leicht verständlich sein –
+              <span class="ee-mark">ohne unnötige Dekoration</span>.
+            </p>
+            <ul class="ee-list ee-list--2col">
+              <li>Klare Gestaltung</li>
+              <li>Smartphones und Tablets</li>
+              <li>Minimalistische Webseiten und Apps</li>
+              <li>Moderne Möbel und Haushaltsgeräte</li>
+            </ul>
+          </div>
+        </div>
+
+        <blockquote class="ee-quote ee-reveal-text">
+          Weniger Dekoration.<br><em>Mehr Logik.</em>
+        </blockquote>
+
+      </section>
+
+<!-- =====================================================
+     ★ SECTION 04 — CORPORATE DESIGN UND INFORMATIONSSYSTEME
+     Magazinraster: links Text + Systembausteine als
+     Linienraster, rechts überlappende Bildspalte
+===================================================== -->
+      <section class="ee-section ee-s04" id="erbe-04" aria-labelledby="ee-s04-title">
+
+        <div class="ee-s04__grid">
+
+          <div class="ee-s04__text ee-reveal">
+            <span class="ee-eyebrow">Teil 04 — Systeme</span>
+            <h2 id="ee-s04-title" class="ee-h2">Corporate Design und Informationssysteme</h2>
+            <p class="ee-lead">
+              Die HfG gestaltete nicht nur Produkte, sondern komplette Systeme.
+              Die visuellen Zeichen eines Unternehmens sollten zusammenpassen und
+              <span class="ee-mark">einheitlich funktionieren</span>.
+            </p>
+            <p class="ee-text ee-text--muted">
+              Dieses Prinzip ist heute Standard bei Unternehmen, Webseiten, Apps
+              oder Verkehrssystemen.
+            </p>
+          </div>
+
+          <figure class="ee-s04__figure ee-reveal">
+            <img src="../public%20-%20Kopie/assets/hfg-founders.jpg"
+                 alt="Gründer und Lehrende der HfG Ulm im Gespräch">
+            <figcaption class="ee-figcap">Otl Aicher &amp; die Gründungsgeneration der HfG</figcaption>
+          </figure>
+
+        </div>
+
+          <!-- Systembausteine als vollbreites Raster -->
+          <div class="ee-system ee-stagger ee-reveal" role="list" aria-label="Bausteine eines Erscheinungsbilds">
+            <button class="ee-system__cell" type="button" role="listitem" aria-pressed="false" aria-label="Logos: Karte umdrehen">
+              <span class="ee-system__card">
+                <span class="ee-system__face ee-system__front"><span class="ee-system__letter">A</span><span class="ee-system__title">Logos</span><span class="ee-system__hint">Klicken zum Umdrehen</span></span>
+                <span class="ee-system__face ee-system__back"><span class="ee-system__title">Logos</span><span class="ee-system__copy">Ein klares Zeichen macht eine Organisation sofort erkennbar und funktioniert in jeder Größe.</span><span class="ee-system__hint">Klicken zum Zurückdrehen</span></span>
+              </span>
+            </button>
+            <button class="ee-system__cell" type="button" role="listitem" aria-pressed="false" aria-label="Farben: Karte umdrehen">
+              <span class="ee-system__card">
+                <span class="ee-system__face ee-system__front"><span class="ee-system__letter">B</span><span class="ee-system__title">Farben</span><span class="ee-system__hint">Klicken zum Umdrehen</span></span>
+                <span class="ee-system__face ee-system__back"><span class="ee-system__title">Farben</span><span class="ee-system__copy">Eine festgelegte Farbpalette schafft Orientierung und verbindet alle Anwendungen visuell.</span><span class="ee-system__hint">Klicken zum Zurückdrehen</span></span>
+              </span>
+            </button>
+            <button class="ee-system__cell" type="button" role="listitem" aria-pressed="false" aria-label="Typografie: Karte umdrehen">
+              <span class="ee-system__card">
+                <span class="ee-system__face ee-system__front"><span class="ee-system__letter">C</span><span class="ee-system__title">Typografie</span><span class="ee-system__hint">Klicken zum Umdrehen</span></span>
+                <span class="ee-system__face ee-system__back"><span class="ee-system__title">Typografie</span><span class="ee-system__copy">Schriftgrößen, Schnitte und Abstände bilden eine lesbare und wiedererkennbare Ordnung.</span><span class="ee-system__hint">Klicken zum Zurückdrehen</span></span>
+              </span>
+            </button>
+            <button class="ee-system__cell" type="button" role="listitem" aria-pressed="false" aria-label="Beschilderung: Karte umdrehen">
+              <span class="ee-system__card">
+                <span class="ee-system__face ee-system__front"><span class="ee-system__letter">D</span><span class="ee-system__title">Beschilderung</span><span class="ee-system__hint">Klicken zum Umdrehen</span></span>
+                <span class="ee-system__face ee-system__back"><span class="ee-system__title">Beschilderung</span><span class="ee-system__copy">Konsequente Schilder führen Menschen verständlich durch Gebäude und öffentliche Räume.</span><span class="ee-system__hint">Klicken zum Zurückdrehen</span></span>
+              </span>
+            </button>
+            <button class="ee-system__cell" type="button" role="listitem" aria-pressed="false" aria-label="Piktogramme: Karte umdrehen">
+              <span class="ee-system__card">
+                <span class="ee-system__face ee-system__front"><span class="ee-system__letter">E</span><span class="ee-system__title">Piktogramme</span><span class="ee-system__hint">Klicken zum Umdrehen</span></span>
+                <span class="ee-system__face ee-system__back"><span class="ee-system__title">Piktogramme</span><span class="ee-system__copy">Reduzierte Bildzeichen vermitteln Informationen schnell und unabhängig von Sprache.</span><span class="ee-system__hint">Klicken zum Zurückdrehen</span></span>
+              </span>
+            </button>
+            <button class="ee-system__cell" type="button" role="listitem" aria-pressed="false" aria-label="Informationssysteme: Karte umdrehen">
+              <span class="ee-system__card">
+                <span class="ee-system__face ee-system__front"><span class="ee-system__letter">F</span><span class="ee-system__title">Informations&shy;systeme</span><span class="ee-system__hint">Klicken zum Umdrehen</span></span>
+                <span class="ee-system__face ee-system__back"><span class="ee-system__title">Informations&shy;systeme</span><span class="ee-system__copy">Alle Bausteine greifen ineinander und machen komplexe Inhalte leicht verständlich.</span><span class="ee-system__hint">Klicken zum Zurückdrehen</span></span>
+              </span>
+            </button>
+          </div>
+
+      </section>
+
+<!-- =================================================
+           CASE STUDIES — Interaktive Magazin-Teaser
+           "Los geht's" klappt den Detailbereich auf.
+      ================================================= -->
+      <section class="ee-section ee-cases" id="cases" aria-labelledby="ee-cases-title">
+        <div class="ee-cases__head ee-reveal">
+          <span class="ee-eyebrow">Case Studies — In der Praxis</span>
+          <h2 id="ee-cases-title" class="ee-h2">Wo das Erbe heute sichtbar wird</h2>
+        </div>
+
+        <div class="ee-case-list">
+
+          <!-- CASE 01 — Lufthansa (ausgearbeitet) -->
+          <article class="ee-case ee-reveal" id="case-lufthansa">
+            <div class="ee-case__teaser" data-testid="case-lufthansa-teaser">
+              <span class="ee-case__num" aria-hidden="true">01</span>
+              <div class="ee-case__meta">
+                <h3 class="ee-case__title">Lufthansa</h3>
+                <p class="ee-case__subtitle">Lerne mehr über das Design der Lufthansa</p>
+                <button type="button" class="ee-case__cta"
+                        data-testid="case-lufthansa-toggle"
+                        aria-expanded="false" aria-controls="case-lufthansa-detail">
+                  <span class="ee-btn__label">Los geht’s</span>
+                  <span class="ee-btn__arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+              <span class="ee-case__figure">
+                <img src="../assets/images/otl_aicher.jpg" alt="Otl Aicher, Gestalter des Lufthansa-Erscheinungsbilds">
+              </span>
+            </div>
+            <div class="ee-case__detail" id="case-lufthansa-detail" role="region" aria-label="Lufthansa — Details">
+              <div class="ee-case__detail-inner">
+                <div class="ee-case__detail-grid">
+                  <div class="ee-case__detail-text">
+                    <span class="ee-eyebrow">Corporate Design · Otl Aicher &amp; Gruppe „E5“</span>
+                    <p class="ee-case__detail-lead">
+                      Das bekannteste Beispiel ist das Corporate Design der Lufthansa,
+                      das von Otl Aicher und der Entwicklungsgruppe „E5“ an der HfG
+                      entwickelt wurde.
+                    </p>
+                    <p class="ee-text">Bis heute sichtbar:</p>
+                    <ul class="ee-list">
+                      <li>Der Kranich im Logo</li>
+                      <li>Klare Typografie</li>
+                      <li>Reduziertes Farbsystem</li>
+                      <li>Beschilderung und Ordnungssystem</li>
+                    </ul>
+                    <p class="ee-text">
+                      Die Idee eines einheitlichen Erscheinungsbilds wurde hier
+                      erstmals systematisch umgesetzt und prägt bis heute moderne
+                      Markenauftritte.
+                    </p>
+                  </div>
+                  <figure class="ee-case__detail-figure">
+                    <img src="../assets/images/design/Bushaltestelle%201.jpeg.jpg"
+                         alt="Beschilderung und Ordnungssystem im öffentlichen Raum">
+                    <figcaption class="ee-figcap">Beschilderung &amp; Ordnungssystem — Ulmer Prinzip</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE 02 — Braun -->
+          <article class="ee-case ee-reveal" id="case-braun">
+            <div class="ee-case__teaser" data-testid="case-braun-teaser">
+              <span class="ee-case__num" aria-hidden="true">02</span>
+              <div class="ee-case__meta">
+                <h3 class="ee-case__title">Braun</h3>
+                <p class="ee-case__subtitle">Lerne mehr über das Design von Braun</p>
+                <button type="button" class="ee-case__cta"
+                        data-testid="case-braun-toggle"
+                        aria-expanded="false" aria-controls="case-braun-detail">
+                  <span class="ee-btn__label">Los geht’s</span>
+                  <span class="ee-btn__arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+              <span class="ee-case__figure">
+                <img src="../public%20-%20Kopie/produkte/dieter-rams.png" alt="Dieter Rams, Chefdesigner bei Braun">
+              </span>
+            </div>
+            <div class="ee-case__detail" id="case-braun-detail" role="region" aria-label="Braun — Details">
+              <div class="ee-case__detail-inner">
+                <div class="ee-case__detail-grid">
+                  <div class="ee-case__detail-text">
+                    <span class="ee-eyebrow">Dieter Rams · „Weniger, aber besser“</span>
+                    <p class="ee-case__detail-lead">
+                      Gemeinsam mit Dieter Rams übertrug Braun die Ulmer Haltung in
+                      die Serienproduktion. Geräte wie die Phonosuper SK 4 oder der
+                      Weltempfänger T3 stehen für reduzierte Formen, klare Bedienung
+                      und ehrliche Materialität.
+                    </p>
+                    <ul class="ee-list">
+                      <li>Reduzierte, ruhige Formen</li>
+                      <li>Ehrliche Materialität</li>
+                      <li>Intuitive Bedienung</li>
+                      <li>Grundsatz „Weniger, aber besser“</li>
+                    </ul>
+                  </div>
+                  <figure class="ee-case__detail-figure">
+                    <img src="../assets/images/design/braun-t3-neu.png" alt="Braun T3 Taschenempfänger">
+                    <figcaption class="ee-figcap">Braun T3 — Vorbild für spätere Gerätegestaltung</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE 03 — Apple und CO -->
+          <article class="ee-case ee-reveal" id="case-apple">
+            <div class="ee-case__teaser" data-testid="case-apple-teaser">
+              <span class="ee-case__num" aria-hidden="true">03</span>
+              <div class="ee-case__meta">
+                <h3 class="ee-case__title">Apple und CO</h3>
+                <p class="ee-case__subtitle">Lerne mehr über Design</p>
+                <button type="button" class="ee-case__cta"
+                        data-testid="case-apple-toggle"
+                        aria-expanded="false" aria-controls="case-apple-detail">
+                  <span class="ee-btn__label">Los geht’s</span>
+                  <span class="ee-btn__arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+              <span class="ee-case__figure">
+                <img src="../assets/images/design/braun-t3-neu.png" alt="Braun T3 — Vorläufer moderner Gerätegestaltung">
+              </span>
+            </div>
+            <div class="ee-case__detail" id="case-apple-detail" role="region" aria-label="Apple und CO — Details">
+              <div class="ee-case__detail-inner">
+                <div class="ee-case__detail-grid">
+                  <div class="ee-case__detail-text">
+                    <span class="ee-eyebrow">Vom Ulmer Prinzip zur digitalen Gegenwart</span>
+                    <p class="ee-case__detail-lead">
+                      Die Ulmer und Braunsche Formensprache wirkt bis in die digitale
+                      Gegenwart. Apple übernahm die Idee der radikalen Reduktion:
+                      klare Geometrie, ruhige Oberflächen und eine Gestaltung, die
+                      sich der Funktion unterordnet.
+                    </p>
+                    <ul class="ee-list">
+                      <li>Radikale Reduktion</li>
+                      <li>Funktion vor Dekoration</li>
+                      <li>Ruhige, klare Oberflächen</li>
+                      <li>Durchgängiges Systemdenken</li>
+                    </ul>
+                  </div>
+                  <figure class="ee-case__detail-figure">
+                    <img src="../assets/images/design/braun-sk4.webp" alt="Braun SK 4 — Ikone reduzierter Gestaltung">
+                    <figcaption class="ee-figcap">Braun-Klassiker als Referenz moderner Geräte</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE 04 — Öffentliche Leitsysteme -->
+          <article class="ee-case ee-reveal" id="case-leitsysteme">
+            <div class="ee-case__teaser" data-testid="case-leitsysteme-teaser">
+              <span class="ee-case__num" aria-hidden="true">04</span>
+              <div class="ee-case__meta">
+                <h3 class="ee-case__title">Öffentliche Leitsysteme</h3>
+                <p class="ee-case__subtitle">Lerne mehr über das Design</p>
+                <button type="button" class="ee-case__cta"
+                        data-testid="case-leitsysteme-toggle"
+                        aria-expanded="false" aria-controls="case-leitsysteme-detail">
+                  <span class="ee-btn__label">Los geht’s</span>
+                  <span class="ee-btn__arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+              <span class="ee-case__figure">
+                <img src="../assets/images/design/Bushaltestelle%201.jpeg.jpg" alt="Leitsystem im öffentlichen Raum">
+              </span>
+            </div>
+            <div class="ee-case__detail" id="case-leitsysteme-detail" role="region" aria-label="Öffentliche Leitsysteme — Details">
+              <div class="ee-case__detail-inner">
+                <div class="ee-case__detail-grid">
+                  <div class="ee-case__detail-text">
+                    <span class="ee-eyebrow">Orientierung im öffentlichen Raum</span>
+                    <p class="ee-case__detail-lead">
+                      Ob Flughafen, Bahnhof oder Haltestelle: Orientierung im
+                      öffentlichen Raum folgt bis heute den Ulmer Prinzipien.
+                      Einheitliche Piktogramme, klare Typografie und ein durchdachtes
+                      Ordnungssystem führen Menschen intuitiv – unabhängig von
+                      Sprache und Herkunft.
+                    </p>
+                    <ul class="ee-list">
+                      <li>Universelle Piktogramme</li>
+                      <li>Klare Typografie</li>
+                      <li>Einheitliches Farb- und Ordnungssystem</li>
+                      <li>Barrierearme Orientierung</li>
+                    </ul>
+                  </div>
+                  <figure class="ee-case__detail-figure">
+                    <img src="../assets/images/design/Bushaltestelle%202.jpeg" alt="Haltestellen-Leitsystem im Detail">
+                    <figcaption class="ee-figcap">Leitsystem — Beschilderung nach Ulmer Vorbild</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE 05 — Typografie und Grafikdesign -->
+          <article class="ee-case ee-reveal" id="case-typografie">
+            <div class="ee-case__teaser" data-testid="case-typografie-teaser">
+              <span class="ee-case__num" aria-hidden="true">05</span>
+              <div class="ee-case__meta">
+                <h3 class="ee-case__title">Typografie und Grafikdesign</h3>
+                <p class="ee-case__subtitle">Lerne mehr über Typografie und Grafikdesign</p>
+                <button type="button" class="ee-case__cta"
+                        data-testid="case-typografie-toggle"
+                        aria-expanded="false" aria-controls="case-typografie-detail">
+                  <span class="ee-btn__label">Los geht’s</span>
+                  <span class="ee-btn__arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+              <span class="ee-case__figure">
+                <img src="../assets/images/design/Plakat%20Donnerstagvortr%C3%A4ge%20im%20November.jpeg" alt="Plakatgestaltung der HfG Ulm">
+              </span>
+            </div>
+            <div class="ee-case__detail" id="case-typografie-detail" role="region" aria-label="Typografie und Grafikdesign — Details">
+              <div class="ee-case__detail-inner">
+                <div class="ee-case__detail-grid">
+                  <div class="ee-case__detail-text">
+                    <span class="ee-eyebrow">Raster, Weißraum, Verständlichkeit</span>
+                    <p class="ee-case__detail-lead">
+                      Die HfG verstand Typografie als Werkzeug der Verständlichkeit,
+                      nicht der Dekoration. Klare Raster, wenige Schriftschnitte und
+                      ein strenger Umgang mit Weißraum bilden bis heute die Grundlage
+                      von Editorial-, Web- und Informationsdesign.
+                    </p>
+                    <ul class="ee-list">
+                      <li>Rasterbasiertes Layout</li>
+                      <li>Funktionale Typografie</li>
+                      <li>Bewusster Weißraum</li>
+                      <li>Hierarchie durch Kontrast</li>
+                    </ul>
+                  </div>
+                  <figure class="ee-case__detail-figure">
+                    <img src="../assets/images/design/Plakat%20Donnerstagvortr%C3%A4ge%20im%20November.jpeg" alt="Plakat der Donnerstagvorträge — Grafikdesign der HfG">
+                    <figcaption class="ee-figcap">Plakatgestaltung — Grafikdesign der HfG Ulm</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE 06 — Nachhaltiges und funktionales Design -->
+          <article class="ee-case ee-reveal" id="case-nachhaltig">
+            <div class="ee-case__teaser" data-testid="case-nachhaltig-teaser">
+              <span class="ee-case__num" aria-hidden="true">06</span>
+              <div class="ee-case__meta">
+                <h3 class="ee-case__title">Nachhaltiges und funktionales Design</h3>
+                <p class="ee-case__subtitle">Lerne mehr über nachhaltiges und funktionales Design</p>
+                <button type="button" class="ee-case__cta"
+                        data-testid="case-nachhaltig-toggle"
+                        aria-expanded="false" aria-controls="case-nachhaltig-detail">
+                  <span class="ee-btn__label">Los geht’s</span>
+                  <span class="ee-btn__arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+              <span class="ee-case__figure">
+                <img src="../assets/images/design/Ulmer%20Hocker%20neu.jpg" alt="Ulmer Hocker — funktionales, langlebiges Design">
+              </span>
+            </div>
+            <div class="ee-case__detail" id="case-nachhaltig-detail" role="region" aria-label="Nachhaltiges und funktionales Design — Details">
+              <div class="ee-case__detail-inner">
+                <div class="ee-case__detail-grid">
+                  <div class="ee-case__detail-text">
+                    <span class="ee-eyebrow">Langlebigkeit als Haltung</span>
+                    <p class="ee-case__detail-lead">
+                      Langlebigkeit war an der HfG kein Trend, sondern Haltung.
+                      Produkte wie der Ulmer Hocker zeigen, wie Mehrfachnutzen,
+                      robuste Konstruktion und Reparierbarkeit Ressourcen schonen –
+                      ein Gedanke, der heute aktueller ist denn je.
+                    </p>
+                    <ul class="ee-list">
+                      <li>Langlebigkeit statt Wegwerfprodukt</li>
+                      <li>Mehrfachnutzen</li>
+                      <li>Robuste Konstruktion</li>
+                      <li>Ressourcenschonende Gestaltung</li>
+                    </ul>
+                  </div>
+                  <figure class="ee-case__detail-figure">
+                    <img src="../assets/images/design/Ulmer%20Hocker%20neu.jpg" alt="Ulmer Hocker im Detail">
+                    <figcaption class="ee-figcap">Ulmer Hocker — Sitz, Tisch, Regal in einem</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="ee-section ee-quiz" id="erbe-quiz" aria-labelledby="erbe-quiz-title">
+        <header class="ee-quiz__head ee-reveal">
+          <span class="label label--orange">Abschluss · Quiz</span>
+          <h2 id="erbe-quiz-title">Dein<br>Erbe-Check</h2>
+          <p class="ee-quiz__lead">Wähle jeweils eine Antwort. Du bekommst sofort eine Erklärung und kannst das Quiz am Ende wiederholen.</p>
+        </header>
+
+        <div class="qv2-guide-demo qv2-guide-demo--left ee-quiz__guide ee-reveal" aria-label="Quiz-Einladung von Pikto">
+          <div class="qv2-guide-figure"><img src="../assets/svg/Figur_dynamisch.svg" alt="HfG-Maskottchen, in Bewegung"></div>
+          <div class="qv2-guide-bubble">
+            <span class="qv2-guide-kicker">Letzte Runde</span>
+            <p>Du hast die wichtigsten Spuren des Erbes kennengelernt. Jetzt zeig, was hängen geblieben ist.</p>
+          </div>
+        </div>
+
+        <div class="ee-quiz__wrap ee-reveal">
+          <div id="erbe-quiz-active">
+            <div class="quiz">
+              <div class="quiz__counter">Frage <span id="erbe-quiz-current">01</span> / 05</div>
+              <div class="quiz__question" id="erbe-quiz-question"></div>
+              <div class="quiz__options" id="erbe-quiz-options"></div>
+              <div class="quiz__feedback" id="erbe-quiz-feedback" aria-live="polite"></div>
+              <div class="quiz__footer" id="erbe-quiz-footer" style="display: none;">
+                <button class="btn btn--black btn--pill btn--lg" id="erbe-quiz-next" type="button">Nächste Frage</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--dark qv2-result" id="erbe-quiz-result" style="display: none;" aria-live="polite">
+            <span class="card__label">Dein Ergebnis</span>
+            <div class="qv2-result__score" id="erbe-quiz-score">0 / 5</div>
+            <p class="card__title" id="erbe-quiz-result-title"></p>
+            <p class="card__body" id="erbe-quiz-result-text"></p>
+            <button class="btn btn--ghost btn--pill btn--lg qv2-result__retry" id="erbe-quiz-retry" type="button">↺ Nochmal</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="ee-section ee-chapter-next" aria-labelledby="erbe-next-title">
+        <div class="info-box info-box--light">
+          <div class="ee-chapter-next__grid">
+            <div class="ee-chapter-next__copy">
+              <span class="info-box__label">Weiter</span>
+              <h3 class="info-box__title" id="erbe-next-title">Was bleibt vom Ulmer Denken?</h3>
+              <p class="info-box__body">
+                Im Abschlussbereich verbindest du die Kapitel noch einmal:
+                Geschichte, Lehre, Design und Erbe werden zu einem System.
+              </p>
+            </div>
+            <div class="ee-chapter-next__action">
+              <a class="btn btn--black btn--pill btn--lg" href="quiz-v2.html">Zu den &Uuml;bungen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /.page-wrapper -->
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       Pfade von /seiten/ aus: ../js/
+  ===================================================== -->
+  <script src="../js/navigation.js"></script>
+  <script src="../js/kapitel-hero.js"></script>
+  <script src="../js/quiz.js"></script>
+  <script src="../js/hotspot.js"></script>
+  <!-- Interaktion für Editorial-Sections + Case-Karten (inline) -->
+  <script>
+/* =============================================================
+   ERBE-EDITORIAL.JS — Interaktion für seiten/erbe.html
+   Ausgelegt auf iPad/Touch: Effekte werden beim SCROLLEN
+   ausgelöst, nicht per Maus-Hover.
+
+   1) Case-Study-Karten: sanftes Auf-/Zuklappen der Details
+   2) Scroll-Reveal: .ee-reveal blendet beim Scrollen ein
+   3) Stagger: Kinder von .ee-stagger erscheinen nacheinander
+   4) Statements: Zeile in Bildschirmmitte wird aktiv (orange)
+   5) Case-Bilder färben sich beim Einscrollen (statt Hover)
+   6) Systemzellen: Flip-Karten per Klick oder Tastatur
+   7) Parallaxe der großen Hintergrundnummern (01–04)
+   Keine Abhängigkeiten, greift nicht in bestehende Skripte ein.
+   ============================================================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* -----------------------------------------------------------
+     1) CASE-KARTEN AUF-/ZUKLAPPEN
+     ----------------------------------------------------------- */
+  var cases = document.querySelectorAll('.ee-case');
+  var lockedCase = null;
+
+  function closeCase(card) {
+    var d = card.querySelector('.ee-case__detail');
+    var b = card.querySelector('.ee-case__cta');
+    var label = b ? b.querySelector('.ee-btn__label') : null;
+    if (lockedCase === card) lockedCase = null;
+    card.classList.remove('is-open');
+    card.classList.remove('is-current');
+    if (d) d.style.maxHeight = '0px';
+    if (b) {
+      b.setAttribute('aria-expanded', 'false');
+      if (label) label.textContent = 'Los geht’s';
+    }
+  }
+
+  cases.forEach(function (card) {
+    var btn    = card.querySelector('.ee-case__cta');
+    var teaser = card.querySelector('.ee-case__teaser');
+    var detail = card.querySelector('.ee-case__detail');
+    if (!btn || !detail) return;
+
+    btn.setAttribute('aria-expanded', 'false');
+
+    function toggleCase() {
+      if (card.classList.contains('is-open')) {
+        closeCase(card);
+      } else {
+        /* Andere offene Karten schließen — immer nur eine offen */
+        cases.forEach(function (other) {
+          if (other !== card && other.classList.contains('is-open')) closeCase(other);
+          if (other !== card) other.classList.remove('is-current');
+        });
+
+        detail.style.maxHeight = detail.scrollHeight + 'px';
+        lockedCase = card;
+        card.classList.add('is-open');
+        card.classList.add('is-current');
+        btn.setAttribute('aria-expanded', 'true');
+        var label = btn.querySelector('.ee-btn__label');
+        if (label) label.textContent = 'Schließen';
+
+        window.setTimeout(function () {
+          detail.scrollIntoView({
+            behavior: reducedMotion ? 'auto' : 'smooth',
+            block: 'nearest'
+          });
+        }, reducedMotion ? 0 : 350);
+      }
+    }
+
+    btn.addEventListener('click', function (event) {
+      event.stopPropagation();
+      toggleCase();
+    });
+
+    if (teaser) teaser.addEventListener('click', toggleCase);
+  });
+
+  /* Bei Größenänderung offene Details neu ausmessen */
+  window.addEventListener('resize', function () {
+    document.querySelectorAll('.ee-case.is-open .ee-case__detail').forEach(function (d) {
+      d.style.maxHeight = d.scrollHeight + 'px';
+    });
+  });
+
+  /* -----------------------------------------------------------
+     2) + 3) SCROLL-REVEAL & STAGGER
+     ----------------------------------------------------------- */
+  document.querySelectorAll('.ee-reveal-text').forEach(function (el) {
+    var nodes = Array.prototype.slice.call(el.childNodes);
+    el.innerHTML = '';
+    nodes.forEach(function (node) {
+      if (node.nodeType === 3) {
+        node.textContent.split(/(\s+)/).forEach(function (part) {
+          if (part === '') return;
+          if (/^\s+$/.test(part)) {
+            el.appendChild(document.createTextNode(part));
+            return;
+          }
+          var word = document.createElement('span');
+          word.className = 'ee-word';
+          var inner = document.createElement('span');
+          inner.textContent = part;
+          word.appendChild(inner);
+          el.appendChild(word);
+        });
+      } else if (node.nodeName === 'BR') {
+        el.appendChild(node);
+      } else {
+        var wrappedWord = document.createElement('span');
+        wrappedWord.className = 'ee-word';
+        var wrappedInner = document.createElement('span');
+        wrappedInner.appendChild(node);
+        wrappedWord.appendChild(wrappedInner);
+        el.appendChild(wrappedWord);
+      }
+    });
+  });
+
+  var revealEls  = document.querySelectorAll('.ee-reveal, .ee-reveal-text');
+  var staggerEls = document.querySelectorAll('.ee-stagger');
+
+  /* Kinder der Stagger-Container bekommen gestaffelte Delays */
+  staggerEls.forEach(function (wrap) {
+    Array.prototype.forEach.call(wrap.children, function (child, i) {
+      child.style.transitionDelay = (i * 90) + 'ms';
+    });
+  });
+
+  if (!('IntersectionObserver' in window) || reducedMotion) {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    staggerEls.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+    staggerEls.forEach(function (el) { revealObserver.observe(el); });
+  }
+
+  var marks = document.querySelectorAll('.ee-mark');
+  if (!('IntersectionObserver' in window) || reducedMotion) {
+    marks.forEach(function (mark) { mark.classList.add('is-active'); });
+  } else {
+    var markObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-active');
+          markObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.8 });
+
+    marks.forEach(function (mark) { markObserver.observe(mark); });
+  }
+
+  /* -----------------------------------------------------------
+     5) CASE-BILDER: Farbe beim Einscrollen (statt Hover)
+     ----------------------------------------------------------- */
+  if ('IntersectionObserver' in window) {
+    var caseObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('is-inview', entry.isIntersecting);
+      });
+    }, { threshold: 0.55 });
+
+    cases.forEach(function (card) { caseObserver.observe(card); });
+  }
+
+  /* -----------------------------------------------------------
+     6) SYSTEMZELLEN: Flip-Karten per Klick oder Tastatur
+     ----------------------------------------------------------- */
+  var systemCells = document.querySelectorAll('.ee-system__cell');
+
+  systemCells.forEach(function (cell) {
+    cell.addEventListener('click', function () {
+      var isFlipped = cell.classList.toggle('is-flipped');
+      cell.setAttribute('aria-pressed', String(isFlipped));
+    });
+  });
+
+  /* -----------------------------------------------------------
+     4) STATEMENTS: Zeile in Bildschirmmitte wird aktiv
+     7) PARALLAXE der großen Hintergrundnummern
+     Beides scroll-getrieben, rAF-gedrosselt.
+     ----------------------------------------------------------- */
+  var statements = document.querySelectorAll('.ee-statements li');
+  var scrollySteps = Array.prototype.slice.call(document.querySelectorAll('.ee-scrolly__step'));
+  var scrollyPanels = Array.prototype.slice.call(document.querySelectorAll('.ee-scrolly__panel'));
+  var caseCards = Array.prototype.slice.call(cases);
+  var ticking    = false;
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+
+    window.requestAnimationFrame(function () {
+      var vh     = window.innerHeight;
+      var center = vh / 2;
+
+      /* Aktives Statement: Zeile, deren Mitte der Bildschirmmitte
+         am nächsten ist (nur wenn im Viewport) */
+      var best = null, bestDist = Infinity;
+      statements.forEach(function (li) {
+        var r = li.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        var dist = Math.abs((r.top + r.height / 2) - center);
+        if (dist < bestDist) { bestDist = dist; best = li; }
+      });
+      statements.forEach(function (li) {
+        li.classList.toggle('is-active', li === best);
+      });
+
+      var bestStep = null, bestStepDist = Infinity;
+      scrollySteps.forEach(function (step) {
+        var r = step.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        var dist = Math.abs((r.top + r.height / 2) - center);
+        if (dist < bestStepDist) { bestStepDist = dist; bestStep = step; }
+      });
+      scrollySteps.forEach(function (step, index) {
+        var active = step === bestStep;
+        step.classList.toggle('is-active', active);
+        if (scrollyPanels[index]) scrollyPanels[index].classList.toggle('is-active', active);
+      });
+
+      if (lockedCase && lockedCase.classList.contains('is-open')) {
+        caseCards.forEach(function (card) {
+          card.classList.toggle('is-current', card === lockedCase);
+        });
+        ticking = false;
+        return;
+      }
+
+      var bestCase = null, bestCaseDist = Infinity;
+      caseCards.forEach(function (card) {
+        var r = card.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        var dist = Math.abs((r.top + r.height / 2) - center);
+        if (dist < bestCaseDist) { bestCaseDist = dist; bestCase = card; }
+      });
+      caseCards.forEach(function (card) {
+        card.classList.toggle('is-current', card === bestCase);
+      });
+
+      ticking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  onScroll();
+
+});
+
+  </script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  var quizData = [
+    {
+      question: 'Warum wirkt die HfG Ulm bis heute weiter?',
+      options: [
+        'Weil ihre Gebäude unverändert kopiert werden',
+        'Weil ihre Denkweise Produkte, Marken und Informationssysteme prägt',
+        'Weil sie bis heute als Hochschule geöffnet ist',
+        'Weil sie vor allem dekorative Stile entwickelte'
+      ],
+      correct: 1,
+      explanation: 'Genau. Das Erbe liegt vor allem in einer funktionalen, systematischen und nutzerorientierten Denkweise.'
+    },
+    {
+      question: 'Was bedeutet „Design als System“ im Sinne der HfG?',
+      options: [
+        'Jedes Element wird unabhängig gestaltet',
+        'Nur das Logo ist wichtig',
+        'Logo, Farben, Schrift, Zeichen und Orientierung greifen zusammen',
+        'Alle Produkte müssen gleich aussehen'
+      ],
+      correct: 2,
+      explanation: 'Richtig. Ein System verbindet viele abgestimmte Bausteine zu einem verständlichen Ganzen.'
+    },
+    {
+      question: 'Warum sind Otl Aichers Piktogramme bis heute relevant?',
+      options: [
+        'Sie funktionieren schnell, reduziert und weitgehend ohne Sprache',
+        'Sie bestehen aus besonders vielen Details',
+        'Sie waren nur für gedruckte Plakate gedacht',
+        'Sie ersetzen jede Form von Text vollständig'
+      ],
+      correct: 0,
+      explanation: 'Stimmt. Die reduzierten Zeichen vermitteln Informationen international und auf einen Blick.'
+    },
+    {
+      question: 'Welches Prinzip zeigt der Ulmer Hocker besonders deutlich?',
+      options: [
+        'Mode vor Langlebigkeit',
+        'Dekoration vor Gebrauch',
+        'Eine Form erfüllt mehrere praktische Funktionen',
+        'Komplexität macht ein Produkt wertvoll'
+      ],
+      correct: 2,
+      explanation: 'Genau. Der Hocker kann Sitz, Tisch, Regal oder Tragehilfe sein — mit sehr wenigen Teilen.'
+    },
+    {
+      question: 'Welche Frage passt am besten zur Ulmer Denkweise?',
+      options: [
+        'Wie fällt das Produkt möglichst stark auf?',
+        'Wie wird die Gestaltung verständlich, nützlich und dauerhaft?',
+        'Welche Verzierung liegt gerade im Trend?',
+        'Wie lässt sich die Bedienung anspruchsvoller machen?'
+      ],
+      correct: 1,
+      explanation: 'Richtig. Verständlichkeit, Gebrauch und Dauerhaftigkeit stehen vor bloßer Dekoration.'
+    }
+  ];
+
+  var index = 0;
+  var score = 0;
+  var locked = false;
+
+  var active = document.getElementById('erbe-quiz-active');
+  var result = document.getElementById('erbe-quiz-result');
+  var question = document.getElementById('erbe-quiz-question');
+  var options = document.getElementById('erbe-quiz-options');
+  var feedback = document.getElementById('erbe-quiz-feedback');
+  var footer = document.getElementById('erbe-quiz-footer');
+  var next = document.getElementById('erbe-quiz-next');
+  var retry = document.getElementById('erbe-quiz-retry');
+  var current = document.getElementById('erbe-quiz-current');
+  var scoreDisplay = document.getElementById('erbe-quiz-score');
+  var resultTitle = document.getElementById('erbe-quiz-result-title');
+  var resultText = document.getElementById('erbe-quiz-result-text');
+
+  if (!question || !options || !next || !retry) return;
+
+  function renderQuestion() {
+    var item = quizData[index];
+    locked = false;
+    question.textContent = item.question;
+    current.textContent = String(index + 1).padStart(2, '0');
+    feedback.textContent = '';
+    feedback.className = 'quiz__feedback';
+    footer.style.display = 'none';
+    options.innerHTML = '';
+
+    item.options.forEach(function (label, optionIndex) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'quiz__option';
+      button.innerHTML = '<span class="quiz__radio" aria-hidden="true"></span><span class="quiz__option-text"></span>';
+      button.querySelector('.quiz__option-text').textContent = label;
+      button.addEventListener('click', function () {
+        chooseAnswer(optionIndex);
+      });
+      options.appendChild(button);
+    });
+  }
+
+  function chooseAnswer(chosenIndex) {
+    if (locked) return;
+    locked = true;
+    var item = quizData[index];
+    var correct = chosenIndex === item.correct;
+    if (correct) score += 1;
+
+    options.querySelectorAll('.quiz__option').forEach(function (button, optionIndex) {
+      button.disabled = true;
+      if (optionIndex === item.correct) button.classList.add('is-correct');
+      if (optionIndex === chosenIndex && !correct) button.classList.add('is-wrong');
+    });
+
+    feedback.textContent = (correct ? 'Richtig. ' : 'Nicht ganz. ') + item.explanation;
+    feedback.className = 'quiz__feedback is-visible ' + (correct ? 'quiz__feedback--correct' : 'quiz__feedback--wrong');
+    next.textContent = index === quizData.length - 1 ? 'Ergebnis ansehen' : 'Nächste Frage';
+    footer.style.display = 'flex';
+  }
+
+  function showResult() {
+    active.style.display = 'none';
+    result.style.display = 'block';
+    scoreDisplay.textContent = score + ' / ' + quizData.length;
+
+    if (score === quizData.length) {
+      resultTitle.textContent = 'Stark — du erkennst das Ulmer Erbe.';
+      resultText.textContent = 'Alle fünf Antworten sind richtig. Du kannst Denkweise, Systeme und konkrete Beispiele sicher miteinander verbinden.';
+    } else if (score >= 3) {
+      resultTitle.textContent = 'Guter Blick für das Erbe.';
+      resultText.textContent = score + ' von 5 Antworten sind richtig. Die wichtigsten Zusammenhänge sitzen schon.';
+    } else {
+      resultTitle.textContent = 'Pikto nimmt noch eine Runde mit dir.';
+      resultText.textContent = score + ' von 5 Antworten sind richtig. Schau dir die Denkweisen, Systemkarten und Fallstudien noch einmal an und versuche es erneut.';
+    }
+  }
+
+  next.addEventListener('click', function () {
+    index += 1;
+    if (index >= quizData.length) showResult();
+    else renderQuestion();
+  });
+
+  retry.addEventListener('click', function () {
+    index = 0;
+    score = 0;
+    result.style.display = 'none';
+    active.style.display = 'block';
+    renderQuestion();
+  });
+
+  renderQuestion();
+});
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,3598 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1366">
+  <title>HfG Ulm — Design</title>
+
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!--
+    CSS-Pfade: Von /seiten/ aus eine Ebene nach oben (../)
+    WICHTIG: Nicht ändern, sonst findet der Browser das CSS nicht!
+  -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/kapitel-hero.css">
+
+  <!-- =====================================================
+       SEITEN-EIGENES CSS (nur für design.html)
+       Alle Werte über var(--...) aus tokens.css.
+  ===================================================== -->
+  <style>
+
+    /* -----------------------------------------------------
+       ALLGEMEIN — Kapitel-Kopf (wie ch-head in der Vorlage)
+       ----------------------------------------------------- */
+    .dsg-chapter-head {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      max-width: 760px;
+      margin-bottom: var(--space-xl);
+    }
+
+    .dsg-lede {
+      font-family: var(--font-body);
+      font-size: 22px;
+      font-weight: var(--fw-regular);
+      line-height: var(--lh-loose);
+      color: var(--color-text);
+      max-width: 720px;
+    }
+
+    /* -----------------------------------------------------
+       FLIP-CARDS — Design-Bausteine & Prinzipien
+       (Tippen zum Umdrehen)
+       ----------------------------------------------------- */
+    .dsg-flip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+      perspective: 1400px;
+    }
+
+    .dsg-flip-grid--5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--space-sm);
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .dsg-flip-card {
+      position: relative;
+      min-width: 0;
+      min-height: 220px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      text-align: left;
+      font-family: var(--font-body);
+    }
+
+    .dsg-flip-grid--5 .dsg-flip-card { min-height: 280px; }
+    .dsg-flip-grid--5 .dsg-flip-face { padding: 28px 18px; }
+    .dsg-flip-grid--5 .dsg-flip-num { font-size: 24px; }
+    .dsg-flip-grid--5 .dsg-flip-front h4 {
+      max-width: 100%;
+      font-size: 20px;
+      line-height: 1.12;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+    .dsg-flip-grid--5 .dsg-flip-back p { font-size: 16px; }
+
+    .dsg-flip-card.is-flipped { transform: rotateY(180deg); }
+
+    .dsg-flip-face {
+      position: absolute;
+      inset: 0;
+      min-width: 0;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius-lg);
+      padding: var(--space-sm);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .dsg-flip-front {
+      background: rgba(255, 255, 255, 0.65);
+      border: 1.5px solid rgba(26, 10, 0, 0.12);
+      justify-content: space-between;
+    }
+
+    .dsg-flip-back {
+      background: var(--color-black);
+      color: var(--color-white);
+      transform: rotateY(180deg);
+      justify-content: center;
+    }
+
+    .dsg-flip-num {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: var(--fw-bold);
+      color: var(--color-orange);
+    }
+
+    .dsg-flip-front h4 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: var(--fw-bold);
+    }
+
+    .dsg-flip-role {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+
+    .dsg-flip-tap {
+      align-self: flex-start;
+      font-size: var(--fs-detail);
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps);
+      text-transform: uppercase;
+      color: var(--color-orange);
+    }
+
+    .dsg-flip-back p {
+      font-size: 15px;
+      line-height: var(--lh-loose);
+      color: var(--color-white);
+    }
+
+    .dsg-flip-ex {
+      font-size: 12px;
+      color: var(--color-orange);
+      font-weight: var(--fw-semibold);
+    }
+
+    /* -----------------------------------------------------
+       INTRO — Text/Bild, reduziert (Swiss Style: kein
+       Rahmen, keine Boxen — nur Raster, Linie, Typografie)
+       ----------------------------------------------------- */
+    .dsg-intro-grid { align-items: center; }
+
+    .dsg-media-caption {
+      display: block;
+      margin-bottom: var(--space-xs);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps);
+      text-transform: uppercase;
+      color: var(--color-orange);
+    }
+
+    .dsg-media-frame .image-block {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1461 / 737;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .dsg-media-frame .image-block img {
+      object-fit: contain;
+      object-position: center;
+    }
+
+    /* -----------------------------------------------------
+       TIMELINE — dünne Linie, ein Akzentton (Orange),
+       Detail als schlichter Text mit Trennlinie statt Box
+       ----------------------------------------------------- */
+    #dsg-timeline {
+      margin-top: var(--space-lg);
+      gap: var(--space-md);
+    }
+
+    #dsg-timeline .timeline__line {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      overflow: hidden;
+      border-radius: var(--radius-full);
+    }
+
+    #dsg-timeline .timeline__track {
+      align-items: stretch;
+      gap: 10px;
+      padding: 0 0 18px;
+    }
+
+    #dsg-timeline .timeline__point {
+      appearance: none;
+      flex: 1 1 0;
+      min-width: 0;
+      height: 152px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 20px 18px;
+      border: 1.5px solid rgba(26, 10, 0, 0.18);
+      border-radius: 14px;
+      background: var(--color-white);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      text-align: left;
+      overflow: hidden;
+      cursor: pointer;
+      transition: flex-grow 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.32s ease,
+                  background 0.3s ease,
+                  border-color 0.3s ease,
+                  color 0.3s ease;
+    }
+
+    #dsg-timeline .timeline__point:hover {
+      border-color: var(--color-orange);
+      transform: translateY(-3px);
+    }
+
+    #dsg-timeline .timeline__point:focus-visible {
+      outline: 2px solid var(--color-orange);
+      outline-offset: 3px;
+    }
+
+    #dsg-timeline .timeline__point.is-active {
+      flex-grow: 1.45;
+      border-color: var(--color-black);
+      background: var(--color-black);
+      color: var(--color-white);
+      transform: translateY(-3px);
+    }
+
+    #dsg-timeline .timeline__line-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: var(--color-orange);
+      transition: width 0.65s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    /* Rechteckige Schritte: Der aktive Zustand morpht in die Breite. */
+    #dsg-timeline .timeline__dot {
+      width: auto;
+      height: auto;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps);
+      color: var(--color-orange);
+      transition: color 0.3s ease, transform 0.35s ease;
+    }
+
+    #dsg-timeline .timeline__point:hover .timeline__dot {
+      color: var(--color-orange);
+      transform: scale(1.05);
+    }
+
+    #dsg-timeline .timeline__point.is-active .timeline__dot {
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      background: transparent;
+      border-color: transparent;
+      color: var(--color-orange);
+      transform: scale(1.05);
+      box-shadow: none;
+    }
+
+    #dsg-timeline .timeline__year {
+      color: inherit;
+      font-family: var(--font-heading);
+      font-size: 34px;
+      font-weight: var(--fw-bold);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      white-space: normal;
+    }
+
+    #dsg-timeline .timeline__point.is-active .timeline__year {
+      color: var(--color-white);
+    }
+
+    .dsg-timeline-detail {
+      border-top: 1px solid rgba(26, 10, 0, 0.12);
+      padding-top: var(--space-sm);
+      font-size: 22px;
+      line-height: var(--lh-loose);
+      color: var(--color-text);
+      margin-top: var(--space-sm);
+      opacity: 1;
+      transition: opacity 0.22s ease;
+    }
+
+    .dsg-timeline-detail.is-fading { opacity: 0; }
+
+    .dsg-sources {
+      margin-top: var(--space-sm);
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+    }
+
+    .dsg-sources a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .dsg-sources a:hover {
+      color: var(--color-orange);
+    }
+
+    .dsg-timeline-detail::before {
+      content: attr(data-step);
+      display: block;
+      color: var(--color-orange);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps);
+      text-transform: uppercase;
+      margin-bottom: var(--space-xs);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #dsg-timeline .timeline__line-fill,
+      #dsg-timeline .timeline__point,
+      #dsg-timeline .timeline__dot,
+      .dsg-timeline-detail { transition: none; }
+    }
+
+    /* -----------------------------------------------------
+       PROZESS-SCHRITTE (Methode) — Flip-Karten im gleichen
+       Stil wie #dsg-reveal-trio / #dsg-principles (.dsg-flip-grid),
+       nur duenner (kuerzere Karten, da 1-Wort-Titel).
+       ----------------------------------------------------- */
+    .dsg-process-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-sm);
+      align-items: stretch;
+      margin-bottom: var(--space-xl);
+      perspective: 1400px;
+    }
+
+    .dsg-process-row.dsg-flip-grid .dsg-flip-card { min-height: 168px; }
+
+    .dsg-methode-divider {
+      position: relative;
+      width: 100%;
+      height: 460px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #000;
+    }
+
+    .dsg-methode-divider__layer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -20%;
+      height: 140%;
+      background: #000;
+      will-change: transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dsg-methode-divider__layer { transform: none !important; }
+    }
+
+    /* PRINZIPIEN — linksbündig, wie die übrigen Flip-Cards
+       (kein align-items-Override → Inhalt bleibt im Card-Padding) */
+
+    /* -----------------------------------------------------
+       SORTIER-ÜBUNG (Drag & Drop) — im Stil der Lückentext-
+       Komponente aus quiz-v2 (Pill-Chips + Slots)
+       ----------------------------------------------------- */
+    .dsg-sort-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-md);
+    }
+
+    .dsg-sort-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-xs) var(--space-sm);
+      border: 1.5px solid var(--color-black);
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: var(--fs-detail);
+      font-weight: var(--fw-semibold);
+      color: var(--color-text);
+      background: var(--color-white);
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .dsg-sort-chip.used { opacity: 0.22; cursor: default; pointer-events: none; }
+
+    .dsg-sort-slots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-sm);
+      margin: 0 calc(-1 * var(--space-lg)) var(--space-md);
+      width: calc(100% + var(--space-lg) * 2);
+    }
+
+    .dsg-sort-slot {
+      position: relative;
+      min-height: 168px;
+      border: 1.5px dashed rgba(26, 10, 0, 0.3);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 4px;
+      font-family: var(--font-heading);
+      font-size: 34px;
+      font-weight: var(--fw-bold);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-align: left;
+      padding: var(--sq-5);
+      cursor: grab;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .dsg-sort-slot span {
+      color: var(--color-orange);
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps);
+    }
+
+    .dsg-sort-slot span.dsg-sort-slot__placeholder {
+      color: var(--color-text-muted);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: var(--fw-regular);
+      letter-spacing: 0;
+    }
+
+    .dsg-sort-slot.over { background: rgba(255, 123, 0, 0.08); border-color: var(--color-orange); }
+    .dsg-sort-slot.filled-correct { border-style: solid; border-color: var(--color-orange); color: var(--color-orange); }
+    .dsg-sort-slot.filled-wrong   { border-style: solid; border-color: var(--color-black); }
+
+    .dsg-sort-quiz {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      padding-inline: 0;
+    }
+
+    .dsg-sort-quiz .dsg-sort-slots {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* -----------------------------------------------------
+       PRODUKT-EXPLORER — Komponente aus quiz-v2.html,
+       Inhalt angepasst an die sechs Ulmer Produkte
+       ----------------------------------------------------- */
+    .qv2-expl-wrap {
+      display: grid;
+      grid-template-columns: 500px minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: stretch;
+    }
+
+    .qv2-expl-map {
+      position: relative;
+      width: 500px;
+      height: 520px;
+      flex-shrink: 0;
+    }
+
+    .qv2-expl-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+    .qv2-expl-line { stroke: rgba(26, 10, 0, 0.16); stroke-width: 1.5; }
+
+    .qv2-expl-node {
+      position: absolute;
+      z-index: 2;
+      border-radius: 50%;
+      border: 1.5px solid rgba(26, 10, 0, 0.15);
+      background: var(--color-white);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: var(--fw-semibold);
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 0 8px;
+      transform: translate(-50%, -50%);
+      transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.4s cubic-bezier(.22,1,.36,1);
+      user-select: none;
+    }
+
+    .qv2-expl-node--center { width: 150px; height: 150px; }
+    .qv2-expl-node--outer  { width: 108px; height: 108px; }
+    .qv2-expl-node--outer:not(.is-active):hover {
+      border-color: var(--color-orange);
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    .qv2-expl-node__index { color: var(--color-orange); font-size: 11px; letter-spacing: var(--ls-caps); }
+    .qv2-expl-node__label { max-width: 88px; font-size: 13px; line-height: 1.18; }
+
+    .qv2-expl-node.is-active { background: var(--color-orange); color: var(--color-white); border-color: var(--color-orange); }
+    .qv2-expl-node.is-active .qv2-expl-node__index { color: var(--color-white); }
+    .qv2-expl-node--outer.is-active { transform: translate(-50%, -50%) scale(1.1); }
+
+    .qv2-expl-mark { display: grid; grid-template-columns: repeat(3, auto); gap: 3px 5px; font-family: var(--font-heading); font-size: 26px; font-weight: var(--fw-bold); color: var(--color-text); line-height: 0.9; }
+    .qv2-expl-node--center.is-active .qv2-expl-mark { color: var(--color-white); }
+
+    .qv2-expl-panel { min-width: 0; height: 520px; display: flex; width: 100%; }
+
+    .qv2-expl-hero, .qv2-expl-reveal { flex: 1; display: flex; flex-direction: column; gap: var(--space-xs); width: 100%; }
+
+    .qv2-expl-hero-fig, .qv2-expl-reveal__image {
+      flex: 0 0 300px; height: 300px; position: relative; margin: 0; overflow: hidden;
+      border: 1.5px solid rgba(26, 10, 0, 0.12); border-radius: var(--radius-lg); background: rgba(26, 10, 0, 0.04);
+    }
+    .qv2-expl-hero-fig img, .qv2-expl-reveal__image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .qv2-expl-hero-fig img, .qv2-expl-reveal__image img { filter: grayscale(100%); }
+
+    .qv2-expl-hero-info, .qv2-expl-reveal__body {
+      flex: 1; padding: 22px 26px; border: 1.5px solid rgba(26, 10, 0, 0.12); border-radius: var(--radius-lg); background: var(--color-white);
+    }
+    .qv2-expl-hero-info h3, .qv2-expl-reveal__body h3 { font-family: var(--font-heading); font-size: var(--fs-h3); margin: 8px 0 12px; }
+    .qv2-expl-hero-info .body-text, .qv2-expl-reveal__body .body-text { max-width: 480px; }
+    .qv2-expl-reveal__body .dsg-expl-meta { margin-top: var(--space-sm); font-size: var(--fs-detail); color: var(--color-text-muted); }
+
+    /* -----------------------------------------------------
+       PRODUKTDETAILS — reines Schwarz-Weiß, vollflächig
+       (überschreibt nur den Rot-Tint aus components.css,
+       object-fit:cover bleibt wie bei quiz-v2 → kein Letterboxing)
+       ----------------------------------------------------- */
+    .dsg-hotspot-bw img {
+      filter: grayscale(100%) !important;
+    }
+
+    /* Icon dreht sich als Ganzes (+ → ×), wie bei quiz-v2 —
+       ersetzt die Einzelbalken-Rotation aus components.css */
+    .dsg-hotspot-bw .hotspot-trigger__icon {
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dsg-hotspot-bw .hotspot-trigger.is-open .hotspot-trigger__icon {
+      transform: rotate(45deg);
+    }
+    .dsg-hotspot-bw .hotspot-trigger.is-open .hotspot-trigger__icon::before,
+    .dsg-hotspot-bw .hotspot-trigger.is-open .hotspot-trigger__icon::after {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+
+    /* Anker-Wrapper: EIN Punkt (top/left) für Hotspot + Popup —
+       1:1 Optik/Verhalten wie das Tagesablauf-Hotspot aus quiz-v2
+       (qv2-day-hotspot / qv2-day-popup), nur mit eigenen Klassen. */
+    .dsg-hotspot-anchor { position: absolute; }
+
+    .dsg-hotspot-anchor .hotspot-trigger {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      transition: none;
+    }
+    .dsg-hotspot-anchor .hotspot-trigger:hover,
+    .dsg-hotspot-anchor .hotspot-trigger.is-open {
+      transform: translate(-50%, -50%);
+    }
+
+    /* Popup-Optik wie quiz-v2: größer, orange Kontur, weicher Schatten */
+    .dsg-hotspot-anchor .hotspot-popup {
+      width: 320px;
+      padding: 24px;
+      border: 1.5px solid var(--color-orange);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 12px 30px rgba(26, 10, 0, 0.1);
+    }
+    .dsg-hotspot-anchor .hotspot-popup__label { margin-bottom: 10px; }
+    .dsg-hotspot-anchor .hotspot-popup__title { margin-bottom: 8px; font-size: 22px; }
+    .dsg-hotspot-anchor .hotspot-popup__body { margin: 0; color: var(--color-text-muted); line-height: 1.45; }
+
+    /* Standard: rechts neben dem Hotspot, halber Radius Abstand */
+    .dsg-hotspot-anchor .hotspot-popup {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(calc(var(--btn-sz-round-lg) / 2 - 10px), 6px) scale(0.97);
+    }
+    .dsg-hotspot-anchor .hotspot-popup.is-visible {
+      transform: translate(calc(var(--btn-sz-round-lg) / 2 - 10px), 0) scale(1);
+    }
+
+    /* Variante: Popup oberhalb des Hotspots (Trigger schaut unten links heraus) */
+    .dsg-hotspot-anchor--above .hotspot-popup,
+    .dsg-hotspot-anchor--above .hotspot-popup.is-visible {
+      transform: translate(0, -100%);
+    }
+
+    /* Variante: Popup links vom Hotspot (Trigger schaut rechts heraus) —
+       für Punkte nah am rechten Bildrand, damit nichts abgeschnitten wird */
+    .dsg-hotspot-anchor--left .hotspot-popup,
+    .dsg-hotspot-anchor--left .hotspot-popup.is-visible {
+      transform: translate(-100%, 0);
+    }
+
+    /* -----------------------------------------------------
+       SCROLL-REVEAL — konsistente Eintritts-Animation
+       für Kapitel-Köpfe, Zitate, Karten-Raster
+       ----------------------------------------------------- */
+    .dsg-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .dsg-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dsg-reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* -----------------------------------------------------
+       SPEZIFIKATIONS-BOX (Hocker)
+       ----------------------------------------------------- */
+    .dsg-specs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm) var(--space-md);
+      margin-top: var(--space-sm);
+    }
+
+    .dsg-specs div { display: flex; flex-direction: column; gap: 2px; border-top: 1px solid rgba(255,255,255,0.18); padding-top: var(--space-xs); }
+    .dsg-specs span { font-family: var(--font-body); font-size: 11px; letter-spacing: var(--ls-caps); text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .dsg-specs strong { font-family: var(--font-heading); font-size: 20px; color: var(--color-white); }
+
+    /* -----------------------------------------------------
+       LÜCKENTEXT — 1:1 Komponente aus quiz-v2.html
+       ----------------------------------------------------- */
+    .qv2-gap-bank { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-bottom: var(--space-md); }
+
+    .qv2-gap-chip {
+      display: inline-flex; align-items: center; padding: var(--space-xs) var(--space-sm);
+      border: 1.5px solid var(--color-black); border-radius: var(--radius-full);
+      font-family: var(--font-body); font-size: var(--fs-detail); font-weight: var(--fw-semibold);
+      color: var(--color-text); background: var(--color-white); cursor: grab; user-select: none;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .qv2-gap-chip:active { background: var(--color-black); color: var(--color-white); opacity: 0.8; }
+    .qv2-gap-chip.used { opacity: 0.22; cursor: default; pointer-events: none; }
+
+    .qv2-gap-text { font-family: var(--font-heading); font-size: var(--fs-h3); line-height: 2.6; color: var(--color-text); margin-bottom: var(--space-sm); }
+
+    .qv2-gap-slot {
+      position: relative; display: inline-block; min-width: 160px; height: 42px;
+      border-bottom: 1.5px solid rgba(26, 10, 0, 0.3); border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      margin: 0 var(--space-xs); vertical-align: middle; text-align: center;
+      font-family: var(--font-body); font-size: var(--fs-detail); font-weight: var(--fw-semibold);
+      line-height: 42px; color: var(--color-text); transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .qv2-gap-slot.over { background: rgba(255, 123, 0, 0.08); border-bottom-color: var(--color-orange); }
+    .qv2-gap-slot.filled-correct { border-bottom-color: var(--color-orange); color: var(--color-orange); }
+    .qv2-gap-slot.filled-wrong { border-bottom-color: var(--color-black); color: var(--color-black); }
+    .qv2-gap-slot.filled-wrong::before { content: '✕\00a0'; color: var(--color-black); font-weight: var(--fw-bold); }
+
+    /* -----------------------------------------------------
+       STUDENTENPROJEKTE — Slider (Komponente aus elearning.html,
+       Struktur/Verhalten 1:1, Optik ans Corporate Design angepasst)
+       ----------------------------------------------------- */
+    .dsg-stud-depts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: var(--space-md);
+    }
+
+    .dsg-stud-dept-btn {
+      font-family: var(--font-body);
+      font-size: var(--fs-detail);
+      font-weight: var(--fw-semibold);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--color-black);
+      background: transparent;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .dsg-stud-dept-btn.active { background: var(--color-black); border-color: var(--color-black); color: var(--color-white); }
+
+    .dsg-stud-strip-outer { display: flex; align-items: center; gap: var(--space-sm); }
+
+    .dsg-stud-swipe-hint {
+      display: inline-block;
+      margin-bottom: var(--space-sm);
+    }
+
+    .dsg-stud-strip-wrap { flex: 1; min-width: 0; overflow: hidden; }
+
+    .dsg-stud-strip {
+      display: flex;
+      gap: var(--space-sm);
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 4px 2px 4px;
+      cursor: grab;
+    }
+
+    .dsg-stud-thumb {
+      position: relative;
+      flex: 0 0 340px;
+      width: 340px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1.5px solid rgba(26, 10, 0, 0.1);
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .dsg-stud-thumb:hover:not(.active) { border-color: rgba(255, 123, 0, 0.5); transform: translateY(-3px); }
+    .dsg-stud-thumb.active { border-color: var(--color-orange); }
+
+    .dsg-stud-thumb-bg {
+      position: relative;
+      height: 420px;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(100%);
+    }
+    /* Verlauf, damit Nummer/Titel auf dem Bild lesbar bleiben */
+    .dsg-stud-thumb-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.25) 42%, rgba(0, 0, 0, 0) 65%);
+    }
+
+    .dsg-stud-thumb-foot {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: var(--space-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dsg-stud-thumb-num { font-family: var(--font-body); font-size: var(--fs-detail); font-weight: var(--fw-semibold); color: var(--color-orange); letter-spacing: var(--ls-caps); }
+    .dsg-stud-thumb-name { font-family: var(--font-heading); font-size: 22px; font-weight: var(--fw-bold); color: var(--color-white); }
+
+    .dsg-stud-dots { display: flex; justify-content: center; gap: 6px; margin: var(--space-sm) 0 var(--space-md); }
+    .dsg-stud-dot { width: 7px; height: 7px; border-radius: 50%; border: none; background: rgba(26, 10, 0, 0.2); cursor: pointer; padding: 0; transition: all 0.2s ease; }
+    .dsg-stud-dot.active { background: var(--color-orange); width: 18px; border-radius: 4px; }
+
+    .dsg-stud-detail {
+      display: none;
+      grid-template-columns: 420px minmax(0, 1fr);
+      gap: var(--space-md);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .dsg-stud-detail.open { display: grid; opacity: 1; transform: translateY(0); }
+
+    .dsg-stud-detail__img-col {
+      position: relative; height: 340px; margin: 0; overflow: hidden;
+      border: 1.5px solid rgba(26, 10, 0, 0.12); border-radius: var(--radius-lg); background: rgba(26, 10, 0, 0.04);
+    }
+    .dsg-stud-detail__img-col img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); display: block; }
+
+    .dsg-stud-detail__nav {
+      position: absolute; bottom: var(--space-xs); left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: var(--space-xs);
+      background: rgba(255,255,255,0.9); border: 1.5px solid rgba(26, 10, 0, 0.12); border-radius: var(--radius-full); padding: 6px 14px;
+    }
+    .dsg-stud-detail__nav button {
+      width: 28px; height: 28px; border-radius: 50%; border: none; background: var(--color-black);
+      color: var(--color-white); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .dsg-stud-detail__nav span { color: var(--color-text); font-size: 12px; }
+
+    .dsg-stud-detail__text-col {
+      position: relative; display: flex; flex-direction: column; justify-content: center; gap: var(--space-xs);
+      padding: 22px 26px; border: 1.5px solid rgba(26, 10, 0, 0.12); border-radius: var(--radius-lg); background: var(--color-white);
+    }
+    .dsg-stud-detail__text-col span.label { color: var(--color-orange); }
+    .dsg-stud-detail__text-col h3 { color: var(--color-text); font-family: var(--font-heading); font-size: 28px; }
+    .dsg-stud-detail__text-col p { color: var(--color-text-muted); font-size: 16px; line-height: var(--lh-loose); max-width: 480px; }
+    .dsg-stud-detail__close {
+      position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%;
+      border: 1.5px solid rgba(26, 10, 0, 0.2); background: transparent; color: var(--color-text);
+      font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* -----------------------------------------------------
+       ÜBUNGEN — Segmented Control + Guide + Ergebnis-Slider
+       ----------------------------------------------------- */
+    .dsg-tabs {
+      position: relative;
+      display: flex;
+      box-sizing: border-box;
+      padding: 0;
+      border: none;
+      width: calc(100% - 28px);
+      margin-left: 28px;
+      margin-bottom: var(--space-md);
+      gap: 10px;
+      isolation: isolate;
+    }
+
+    .dsg-tab-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: var(--color-black);
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.18);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      transition: transform 0.46s cubic-bezier(0.22, 1, 0.36, 1),
+                  width 0.46s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.16s ease;
+    }
+
+    .dsg-tab {
+      position: relative;
+      flex: 0 0 auto;
+      min-width: 0;
+      border: 1.5px solid var(--color-black);
+      background: transparent;
+      padding: var(--space-xs) 22px;
+      text-align: center;
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: var(--fs-detail);
+      font-weight: var(--fw-semibold);
+      color: var(--color-text);
+      cursor: pointer;
+      z-index: 1;
+      transition: color 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    }
+
+    .dsg-tabs:not(.is-enhanced) .dsg-tab.is-active { background: var(--color-black); }
+    .dsg-tabs.is-enhanced .dsg-tab-indicator { opacity: 1; }
+    .dsg-tab.is-active { color: var(--color-white); }
+    .dsg-tab:focus-visible { outline: 2px solid var(--color-orange); outline-offset: 3px; }
+
+    .dsg-tab-viewport {
+      width: calc(100% - 28px);
+      margin-left: 28px;
+      overflow: hidden;
+    }
+    .dsg-tab-track {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.58s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .dsg-tab-panel {
+      flex: 0 0 100%;
+      min-width: 0;
+      opacity: 0.28;
+      transform: scale(0.985);
+      transition: opacity 0.36s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .dsg-tab-panel.is-active { opacity: 1; transform: scale(1); }
+
+    .dsg-tab-two {
+      --dsg-panel-box-height: 400px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px 116px;
+      column-gap: 38px;
+      align-items: start;
+    }
+
+    /* Uebungsansicht: breite Aufgabe, schmale Karte, Figur frei rechts. */
+    .dsg-tab-two .qv2-guide-demo {
+      --qv2-guide-bubble-width: 360px;
+      --qv2-guide-font: 18px;
+      --qv2-guide-pad-y: 30px;
+      --qv2-guide-pad-x: 28px;
+      display: contents;
+    }
+
+    .dsg-tab-two .qv2-guide-bubble {
+      align-self: start;
+      width: 100%;
+      max-width: none;
+      min-height: var(--dsg-panel-box-height);
+      height: var(--dsg-panel-box-height);
+    }
+
+    .dsg-tab-two .qv2-guide-bubble p {
+      margin-top: 16px;
+    }
+
+    .dsg-tab-two .qv2-guide-figure {
+      width: 116px;
+      height: var(--dsg-panel-box-height);
+      align-self: start;
+      transform: none;
+      animation: none;
+    }
+
+    .dsg-tab-two .qv2-guide-figure img {
+      height: 100%;
+    }
+
+    .dsg-transcript-figure { margin: 0; display: flex; flex-direction: column; height: 100%; }
+
+    .dsg-transcript {
+      flex: 1 1 auto;
+      width: 100%;
+      height: auto;
+      min-height: var(--dsg-panel-box-height);
+      box-sizing: border-box;
+      margin: 0;
+      padding: var(--space-sm) var(--space-md) var(--space-lg);
+      border: 0.5px solid var(--color-black);
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      font-family: "Courier New", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 15px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      color: var(--color-text);
+    }
+
+    .dsg-transcript-caption {
+      display: block;
+      margin-top: var(--space-xs);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .dsg-mat-fig { width: 100%; height: var(--dsg-panel-box-height); border-radius: var(--radius-md); overflow: hidden; }
+    .dsg-mat-fig img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); }
+
+    /* -----------------------------------------------------
+       OPENER-GUIDE: großes Maskottchen + Sprechblase mit
+       Verbindungslinie zur Grundlinie (Kapitel-III-Auftakt)
+       ----------------------------------------------------- */
+    .dsg-opener-guide {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      margin-left: -64px;
+    }
+
+    .dsg-opener-guide__figure {
+      flex: 0 0 auto;
+      width: 190px;
+      height: 420px;
+      margin-left: -34px;
+      animation: dsg-opener-guide-bob 4.8s ease-in-out infinite;
+    }
+
+    @keyframes dsg-opener-guide-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dsg-opener-guide__figure { animation: none; }
+    }
+
+    .dsg-opener-guide__figure img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
+    .dsg-opener-guide__bubble {
+      --qv2-guide-font: 14px;
+      --dsg-guide-line: 2px;
+      --dsg-guide-line-start: 122px;
+      --dsg-guide-text-left: 20px;
+      position: relative;
+      isolation: isolate;
+      align-self: flex-start;
+      margin-left: 10px;
+      margin-top: 22px;
+      width: 240px;
+      padding: 18px 20px 22px;
+      border: 0;
+      border-radius: 0;
+      background: var(--color-white);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .dsg-opener-guide__bubble::before {
+      content: '';
+      position: absolute;
+      box-sizing: border-box;
+      z-index: 0;
+      left: var(--dsg-guide-line-start);
+      right: 0;
+      top: 22px;
+      bottom: 0;
+      border-top: var(--dsg-guide-line) solid var(--color-black);
+      border-right: var(--dsg-guide-line) solid var(--color-black);
+      border-bottom: var(--dsg-guide-line) solid var(--color-black);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .dsg-opener-guide__bubble::after {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      left: var(--dsg-guide-text-left);
+      bottom: 0;
+      width: calc(var(--dsg-guide-line-start) - var(--dsg-guide-text-left));
+      height: var(--dsg-guide-line);
+      background: var(--color-black);
+    }
+
+    .dsg-opener-guide__bubble .qv2-guide-kicker,
+    .dsg-opener-guide__bubble p {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* -----------------------------------------------------
+       GUIDE: SPRECHBLASE + MASKOTTCHEN
+       Basis aus quiz-v2.html/css, für die Inhaltsseite größer
+       und auf die unterschiedlichen SVG-Formate normalisiert.
+       ----------------------------------------------------- */
+    .qv2-guide-demo {
+      --qv2-guide-img: 168px;
+      --qv2-guide-figure-width: 96px;
+      --qv2-guide-bubble-width: 280px;
+      --qv2-guide-font: 13.5px;
+      --qv2-guide-pad-y: 14px;
+      --qv2-guide-pad-x: 16px;
+      --qv2-guide-gap: 20px;
+      --qv2-guide-border: 1.5px;
+      --qv2-guide-figure-offset: 10px;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: var(--qv2-guide-gap);
+      min-width: 0;
+      padding: 28px 24px;
+      background: var(--color-white);
+    }
+
+    .qv2-guide-demo--sm {
+      --qv2-guide-img: 132px;
+      --qv2-guide-figure-width: 76px;
+      --qv2-guide-bubble-width: 220px;
+      --qv2-guide-font: 12.5px;
+      --qv2-guide-pad-y: 10px;
+      --qv2-guide-pad-x: 12px;
+      --qv2-guide-gap: 18px;
+      --qv2-guide-figure-offset: 8px;
+    }
+
+    .qv2-guide-demo--lg {
+      --qv2-guide-img: 210px;
+      --qv2-guide-figure-width: 122px;
+      --qv2-guide-bubble-width: 380px;
+      --qv2-guide-font: 16px;
+      --qv2-guide-pad-y: 18px;
+      --qv2-guide-pad-x: 20px;
+      --qv2-guide-gap: 26px;
+      --qv2-guide-figure-offset: 12px;
+    }
+
+    .qv2-guide-bubble {
+      position: relative;
+      isolation: isolate;
+      box-sizing: border-box;
+      flex: 1 1 var(--qv2-guide-bubble-width);
+      width: min(100%, var(--qv2-guide-bubble-width));
+      max-width: var(--qv2-guide-bubble-width);
+      padding: var(--qv2-guide-pad-y) var(--qv2-guide-pad-x);
+      border: var(--qv2-guide-border) solid var(--color-black);
+      border-radius: var(--radius-md) var(--radius-md) 0 var(--radius-md);
+      background: var(--color-white);
+      box-shadow: none;
+      color: var(--color-black);
+      font-family: var(--font-body);
+      font-size: var(--qv2-guide-font);
+      line-height: 1.5;
+    }
+
+    .qv2-guide-kicker {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--color-orange);
+      font-family: var(--font-heading);
+      font-size: max(9px, calc(var(--qv2-guide-font) * 0.7));
+      font-weight: var(--fw-semibold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .qv2-guide-bubble p { margin: 0; }
+
+    .qv2-guide-figure {
+      flex: 0 0 auto;
+      width: var(--qv2-guide-figure-width);
+      height: var(--qv2-guide-img);
+      transform: translateY(var(--qv2-guide-figure-offset));
+      animation: qv2-guide-bob 4.8s ease-in-out infinite;
+    }
+
+    .qv2-guide-figure img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: none;
+    }
+
+    /* Diese Posen besitzen eine breite 640×480-Zeichenfläche. Durch das
+       Zuschneiden erscheinen sie genauso präsent wie die schmale Winke-Pose. */
+    .qv2-guide-figure img[src$="Figur_neutral.svg"],
+    .qv2-guide-figure img[src$="Figur_denken.svg"],
+    .qv2-guide-figure img[src$="Figur_dynamisch.svg"] {
+      object-fit: cover;
+      object-position: center bottom;
+    }
+
+    /* Gespiegelte Quiz-V2-Variante für eine links stehende Figur. */
+    .dsg-tab-two .qv2-guide-figure img[src$="Figur_denken.svg"] {
+      transform: translateY(-45px) scale(1.66);
+      transform-origin: center center;
+    }
+
+    .qv2-guide-demo--left .qv2-guide-bubble {
+      border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 0;
+      text-align: left;
+    }
+
+    @keyframes qv2-guide-bob {
+      0%, 100% { transform: translateY(var(--qv2-guide-figure-offset)); }
+      50% { transform: translateY(calc(var(--qv2-guide-figure-offset) - 3px)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .qv2-guide-figure { animation: none; }
+    }
+
+    @media (max-width: 760px) {
+      .qv2-guide-demo {
+        --qv2-guide-img: 140px;
+        --qv2-guide-figure-width: 80px;
+        --qv2-guide-bubble-width: 280px;
+        --qv2-guide-font: 13.5px;
+        --qv2-guide-pad-y: 13px;
+        --qv2-guide-pad-x: 14px;
+        --qv2-guide-gap: 5px;
+        --qv2-guide-figure-offset: 8px;
+        padding: 22px 12px;
+      }
+    }
+
+    .dsg-res-slider { position: relative; }
+    .dsg-res-stage { position: relative; width: 100%; height: var(--dsg-panel-box-height); border-radius: var(--radius-md); overflow: hidden; }
+    .dsg-res-stage figure { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 0.3s ease; }
+    .dsg-res-stage figure.active { opacity: 1; }
+    .dsg-res-stage img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); }
+
+    .dsg-res-footer { display: flex; align-items: center; gap: var(--space-sm); margin-top: var(--space-sm); }
+    .dsg-res-footer button {
+      flex: 0 0 auto;
+      width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--color-orange);
+      background: transparent; color: var(--color-orange); font-size: 20px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dsg-res-footer button:active { background: rgba(255, 123, 0, 0.1); }
+    .dsg-res-footer p { font-size: var(--fs-body); margin: 0; flex: 1; }
+    .dsg-res-footer span { flex: 0 0 auto; font-size: 12px; font-weight: var(--fw-semibold); color: var(--color-text-muted); white-space: nowrap; margin-right: var(--space-xs); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dsg-tab-indicator,
+      .dsg-tab-track,
+      .dsg-tab-panel { transition-duration: 0.01ms; }
+    }
+
+    /* -----------------------------------------------------
+       MEMORY — Komponente aus quiz-v2.html
+       ----------------------------------------------------- */
+    .qv2-mem-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-sm); perspective: 1200px; margin-bottom: var(--space-md); }
+
+    .qv2-mem-card {
+      position: relative; aspect-ratio: 3/4; background: transparent; border: none; padding: 0;
+      cursor: pointer; transform-style: preserve-3d; transition: transform 0.5s ease;
+    }
+    .qv2-mem-card.flipped, .qv2-mem-card.matched { transform: rotateY(180deg); }
+    .qv2-mem-card.matched { cursor: default; }
+
+    .qv2-mem-face {
+      position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      border: 1.5px solid rgba(26, 10, 0, 0.12); border-radius: var(--radius-md);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      padding: var(--space-xs); gap: var(--space-xs);
+    }
+    .qv2-mem-front { background: var(--color-white); }
+    .qv2-mem-back { transform: rotateY(180deg); background: #000; border-color: #000; }
+    .qv2-mem-card.matched .qv2-mem-back { border-color: var(--color-orange); }
+    .qv2-mem-card.mismatch .qv2-mem-back { border-color: #C62828; }
+
+    .qv2-mem-mark { display: grid; grid-template-columns: repeat(3, auto); gap: 3px 5px; font-family: var(--font-heading); font-size: 28px; font-weight: var(--fw-bold); color: var(--color-orange); line-height: 0.9; }
+    .qv2-mem-img-real { width: 100%; flex: 1; min-height: 0; object-fit: cover; border-radius: var(--radius-sm); filter: grayscale(100%); }
+    .qv2-mem-kicker { font-family: var(--font-body); font-size: var(--fs-detail); font-weight: var(--fw-semibold); letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--color-orange); }
+    .qv2-mem-label { font-family: var(--font-body); font-size: var(--fs-body); font-weight: var(--fw-semibold); color: var(--color-white); }
+
+    .qv2-mem-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-sm); border-top: 1.5px solid rgba(26, 10, 0, 0.12); margin-bottom: var(--space-xs); }
+    .qv2-mem-stats { display: flex; gap: var(--space-md); }
+    .qv2-mem-stats > div { display: flex; flex-direction: column; gap: 4px; }
+    .qv2-mem-stats strong { display: block; font-family: var(--font-heading); font-size: var(--fs-h3); font-weight: var(--fw-bold); color: var(--color-orange); }
+
+    /* -----------------------------------------------------
+       MULTIPLE-CHOICE-QUIZ — Farbschema aus quiz-v2.html
+       (Orange = richtig, Schwarz = falsch, kein Grün/Rot)
+       ----------------------------------------------------- */
+    .quiz__option.is-correct { border-color: var(--color-orange); background: rgba(255, 123, 0, 0.06); }
+    .quiz__option.is-wrong   { border-color: var(--color-black); background: var(--color-black); }
+    .quiz__option.is-wrong .quiz__option-text { color: var(--color-white); }
+    .quiz__option.is-correct .quiz__radio { background: var(--color-orange); border-color: var(--color-orange); position: relative; }
+    .quiz__option.is-wrong .quiz__radio { background: var(--color-white); border-color: var(--color-black); position: relative; }
+
+    /* Häkchen/Kreuz im Radio-Kreis — 1:1 Technik aus quiz-v2.css */
+    .quiz__option.is-correct .quiz__radio::before,
+    .quiz__option.is-wrong .quiz__radio::before { content: none; }
+
+    .quiz__option.is-correct .quiz__radio::after,
+    .quiz__option.is-wrong .quiz__radio::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 22px;
+      height: 22px;
+      display: block;
+      transform: translate(-1px, 0);
+      -webkit-mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: 22px 22px;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 22px 22px;
+    }
+
+    .quiz__option.is-correct .quiz__radio::after {
+      background: var(--color-white);
+      transform: translate(-1px, 1px);
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M5.4 10.2 L9.4 14.2 L16.4 6.2' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M5.4 10.2 L9.4 14.2 L16.4 6.2' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    .quiz__option.is-wrong .quiz__radio::after {
+      background: var(--color-black);
+      transform: translate(-1.5px, 0);
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M7 7 L15 15 M15 7 L7 15' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M7 7 L15 15 M15 7 L7 15' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .quiz__feedback--correct { color: var(--color-text); background: rgba(255, 123, 0, 0.06); border: 1.5px solid var(--color-orange); }
+    .quiz__feedback--wrong { color: var(--color-text); background: var(--color-white); border: 1.5px solid rgba(26, 10, 0, 0.35); }
+
+    .qv2-result {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: var(--space-md);
+      padding: var(--space-lg) var(--space-md);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #000 !important;
+    }
+    .qv2-result__score { font-family: var(--font-heading); font-size: 80px; font-weight: var(--fw-bold); color: var(--color-orange); line-height: 1; margin: var(--space-xs) 0 var(--space-sm); }
+    .qv2-result .card__title { color: var(--color-white); margin-bottom: var(--space-xs); }
+    .qv2-result .card__body { color: rgba(255,255,255,0.65); max-width: 46ch; margin: 0 auto var(--space-md); }
+    .qv2-result__retry {
+      margin-inline: auto;
+      color: var(--color-white) !important;
+      border-color: rgba(255,255,255,0.28) !important;
+    }
+
+    .dsg-chapter-next {
+      padding-top: 0;
+      padding-bottom: var(--sq-2);
+    }
+
+    .dsg-chapter-next .info-box {
+      box-shadow: none;
+    }
+
+    .dsg-chapter-next__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--sq-3);
+      align-items: center;
+    }
+
+    .dsg-chapter-next__copy {
+      max-width: 720px;
+    }
+
+    .dsg-chapter-next__action {
+      justify-self: end;
+    }
+
+    @media (max-width: 1100px) {
+      .dsg-chapter-next__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dsg-chapter-next__action {
+        justify-self: start;
+      }
+    }
+
+    /* =============================================================
+       EDITORIAL-LAYER — 1:1 angeglichen an seiten/erbe.html (.ee-)
+       Gleiche Schriftgroessen und gleiche Effekte wie die Erbe-Seite.
+       Veraendert nur die typografische Rahmung + Reveal-Effekte —
+       alle interaktiven Komponenten bleiben unberuehrt.
+       ============================================================= */
+
+    /* -- Opener: Meta-Zeile wie ee-opener__meta ------------------ */
+    .dsg-opener__meta {
+      display: flex; align-items: baseline; flex-wrap: wrap;
+      gap: var(--sq-4);
+      margin-top: var(--sq-4); padding-top: var(--sq-5);
+      border-top: 1px solid var(--color-black);
+      font-family: var(--font-body); font-size: var(--fs-detail);
+      font-weight: var(--fw-semibold); letter-spacing: var(--ls-caps);
+      text-transform: uppercase;
+    }
+    .dsg-opener__meta span:last-child { margin-left: auto; color: var(--color-orange); }
+
+    /* -- Sektionskopf editorial: Kicker + grosse Headline + Lead -- */
+    .dsg-chapter-head { gap: var(--sq-5); max-width: none; margin-bottom: var(--sq-3); }
+
+    .dsg-chapter-head > .label--orange {
+      display: flex; align-items: center; gap: var(--sq-5);
+      width: 100%; margin-bottom: var(--sq-6);
+    }
+    .dsg-chapter-head > .label--orange::after {
+      content: ''; flex: 1; height: 1px; background: var(--color-black);
+    }
+
+    /* Grosse Editorial-Headline — gleiche Groesse wie ee-headline (72px) */
+    .dsg-chapter-head h2 {
+      font-family: var(--font-heading); font-size: 72px; font-weight: var(--fw-bold);
+      line-height: 1.02; letter-spacing: -0.025em; max-width: 20ch; margin: 0;
+    }
+    .dsg-ed-dot { color: var(--color-orange); }
+
+    /* Lead wie ee-lead */
+    .dsg-chapter-head .body-text--muted {
+      font-size: 21px; line-height: 1.55; max-width: 46ch; color: var(--color-text-muted);
+    }
+
+    /* -- Grosse Editorial-Pull-Quotes wie ee-quote --------------- */
+    .quote-section.dsg-ed-quote {
+      position: relative; margin-top: var(--space-lg);
+    }
+    .quote-section.dsg-ed-quote .quote-section__line { background: var(--color-orange); }
+    .quote-section.dsg-ed-quote .quote-section__text {
+      font-family: var(--font-heading); font-size: 64px; font-weight: var(--fw-bold);
+      line-height: 1.05; letter-spacing: -0.03em; color: var(--color-black);
+    }
+    .quote-section.dsg-ed-quote .quote-section__source {
+      display: block; margin-top: var(--sq-5);
+      font-family: var(--font-body); font-size: var(--fs-detail); font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--color-text-muted);
+    }
+
+    /* -- Word-Rise-Reveal wie ee-reveal-text --------------------- */
+    .dsg-reveal-text .dsg-word {
+      display: inline-block; overflow: hidden; vertical-align: top;
+      padding-bottom: 0.14em; margin-bottom: -0.14em;
+    }
+    .dsg-reveal-text .dsg-word > span {
+      display: inline-block; transform: translateY(115%);
+      transition: transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .dsg-reveal-text.is-visible .dsg-word > span { transform: translateY(0); }
+    .dsg-reveal-text .dsg-word:nth-of-type(1) > span { transition-delay: 0.00s; }
+    .dsg-reveal-text .dsg-word:nth-of-type(2) > span { transition-delay: 0.06s; }
+    .dsg-reveal-text .dsg-word:nth-of-type(3) > span { transition-delay: 0.12s; }
+    .dsg-reveal-text .dsg-word:nth-of-type(4) > span { transition-delay: 0.18s; }
+    .dsg-reveal-text .dsg-word:nth-of-type(5) > span { transition-delay: 0.24s; }
+    .dsg-reveal-text .dsg-word:nth-of-type(n+6) > span { transition-delay: 0.30s; }
+
+    /* -- Text-Highlight wie ee-mark ------------------------------ */
+    .dsg-mark {
+      background-image: linear-gradient(var(--color-orange), var(--color-orange));
+      background-repeat: no-repeat; background-position: 0 88%; background-size: 0% 42%;
+      padding: 0 3px; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+      transition: background-size 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .dsg-mark.is-active { background-size: 100% 42%; }
+
+    /* -- Stagger wie ee-stagger (nur fuer Nicht-Flip-Container) --- */
+    .dsg-stagger > * {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .dsg-stagger.is-visible > * { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dsg-reveal-text .dsg-word > span { transform: none; transition: none; }
+      .dsg-stagger > * { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* -- Responsive: Editorial-Typo wie erbe @1100 --------------- */
+    @media (max-width: 1100px) {
+      .dsg-chapter-head h2 { font-size: 54px; }
+      .quote-section.dsg-ed-quote .quote-section__text { font-size: 40px; }
+    }
+
+    /* =============================================================
+       FLIP-KARTEN im erbe-Kartenstil (wie ee-system: Logos/Farben)
+       Gilt fuer Trio (#dsg-reveal-trio) + Prinzipien (#dsg-principles),
+       beide .dsg-flip-grid. Prozess-Reihe & Uebungen bleiben unberuehrt.
+       Nummer oben, grosser Titel unten, Hinweis unten, gleiche Hoehe.
+       ============================================================= */
+    #dsg-reveal-trio, #dsg-principles {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sq-5);
+    }
+    .dsg-flip-grid .dsg-flip-card { min-height: 252px; }
+    .dsg-flip-grid .dsg-flip-face { border-radius: var(--radius-md); }
+    .dsg-flip-grid .dsg-flip-front {
+      justify-content: flex-end;
+      gap: var(--sq-6);
+      padding: var(--sq-5);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid rgba(26, 10, 0, 0.12);
+    }
+    .dsg-flip-grid .dsg-flip-num {
+      margin-bottom: auto;
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps);
+      color: var(--color-orange);
+    }
+    .dsg-flip-grid .dsg-flip-front h4 {
+      font-family: var(--font-heading);
+      font-size: 34px;
+      font-weight: var(--fw-bold);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+    .dsg-flip-grid .dsg-flip-role {
+      font-size: 14px;
+      line-height: 1.3;
+      color: var(--color-text-muted);
+      margin-top: 6px;
+    }
+    .dsg-flip-grid .dsg-flip-tap {
+      align-self: flex-start;
+      margin-top: var(--sq-6);
+      font-size: 12px;
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-caps);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    /* Rueckseite ebenfalls im gleichen Radius */
+    .dsg-flip-grid .dsg-flip-back { padding: var(--sq-5); }
+
+    @media (max-width: 1100px) {
+      #dsg-reveal-trio, #dsg-principles { grid-template-columns: repeat(2, 1fr); }
+      .dsg-flip-grid .dsg-flip-front h4 { font-size: 28px; }
+    }
+
+    /* =============================================================
+       HOCKER ZUSAMMENBAUEN — Drag & Drop (+ Tap-Fallback)
+       ============================================================= */
+    .dsg-build {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: var(--sq-3);
+      align-items: start;
+    }
+    .dsg-build__aside { display: flex; flex-direction: column; }
+    .dsg-build__hint {
+      font-size: var(--fs-body); line-height: var(--lh-loose);
+      color: var(--color-text-muted); margin: 0 0 var(--space-md);
+    }
+    .dsg-build__bank { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-bottom: var(--space-md); }
+    .dsg-build__chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: var(--space-xs) var(--space-sm);
+      border: 1.5px solid var(--color-orange); border-radius: var(--radius-full);
+      font-family: var(--font-body); font-size: var(--fs-detail); font-weight: var(--fw-semibold);
+      color: var(--color-orange); background: var(--color-white);
+      cursor: grab; user-select: none; -webkit-user-select: none;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.2s ease;
+    }
+    .dsg-build__chip::before { content: attr(data-num); color: var(--color-orange); font-weight: var(--fw-bold); }
+    .dsg-build__chip:active { background: var(--color-orange); color: var(--color-white); }
+    .dsg-build__chip:active::before { color: var(--color-white); }
+    .dsg-build__chip.used { opacity: 0.22; cursor: default; pointer-events: none; }
+    .dsg-build__status { font-size: var(--fs-body); margin: 0 0 var(--space-sm); }
+    .dsg-build__status strong { font-family: var(--font-heading); font-size: 30px; color: var(--color-orange); }
+    .dsg-build__footer { display: flex; gap: var(--space-sm); }
+
+    .dsg-build__stage {
+      position: relative; width: 100%; aspect-ratio: 400 / 360;
+      border: 1.5px solid rgba(26, 10, 0, 0.12); border-radius: var(--radius-lg);
+      background: #f5f2ee; overflow: hidden;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .dsg-build__stage.drag-over { border-color: var(--color-orange); background: rgba(255, 123, 0, 0.06); }
+    .dsg-build__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hb-ghost { fill: none; stroke: #9a9a9a; stroke-width: 2; stroke-dasharray: 6 6; }
+    .hb-part { fill: var(--color-orange); opacity: 0; transition: opacity 0.55s ease; }
+    .hb-part.is-placed { opacity: 1; }
+
+    @media (max-width: 1100px) {
+      .dsg-build { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hb-part { transition: none; }
+    }
+
+  </style>
+</head>
+<body class ="inhalt-gesperrt">
+
+  <!-- FORTSCHRITTSBALKEN — fixed, direkt in body -->
+  <aside class="progress-sidebar" aria-label="Lesefortschritt">
+    <span class="progress-sidebar__label">Fortschritt</span>
+    <div class="progress-sidebar__track">
+      <div class="progress-sidebar__fill"></div>
+      <div class="progress-sidebar__marker"></div>
+    </div>
+    <span class="progress-sidebar__pct">0%</span>
+  </aside>
+
+  <!-- NAVIGATION — fixed, direkt in body -->
+  <nav class="main-nav" aria-label="Hauptnavigation">
+      <div class="nav-bar">
+        <a class="nav-link" href="start.html"      data-page="start">Start</a>
+        <a class="nav-link" href="geschichte.html" data-page="geschichte">Geschichte</a>
+        <a class="nav-link" href="lehre.html"      data-page="lehre">Lehre</a>
+        <a class="nav-link" href="design.html"     data-page="design">Design</a>
+        <a class="nav-link" href="erbe.html"       data-page="erbe">Erbe</a>
+      </div>
+  </nav>
+
+  <!-- SEITEN-WRAPPER -->
+  <div class="page-wrapper">
+    <main class="main-content">
+<!-- =====================================================
+     KAPITEL-HERO — Vollflächige Einführung
+     Button scrollt zum eigentlichen Inhalt runter.
+     D + Figur: ../assets/images/hero-d-[figur].svg einsetzen
+===================================================== -->
+  <section class="kapitel-hero" id="kapitel-hero">
+
+    <!-- Linke Seite: Platzhalter für D + Figur -->
+    <div class="kapitel-hero__visual">
+      <svg class="kapitel-hero__d-svg" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+    <!-- Halbkreis D — orange gefüllt -->
+    <path d="M 0 0 L 190 0 Q 380 0 380 190 Q 380 380 190 380 L 0 380 Z" fill="#FF7B00"/>
+
+
+    <image href="../assets/svg/Figur_ballet.svg"
+          x="0" y="30" width="400" height="350"/>
+
+  </svg>
+    </div>
+
+    <!-- Rechte Seite: Titel -->
+    <div class="kapitel-hero__title">
+      <span class="kapitel-hero__title-line kapitel-hero__title-line--orange">Design</span>
+      <span class="kapitel-hero__title-line">als System</span>
+    </div>
+
+    <!-- Unten links: Label + H2 + Text -->
+    <div class="kapitel-hero__content">
+      <div class="kapitel-hero__content-left">
+        <span class="label label--orange">Kapitel 03 · Design</span>
+        <h2 style="margin-top: var(--sq-6);">Ein neues Verständins von Design</h2>
+        <p class="body-text">
+          Die HfG Ulm sah Design nicht als Formgebung,
+          sondern als Problemlösung im Kontext von Gesellschaft,
+          Technik und Wirtschaft.
+        </p>
+      </div>
+      <div class="kapitel-hero__content-right">
+        <a class="btn btn--orange btn--pill btn--lg" href="#inhalt" id="hero-btn">
+          Design starten
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+      <!-- =================================================
+           AB HIER: INHALT NACH "DESIGN STARTEN"
+           Struktur & Inhalte angelehnt an elearning.html
+           (Kapitel III), Komponenten aus quiz-v2.html,
+           umgesetzt im aktuellen Corporate Design.
+      ================================================= -->
+
+      <!-- =================================================
+           SEKTION 1: EINFÜHRUNG
+      ================================================= -->
+      <section class="section section-inner" id="inhalt" aria-labelledby="page-title">
+
+        <div class="grid" style="padding-top: var(--sq-2);">
+
+          <div class="col-12" style="margin-bottom: var(--space-sm);">
+            <span class="label label--orange">Design · Teil 1</span>
+          </div>
+
+          <div class="col-12">
+            <h1 id="page-title">design als system</h1>
+          </div>
+
+          <div class="col-12">
+            <div class="dsg-opener__meta">
+              <span>Kapitel 03</span>
+              <span>Methode &amp; System</span>
+              <span>6 Objekte</span>
+              <span>1953 &rarr; 1968</span>
+            </div>
+          </div>
+
+          <div class="col-8" style="margin-top: var(--space-md);">
+            <p class="dsg-lede">
+              Ein Kapitel über gutes Design: vom Problem zur Form, vom Objekt zum System.
+              Design beginnt in Ulm nicht bei der Oberfläche — es beginnt bei der Frage:
+              Was soll ein Objekt leisten? Für wen ist es da? Welche Ordnung macht seine
+              Nutzung selbstverständlich?
+            </p>
+          </div>
+
+          <div class="col-4" style="margin-top: var(--space-md);">
+            <div class="dsg-opener-guide">
+              <div class="dsg-opener-guide__figure"><img src="../assets/svg/Figur_winken.svg" alt="HfG-Maskottchen, winkend"></div>
+              <div class="dsg-opener-guide__bubble">
+                <span class="qv2-guide-kicker">Dein Guide</span>
+                <p>Willkommen in Kapitel III. Ich begleite dich durch „Design als System“ — scroll einfach weiter.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 2: DESIGN IST KEIN SCHMUCK. ES IST SYSTEM.
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-t1">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Design</span>
+          <h2 id="dsg-t1">Design ist kein Schmuck.<br>Es ist System<span class="dsg-ed-dot">.</span></h2>
+          <p class="body-text body-text--muted">
+            Die HfG Ulm verstand Gestaltung als präzise Antwort auf eine Aufgabe:
+            <span class="dsg-mark">nützlich, verständlich, dauerhaft</span>.
+          </p>
+        </div>
+
+        <div class="grid dsg-intro-grid" style="gap: var(--sq-3); margin-bottom: var(--space-lg);">
+          <div class="col-12">
+            <p class="body-text" style="margin-bottom: var(--space-sm); font-size: 22px; line-height: var(--lh-loose);">
+              Ein Produkt ist für Ulm kein einzelnes schönes Ding, sondern Teil eines
+              Zusammenhangs aus Material, Herstellung und Gebrauch. Gutes Design fragt
+              deshalb nicht zuerst nach Stil, sondern klärt Funktionen und macht
+              Entscheidungen sichtbar.
+            </p>
+            <p class="body-text" style="font-size: 22px; line-height: var(--lh-loose);">
+              Genau diese Reihenfolge — erst verstehen, dann gestalten — steckt in den
+              fünf Schritten unten.
+            </p>
+          </div>
+        </div>
+
+        <p class="dsg-timeline-detail" id="dsg-timeline-detail" data-step="Schritt 01 · Aufgabe verstehen" style="margin-bottom: var(--space-lg);">
+          Am Anfang steht nicht die Form, sondern die Aufgabe: Wer nutzt das Objekt, in welchem Zusammenhang?
+        </p>
+
+        <!-- TIMELINE: Designprozess -->
+        <div class="timeline" style="margin-bottom: var(--space-xl);" id="dsg-timeline">
+          <div class="timeline__track">
+            <div class="timeline__line"><div class="timeline__line-fill" id="dsg-timeline-fill"></div></div>
+            <button class="timeline__point is-active" type="button" data-idx="0" aria-pressed="true">
+              <span class="timeline__dot">1</span>
+              <span class="timeline__year">Aufgabe<br>verstehen</span>
+            </button>
+            <button class="timeline__point" type="button" data-idx="1" aria-pressed="false">
+              <span class="timeline__dot">2</span>
+              <span class="timeline__year">Funktion<br>klären</span>
+            </button>
+            <button class="timeline__point" type="button" data-idx="2" aria-pressed="false">
+              <span class="timeline__dot">3</span>
+              <span class="timeline__year">System<br>ordnen</span>
+            </button>
+            <button class="timeline__point" type="button" data-idx="3" aria-pressed="false">
+              <span class="timeline__dot">4</span>
+              <span class="timeline__year">Form<br>reduzieren</span>
+            </button>
+            <button class="timeline__point" type="button" data-idx="4" aria-pressed="false">
+              <span class="timeline__dot">5</span>
+              <span class="timeline__year">Nutzung<br>prüfen</span>
+            </button>
+          </div>
+          <p class="dsg-sources">
+            Quelle: <a href="https://hfg-archiv.museumulm.de/en/the-hfg-archive/history/" target="_blank" rel="noopener">HfG-Archiv Ulm — Geschichte</a>
+          </p>
+        </div>
+
+        <!-- ZITAT -->
+        <div class="quote-section dsg-ed-quote dsg-reveal">
+          <div class="quote-section__line"></div>
+          <blockquote class="quote-section__text dsg-reveal-text">„Gute Form ist das sichtbare Ergebnis einer guten Lösung.“</blockquote>
+          <cite class="quote-section__source">Tomás Maldonado</cite>
+        </div>
+
+        <!-- REVEAL-TRIO: Design-Bausteine -->
+        <div class="dsg-flip-grid dsg-reveal" id="dsg-reveal-trio">
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">01</span>
+              <h4>Funktion</h4>
+              <span class="dsg-flip-tap">Klicken zum Umdrehen</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Die Aufgabe entscheidet. Bedienung, Material und Form werden so geordnet, dass das Produkt im Alltag verständlich wird.</p>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">02</span>
+              <h4>System</h4>
+              <span class="dsg-flip-tap">Klicken zum Umdrehen</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Ulm denkt in Serien, Rastern und Baukästen. Ein gutes Objekt funktioniert allein, aber auch als Teil einer größeren Ordnung.</p>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">03</span>
+              <h4>Haltung</h4>
+              <span class="dsg-flip-tap">Klicken zum Umdrehen</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Design ist nicht neutral. Es beeinflusst Verhalten, Orientierung und Ressourcen. Darum gehört Verantwortung zum Entwurf.</p>
+            </div>
+          </button>
+        </div>
+
+        <!-- MINI-WISSENSCHECK -->
+        <div class="quiz" id="dsg-kc">
+          <div class="quiz__counter">Wissenscheck · Kapitel III</div>
+          <div class="quiz__question">Was meint Ulm mit gutem Design?</div>
+          <div class="quiz__options">
+            <div class="quiz__option" data-correct="false">
+              <span class="quiz__radio"></span>
+              <span class="quiz__option-text">Eine Oberfläche möglichst auffällig machen.</span>
+            </div>
+            <div class="quiz__option" data-correct="true">
+              <span class="quiz__radio"></span>
+              <span class="quiz__option-text">Eine Aufgabe funktional, verständlich und verantwortungsvoll lösen.</span>
+            </div>
+            <div class="quiz__option" data-correct="false">
+              <span class="quiz__radio"></span>
+              <span class="quiz__option-text">Einem Produkt möglichst viele Dekorationen geben.</span>
+            </div>
+          </div>
+          <div class="quiz__feedback" id="dsg-kc-feedback"></div>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 3: METHODE
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-t2">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Methode</span>
+          <h2 id="dsg-t2">Erst die Frage.<br>Dann die Form<span class="dsg-ed-dot">.</span></h2>
+          <p class="body-text body-text--muted">
+            Der Ulmer Designprozess ersetzt Intuition durch Methode. <span class="dsg-mark">Vier Schritte, eine Logik</span>.
+          </p>
+        </div>
+
+        <p class="body-text" style="max-width: 100%; margin-bottom: var(--space-lg);">
+          Der klassische Künstler beginnt mit einer Vision. Der Ulmer Gestalter beginnt
+          mit einer Aufgabe. Das klingt nüchtern — und ist es auch. Aber genau diese
+          Nüchternheit war der Bruch mit allen Designschulen davor.
+        </p>
+
+        <div class="dsg-process-row dsg-flip-grid">
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">01</span>
+              <h4>Analyse</h4>
+              <span class="dsg-flip-tap">Klicken zum Umdrehen</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Was ist das Problem? Welcher Kontext, welche Nutzer, welche Zwänge?</p>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">02</span>
+              <h4>Recherche</h4>
+              <span class="dsg-flip-tap">Klicken zum Umdrehen</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Empirie, Material, Bestand. Beobachten ersetzt Vermuten.</p>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">03</span>
+              <h4>Entwurf</h4>
+              <span class="dsg-flip-tap">Klicken zum Umdrehen</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Mehrere Varianten, systematisch verglichen. Keine Lieblinge.</p>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">04</span>
+              <h4>Umsetzung</h4>
+              <span class="dsg-flip-tap">Klicken zum Umdrehen</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Prototyp, Test, Korrektur. Die Realität entscheidet, nicht der Geschmack.</p>
+            </div>
+          </button>
+        </div>
+
+        <div class="dsg-methode-divider" id="dsg-methode-divider" style="margin: var(--space-lg) 0;" aria-hidden="true">
+          <div class="dsg-methode-divider__layer"></div>
+        </div>
+
+        <!-- SORTIER-ÜBUNG -->
+        <div class="quiz dsg-sort-quiz">
+          <div class="quiz__counter">Übung · Drag &amp; Drop</div>
+          <div class="quiz__question" style="font-size: var(--fs-h3);">Ordne die Schritte in die richtige Reihenfolge.</div>
+          <p class="body-text body-text--muted">Ziehe die Karten in die nummerierten Felder. Klick „Prüfen", wenn du fertig bist.</p>
+
+          <div class="dsg-sort-bank" id="dsg-sort-bank">
+            <div class="dsg-sort-chip" draggable="true" data-id="entwurf">Entwurf</div>
+            <div class="dsg-sort-chip" draggable="true" data-id="analyse">Analyse</div>
+            <div class="dsg-sort-chip" draggable="true" data-id="umsetzung">Umsetzung</div>
+            <div class="dsg-sort-chip" draggable="true" data-id="recherche">Recherche</div>
+          </div>
+
+          <div class="dsg-sort-slots" id="dsg-sort-slots">
+            <div class="dsg-sort-slot" data-pos="1" data-answer="analyse"><span>01</span><span class="dsg-sort-slot__placeholder">hier ablegen</span></div>
+            <div class="dsg-sort-slot" data-pos="2" data-answer="recherche"><span>02</span><span class="dsg-sort-slot__placeholder">hier ablegen</span></div>
+            <div class="dsg-sort-slot" data-pos="3" data-answer="entwurf"><span>03</span><span class="dsg-sort-slot__placeholder">hier ablegen</span></div>
+            <div class="dsg-sort-slot" data-pos="4" data-answer="umsetzung"><span>04</span><span class="dsg-sort-slot__placeholder">hier ablegen</span></div>
+          </div>
+
+          <div class="quiz__feedback" id="dsg-sort-feedback"></div>
+          <div class="quiz__footer" style="justify-content: flex-start; gap: var(--space-sm);">
+            <button class="btn btn--ghost btn--pill btn--lg" id="dsg-sort-reset">↺ Zurücksetzen</button>
+            <button class="btn btn--black btn--pill btn--lg" id="dsg-sort-check">Prüfen</button>
+          </div>
+        </div>
+
+        <div class="break-box break-box--lg dsg-reveal" style="margin-top: var(--space-lg);">
+          <div class="quote-section" style="padding: 0;">
+            <div class="quote-section__line" style="background: rgba(255,255,255,0.2);"></div>
+            <blockquote class="quote-section__text">„Methode ist die einzige Form der Freiheit, die ein Gestalter sich leisten kann.“</blockquote>
+            <cite class="quote-section__source" style="color: rgba(255,255,255,0.5);">Tomás Maldonado</cite>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 4: PRINZIPIEN
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-t3">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Prinzipien</span>
+          <h2 id="dsg-t3">Sechs Sätze.<br>Eine Haltung<span class="dsg-ed-dot">.</span></h2>
+          <p class="body-text body-text--muted">
+            Die Ulmer Prinzipien sind keine Stilrichtung. Sie sind ein <span class="dsg-mark">Filter, durch den jede Entscheidung läuft</span>.
+          </p>
+        </div>
+
+        <div class="dsg-flip-grid dsg-reveal" id="dsg-principles">
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">01</span>
+              <h4>Funktion<br>vor<br>Form</h4>
+              <span class="dsg-flip-tap">Umdrehen ↻</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Form ist Ergebnis, nicht Ausgangspunkt.</p>
+              <span class="dsg-flip-ex">Beispiel: Braun T 3, 1958</span>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">02</span>
+              <h4>System<br>statt<br>Einzelstück</h4>
+              <span class="dsg-flip-tap">Umdrehen ↻</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Modularität schafft Ordnung und Beziehung.</p>
+              <span class="dsg-flip-ex">Beispiel: Regalsystem 606</span>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">03</span>
+              <h4>Methode<br>statt<br>Intuition</h4>
+              <span class="dsg-flip-tap">Umdrehen ↻</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Beobachten, analysieren, testen. Geschmack ist kein Argument.</p>
+              <span class="dsg-flip-ex">Kern des Ulmer Curriculums</span>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">04</span>
+              <h4>Design<br>trägt<br>Verantwortung</h4>
+              <span class="dsg-flip-tap">Umdrehen ↻</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Design wirkt in Gesellschaft, Umwelt, Alltag.</p>
+              <span class="dsg-flip-ex">Aichers Lufthansa-Identität</span>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">05</span>
+              <h4>Reduktion<br>aufs<br>Wesentliche</h4>
+              <span class="dsg-flip-tap">Umdrehen ↻</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Weniger, aber besser. Klarheit entsteht durch Weglassen.</p>
+              <span class="dsg-flip-ex">Ulmer Hocker, 1954</span>
+            </div>
+          </button>
+          <button class="dsg-flip-card" type="button">
+            <div class="dsg-flip-face dsg-flip-front">
+              <span class="dsg-flip-num">06</span>
+              <h4>Über<br>Fachgrenzen<br>hinweg</h4>
+              <span class="dsg-flip-tap">Umdrehen ↻</span>
+            </div>
+            <div class="dsg-flip-face dsg-flip-back">
+              <p>Gestaltung, Wissenschaft und Technik denken zusammen — keine Disziplin für sich allein.</p>
+              <span class="dsg-flip-ex">Otl Aicher · über Fachgrenzen hinweg</span>
+            </div>
+          </button>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 5: OBJEKTE ALS ARGUMENTE — PRODUKT-EXPLORER
+           (Komponente aus quiz-v2.html)
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-t4">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Produkte</span>
+          <h2 id="dsg-t4">Objekte als<br>Argumente<span class="dsg-ed-dot">.</span></h2>
+          <p class="body-text body-text--muted">
+            Die Theorie der HfG wird im Alltag konkret — an Hocker, Radio, Aschenbecher und Baukasten.
+            Wähle einen der sechs Kreise aus.
+          </p>
+        </div>
+
+        <div class="qv2-expl-wrap dsg-reveal">
+          <div class="qv2-expl-map" id="dsg-expl-map" role="group" aria-label="Produktauswahl"></div>
+          <div class="qv2-expl-panel" id="dsg-expl-panel" aria-live="polite"></div>
+        </div>
+
+        <div class="quote-section dsg-ed-quote dsg-reveal" style="margin-top: var(--space-lg);">
+          <div class="quote-section__line"></div>
+          <blockquote class="quote-section__text dsg-reveal-text">„Weniger Gestaltung kann mehr Orientierung bedeuten.“</blockquote>
+          <cite class="quote-section__source">Dieter Rams</cite>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 6: DER HOCKER ALS BEWEIS
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-t5">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Symbol</span>
+          <h2 id="dsg-t5">Der Hocker<br>als Beweis<span class="dsg-ed-dot">.</span></h2>
+        </div>
+
+        <div class="grid" style="align-items: start; gap: var(--sq-3); margin-bottom: var(--space-xl);">
+          <div class="col-7">
+            <p class="body-text" style="margin-bottom: var(--space-sm);">
+              Der Ulmer Hocker, 1954, ist die wohl reinste Lehrform der HfG. Sechs Teile.
+              Ein Rundstab. Mehr nicht. Und doch: Sitz, Beistelltisch, Tablett, sogar
+              Transportobjekt.
+            </p>
+            <p class="body-text">
+              Jede Verbindung ist sichtbar. Keine versteckte Technik. Die Konstruktion
+              ist das Argument — das Möbel zeigt, wie es gemacht ist. Ehrlichkeit als
+              Designprinzip.
+            </p>
+          </div>
+          <div class="col-5">
+            <div class="info-box info-box--dark">
+              <span class="info-box__label">Kenndaten</span>
+              <h3 class="info-box__title">Ulmer Hocker</h3>
+              <div class="dsg-specs">
+                <div><span>Entstehung</span><strong>1954</strong></div>
+                <div><span>Material</span><strong>Fichte</strong></div>
+                <div><span>Höhe</span><strong>440 mm</strong></div>
+                <div><span>Teile</span><strong>6</strong></div>
+                <div><span>Funktionen</span><strong>3 in 1</strong></div>
+                <div><span>Schrauben</span><strong>0</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LÜCKENTEXT (1:1 aus quiz-v2.html) -->
+        <div class="quiz">
+          <div class="quiz__counter">Übung · Lückentext</div>
+          <p class="body-text body-text--muted" style="margin-bottom: var(--space-md);">
+            Ziehe die Begriffe in die passenden Lücken.
+          </p>
+
+          <div class="qv2-gap-bank" id="gap-bank" aria-label="Verfügbare Begriffe">
+            <div class="qv2-gap-chip" draggable="true" data-word="Ulmer Hocker">Ulmer Hocker</div>
+            <div class="qv2-gap-chip" draggable="true" data-word="Rundstab">Rundstab</div>
+            <div class="qv2-gap-chip" draggable="true" data-word="Technik">Technik</div>
+            <div class="qv2-gap-chip" draggable="true" data-word="Ornament">Ornament</div>
+          </div>
+
+          <p class="qv2-gap-text">
+            Der
+            <span class="qv2-gap-slot" data-answer="Ulmer Hocker" id="slot-1">&nbsp;</span>
+            besteht aus sechs Holzteilen und einem
+            <span class="qv2-gap-slot" data-answer="Rundstab" id="slot-2">&nbsp;</span>.
+            Das SK 4 Radio macht
+            <span class="qv2-gap-slot" data-answer="Technik" id="slot-3">&nbsp;</span>
+            sichtbar, anstatt sie zu verstecken.
+          </p>
+
+          <div class="quiz__feedback" id="gap-feedback" aria-live="polite"></div>
+          <div class="quiz__footer">
+            <button class="btn btn--ghost btn--pill btn--lg" id="gap-reset">↺ Zurücksetzen</button>
+            <button class="btn btn--black btn--pill btn--lg" id="gap-check" style="margin-left: var(--space-sm);">Überprüfen</button>
+          </div>
+        </div>
+
+        <div class="break-box break-box--lg dsg-reveal" style="margin-top: var(--space-lg);">
+          <div class="quote-section" style="padding: 0;">
+            <div class="quote-section__line" style="background: rgba(255,255,255,0.2);"></div>
+            <blockquote class="quote-section__text">„Ein Objekt. Sechs Teile. Drei Funktionen. Eine Idee.“</blockquote>
+            <cite class="quote-section__source" style="color: rgba(255,255,255,0.5);">Max Bill · Hans Gugelot · Paul Hildinger</cite>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 6b: HOCKER ZUSAMMENBAUEN (Drag & Drop)
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-tbuild">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III &middot; Werkstatt</span>
+          <h2 id="dsg-tbuild">Sechs Teile.<br>Keine Schraube<span class="dsg-ed-dot">.</span></h2>
+          <p class="body-text body-text--muted">
+            Jetzt du: Bau den Ulmer Hocker selbst zusammen. Zieh jedes Teil an
+            seinen Platz &mdash; sechs Holzteile, ein Rundstab, und keine einzige Schraube.
+          </p>
+        </div>
+
+        <div class="dsg-build dsg-reveal">
+          <div class="dsg-build__aside">
+            <p class="dsg-build__hint">
+              Ziehe die Teile in die Zeichnung (oder tippe sie an). Die Reihenfolge
+              ist frei &mdash; jedes Teil kennt seinen Platz.
+            </p>
+            <div class="dsg-build__bank" id="hb-bank" aria-label="Hocker-Teile">
+              <button class="dsg-build__chip" type="button" draggable="true" data-part="seat"      data-num="01">Sitzbrett</button>
+              <button class="dsg-build__chip" type="button" draggable="true" data-part="leftside"  data-num="02">Seitenwand&nbsp;links</button>
+              <button class="dsg-build__chip" type="button" draggable="true" data-part="rightside" data-num="03">Seitenwand&nbsp;rechts</button>
+              <button class="dsg-build__chip" type="button" draggable="true" data-part="dowel"     data-num="04">Rundstab</button>
+              <button class="dsg-build__chip" type="button" draggable="true" data-part="brace"     data-num="05">Querstrebe</button>
+              <button class="dsg-build__chip" type="button" draggable="true" data-part="bottom"    data-num="06">Bodenbrett</button>
+            </div>
+            <p class="dsg-build__status" id="hb-status" aria-live="polite"><strong>0</strong>&thinsp;/&thinsp;6 Teilen &middot; 0 Schrauben</p>
+            <div class="dsg-build__footer">
+              <button class="btn btn--ghost btn--pill btn--lg" id="hb-reset" type="button">&#8635; Zur&uuml;cksetzen</button>
+            </div>
+          </div>
+
+          <div class="dsg-build__stage" id="hb-stage" role="group" aria-label="Hocker-Montageflaeche">
+            <svg class="dsg-build__svg" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g transform="translate(0, -9)">
+                <rect class="hb-ghost" x="64"  y="54"  width="272" height="30" rx="4"></rect>
+                <rect class="hb-ghost" x="92"  y="84"  width="36"  height="210"></rect>
+                <rect class="hb-ghost" x="272" y="84"  width="36"  height="210"></rect>
+                <rect class="hb-ghost" x="128" y="150" width="144" height="16" rx="8"></rect>
+                <rect class="hb-ghost" x="128" y="250" width="144" height="14" rx="4"></rect>
+                <rect class="hb-ghost" x="64"  y="294" width="272" height="30" rx="4"></rect>
+              </g>
+              <g transform="translate(0, -9)">
+                <rect class="hb-part" data-part="seat"      x="64"  y="54"  width="272" height="30" rx="4"></rect>
+                <rect class="hb-part" data-part="leftside"  x="92"  y="84"  width="36"  height="210"></rect>
+                <rect class="hb-part" data-part="rightside" x="272" y="84"  width="36"  height="210"></rect>
+                <rect class="hb-part hb-dowel" data-part="dowel" x="128" y="150" width="144" height="16" rx="8"></rect>
+                <rect class="hb-part" data-part="brace"     x="128" y="250" width="144" height="14" rx="4"></rect>
+                <rect class="hb-part" data-part="bottom"    x="64"  y="294" width="272" height="30" rx="4"></rect>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 7: KEIN DETAIL IST ZUFÄLLIG (Hotspots)
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-t6">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Produktdetails</span>
+          <h2 id="dsg-t6">Kein Detail<br>ist zufällig<span class="dsg-ed-dot">.</span></h2>
+          <p class="body-text body-text--muted">
+            Am Braun SK 4 wird sichtbar, wie Ulmer Gestaltung denkt: Technik, Bedienung
+            und Ordnung werden nicht versteckt, sondern verständlich gemacht. Tippe auf
+            die Punkte.
+          </p>
+        </div>
+
+        <div class="hotspot-container dsg-hotspot-bw" style="height: 480px;">
+          <img src="../assets/images/design/Zustand%201%20am%20anfang%20Radio.jpg" alt="Braun SK 4 mit Hotspots">
+
+          <div class="dsg-hotspot-anchor" style="top: 42%; left: 35%">
+            <button class="hotspot-trigger" data-hotspot-trigger="hs-1" aria-expanded="false" aria-label="Plattenteller">
+              <span class="hotspot-trigger__icon"></span>
+            </button>
+            <div class="hotspot-popup" id="hs-1">
+              <span class="hotspot-popup__label">01 · Plattenteller</span>
+              <div class="hotspot-popup__title">Sichtbare Technik</div>
+              <p class="hotspot-popup__body">Rund, offen, sichtbar. Der Teller ist nicht versteckt — er ist das Produkt. Transparenz als Gestaltungsprinzip.</p>
+            </div>
+          </div>
+
+          <div class="dsg-hotspot-anchor" style="top: 34%; left: 54%">
+            <button class="hotspot-trigger" data-hotspot-trigger="hs-2" aria-expanded="false" aria-label="Tonabnehmer">
+              <span class="hotspot-trigger__icon"></span>
+            </button>
+            <div class="hotspot-popup" id="hs-2">
+              <span class="hotspot-popup__label">02 · Tonabnehmer</span>
+              <div class="hotspot-popup__title">Form aus Funktion</div>
+              <p class="hotspot-popup__body">Der Tonarm folgt seiner Funktion: schlicht, beweglich, präzise. Die Form entsteht aus der Aufgabe, nicht aus dem Stil.</p>
+            </div>
+          </div>
+
+          <div class="dsg-hotspot-anchor dsg-hotspot-anchor--left" style="top: 38.5%; left: 70.5%">
+            <button class="hotspot-trigger" data-hotspot-trigger="hs-3" aria-expanded="false" aria-label="Regler für Höhen, Tiefen und Lautstärke">
+              <span class="hotspot-trigger__icon"></span>
+            </button>
+            <div class="hotspot-popup" id="hs-3">
+              <span class="hotspot-popup__label">03 · Regler</span>
+              <div class="hotspot-popup__title">Eine Logik für alles</div>
+              <p class="hotspot-popup__body">Drei Regler, eine Logik — Höhen, Tiefen, Lautstärke. Bedienung ohne Handbuch: verständlich durch Gestaltung.</p>
+            </div>
+          </div>
+
+          <div class="dsg-hotspot-anchor dsg-hotspot-anchor--left" style="top: 34%; left: 82.5%">
+            <button class="hotspot-trigger" data-hotspot-trigger="hs-4" aria-expanded="false" aria-label="Frequenzskala und Beschriftung">
+              <span class="hotspot-trigger__icon"></span>
+            </button>
+            <div class="hotspot-popup" id="hs-4">
+              <span class="hotspot-popup__label">04 · Beschriftung</span>
+              <div class="hotspot-popup__title">Schrift statt Ornament</div>
+              <p class="hotspot-popup__body">Die Frequenzskala ist lesbar, nicht dekorativ. Schrift und Zahl dienen der Orientierung — kein Ornament, das ablenkt.</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 8: LERNEN DURCH MACHEN (Studentenprojekte)
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-t7">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Studentenprojekte</span>
+          <h2 id="dsg-t7">Lernen<br>durch Machen<span class="dsg-ed-dot">.</span></h2>
+          <p class="body-text body-text--muted">
+            Nicht alle Arbeiten der HfG stammen von bekannten Namen. Neun Projekte von
+            Studierenden zeigen, wie Methode in Form wird. Nach Abteilung sortieren,
+            durch die Reihe scrollen, auf ein Projekt tippen.
+          </p>
+        </div>
+
+        <div class="dsg-stud-depts" id="dsg-stud-depts"></div>
+
+        <span class="label label--orange dsg-stud-swipe-hint">← Wische, um mehr Projekte zu sehen →</span>
+
+        <div class="dsg-stud-strip-outer">
+          <div class="dsg-stud-strip-wrap">
+            <div class="dsg-stud-strip" id="dsg-stud-strip"></div>
+          </div>
+        </div>
+        <div class="dsg-stud-dots" id="dsg-stud-dots"></div>
+
+        <div class="dsg-stud-detail" id="dsg-stud-detail" aria-hidden="true">
+          <div class="dsg-stud-detail__img-col">
+            <img id="dsg-stud-d-img" src="" alt="">
+            <div class="dsg-stud-detail__nav" id="dsg-stud-d-nav">
+              <button id="dsg-stud-d-prev" type="button" aria-label="Vorheriges Bild">‹</button>
+              <span id="dsg-stud-d-idx">1 / 1</span>
+              <button id="dsg-stud-d-next" type="button" aria-label="Nächstes Bild">›</button>
+            </div>
+          </div>
+          <div class="dsg-stud-detail__text-col">
+            <button class="dsg-stud-detail__close" id="dsg-stud-detail-close" type="button" aria-label="Schließen">×</button>
+            <span class="label label--orange" id="dsg-stud-d-meta"></span>
+            <h3 id="dsg-stud-d-title"></h3>
+            <p id="dsg-stud-d-desc"></p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 9: PRAXISNAH ERLEBEN (Übungen)
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-t8">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Übungen</span>
+          <h2 id="dsg-t8">Praxisnah<br>erleben<span class="dsg-ed-dot">.</span></h2>
+          <p class="body-text body-text--muted">
+            Viele Aufgaben an der HfG Ulm wurden nicht nur theoretisch gedacht, sondern
+            praktisch erprobt — direkt am Modell.
+          </p>
+        </div>
+
+        <div class="dsg-tabs" role="tablist">
+          <span class="dsg-tab-indicator" aria-hidden="true"></span>
+          <button class="dsg-tab is-active" id="dsg-tab-0" type="button" data-tab="0" role="tab" aria-controls="dsg-panel-0" aria-selected="true" tabindex="0">Übung</button>
+          <button class="dsg-tab" id="dsg-tab-1" type="button" data-tab="1" role="tab" aria-controls="dsg-panel-1" aria-selected="false" tabindex="-1">Materialien</button>
+          <button class="dsg-tab" id="dsg-tab-2" type="button" data-tab="2" role="tab" aria-controls="dsg-panel-2" aria-selected="false" tabindex="-1">Ergebnisse</button>
+        </div>
+
+        <div class="dsg-tab-viewport">
+          <div class="dsg-tab-track">
+        <!-- PANEL 1: ÜBUNG -->
+        <div class="dsg-tab-panel is-active" id="dsg-panel-0" data-panel="0" role="tabpanel" aria-labelledby="dsg-tab-0">
+          <div class="dsg-tab-two">
+            <figure class="dsg-transcript-figure">
+            <pre class="dsg-transcript">aufgabe 2    lineare elemente
+
+ein punkt, der sich in 60 cm abstand über einer beliebig
+grossen fläche befindet, soll so stabilisiert werden, dass
+er eine vertikallast von 8000 p und eine horizontallast
+von 500 p ohne wesentliche lageveränderung aufnehmen kann.
+
+materialien: kiefernholzprofil 3x3 mm
+             zwirn
+             uhu hart als verbindungsmittel
+
+wertigkeit:  1 cm kiefernholz = 1.0 E
+             4 cm zwirn       = 1.0 E
+             jede endigung eines elementes, das mit
+             einem anderen verbunden ist = 1.0 E</pre>
+              <figcaption class="dsg-transcript-caption">Originale Aufgabenstellung der HfG Ulm im Jahr 1967/1968 · Abteilung Bauen</figcaption>
+            </figure>
+            <div class="qv2-guide-demo">
+              <div class="qv2-guide-bubble">
+                <span class="qv2-guide-kicker">01 / 03 · Arbeitsblatt</span>
+                <p>Stell dir vor, du bist Student an der HfG Ulm und bekommst dieses Arbeitsblatt in der Grundlehre. Lies es genau, markiere Bedingungen und skizziere mehrere Lösungswege. Nicht die schönste Form gewinnt, sondern die klarste Idee.</p>
+              </div>
+              <div class="qv2-guide-figure"><img src="../assets/svg/Figur_denken.svg" alt="HfG-Maskottchen, nachdenkend"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 2: MATERIALIEN -->
+        <div class="dsg-tab-panel" id="dsg-panel-1" data-panel="1" role="tabpanel" aria-labelledby="dsg-tab-1" aria-hidden="true" inert>
+          <div class="dsg-tab-two">
+            <div class="dsg-mat-fig">
+              <img src="../assets/images/design/Abteilung%20BAUEN%20%C3%BCbung.jpeg" alt="Materialtest Abteilung Bauen">
+            </div>
+            <div class="qv2-guide-demo">
+              <div class="qv2-guide-bubble">
+                <span class="qv2-guide-kicker">02 / 03 · Materialtest</span>
+                <p>Am Werkstatttisch prüfst du Holz, Karton, Draht, Gips oder Stahl. Wie biegt, trägt, bricht oder verbindet sich das Material? Deine Wahl muss zur Aufgabe passen, nicht nur gut aussehen.</p>
+              </div>
+              <div class="qv2-guide-figure"><img src="../assets/svg/Figur_dynamisch.svg" alt="HfG-Maskottchen, in Bewegung"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 3: ERGEBNISSE -->
+        <div class="dsg-tab-panel" id="dsg-panel-2" data-panel="2" role="tabpanel" aria-labelledby="dsg-tab-2" aria-hidden="true" inert>
+          <div class="dsg-tab-two">
+            <div class="dsg-res-slider">
+              <div class="dsg-res-stage" id="dsg-res-stage">
+                <figure class="active"><img src="../assets/images/design/Abteilung%20BAUEN%20ERGEBNISSE.jpeg" alt="Ergebnisse Überblick"></figure>
+                <figure><img src="../assets/images/design/Abteilung%20BAUEN%20ERGEBNISS%201.jpeg" alt="Ergebnis 1"></figure>
+                <figure><img src="../assets/images/design/Abteilung%20BAUEN%20ERGEBNISS%202.jpeg" alt="Ergebnis 2"></figure>
+                <figure><img src="../assets/images/design/Abteilung%20BAUEN%20ERGEBNISS%203.jpeg" alt="Ergebnis 3"></figure>
+                <figure><img src="../assets/images/design/Abteilung%20BAUEN%20ERGEBNISS%204.jpeg" alt="Ergebnis 4"></figure>
+              </div>
+              <div class="dsg-res-footer">
+                <button id="dsg-res-prev" aria-label="Vorheriges Bild">‹</button>
+                <p id="dsg-res-text">Die Ergebnisse im Überblick: Verschiedene Gruppen, gleiche Aufgabe — jede Lösung zeigt eine andere Interpretation derselben Vorgabe.</p>
+                <span id="dsg-res-counter">1 / 5</span>
+                <button id="dsg-res-next" aria-label="Nächstes Bild">›</button>
+              </div>
+            </div>
+            <div class="qv2-guide-demo">
+              <div class="qv2-guide-bubble">
+                <span class="qv2-guide-kicker">03 / 03 · Auswertung</span>
+                <p>Arbeitsblatt, Materialtest und Ergebnis werden zusammen besprochen. Welche Lösung erklärt sich sofort? Aus der Kritik entsteht die nächste Version.</p>
+              </div>
+              <div class="qv2-guide-figure"><img src="../assets/svg/Figur_winken.svg" alt="HfG-Maskottchen, winkend"></div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 10: ERKENNEN. VERBINDEN. MERKEN. (Memory)
+           (Komponente aus quiz-v2.html)
+      ================================================= -->
+      <section class="section section-inner" aria-labelledby="dsg-t9">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Verbinden</span>
+          <h2 id="dsg-t9">Erkennen.<br>Verbinden. Merken<span class="dsg-ed-dot">.</span></h2>
+          <p class="body-text body-text--muted">
+            Acht Karten, vier Paare. Gestalter &amp; Werkbild — finde, was zusammengehört.
+          </p>
+        </div>
+
+        <div class="qv2-mem-board" id="mem-board" role="list" aria-label="Memory-Spielfeld"></div>
+
+        <div class="qv2-mem-footer">
+          <div class="qv2-mem-stats">
+            <div><span class="label">Züge</span><strong id="mem-moves">0</strong></div>
+            <div><span class="label">Paare</span><strong><span id="mem-found">0</span> / 4</strong></div>
+          </div>
+          <button class="btn btn--black btn--pill btn--lg" id="mem-reset">↺ Neu mischen</button>
+        </div>
+
+        <div class="card card--dark qv2-result" id="mem-complete" style="display: none;" aria-live="polite">
+          <span class="card__label">Geschafft!</span>
+          <p class="card__title">Alle vier Paare gefunden.</p>
+          <p class="card__body" id="mem-complete-text"></p>
+          <button class="btn btn--ghost btn--pill btn--lg qv2-result__retry" id="mem-reset-2">↺ Nochmal</button>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SEKTION 11: KENNST DU DIE PRODUKTE? (Quiz)
+           (Komponente aus quiz-v2.html)
+      ================================================= -->
+      <section class="section section-inner" style="padding-bottom: var(--sq-2);" aria-labelledby="dsg-t10">
+
+        <div class="dsg-chapter-head dsg-reveal">
+          <span class="label label--orange">Kapitel III · Quiz</span>
+          <h2 id="dsg-t10">Kennst du<br>die Produkte<span class="dsg-ed-dot">?</span></h2>
+          <p class="body-text body-text--muted">
+            Fünf Fragen zu Hocker, Radio, Regal und Zeichen. Jedes Objekt steht für ein Ulmer Argument.
+          </p>
+        </div>
+
+        <div class="qv2-guide-demo qv2-guide-demo--left" style="justify-content: flex-start; margin-bottom: var(--space-md);">
+          <div class="qv2-guide-figure"><img src="../assets/svg/Figur_dynamisch.svg" alt="HfG-Maskottchen, in Bewegung"></div>
+          <div class="qv2-guide-bubble">
+            <span class="qv2-guide-kicker">Letzte Runde</span>
+            <p>Du hast alle sechs Objekte kennengelernt. Jetzt zeig, was hängen geblieben ist.</p>
+          </div>
+        </div>
+
+        <div id="mc-active">
+          <div class="quiz">
+            <div class="quiz__counter">Frage <span id="mc-current">01</span> / 05</div>
+            <div class="quiz__question" id="mc-question"></div>
+            <div class="quiz__options" id="mc-options"></div>
+            <div class="quiz__feedback" id="mc-feedback"></div>
+            <div class="quiz__footer" id="mc-footer" style="display: none;">
+              <button class="btn btn--black btn--pill btn--lg" id="mc-next-btn">Nächste Frage</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card--dark qv2-result" id="mc-result" style="display: none;" aria-live="polite">
+          <span class="card__label">Ergebnis</span>
+          <div class="qv2-result__score" id="mc-score-display">0 / 5</div>
+          <p class="card__title" id="mc-result-title"></p>
+          <p class="card__body" id="mc-result-text"></p>
+          <button class="btn btn--ghost btn--pill btn--lg qv2-result__retry" id="mc-retry">↺ Nochmal</button>
+        </div>
+
+        <div class="qv2-guide-demo" style="margin-top: var(--space-lg);">
+          <div class="qv2-guide-bubble">
+            <span class="qv2-guide-kicker">Geschafft</span>
+            <p>Das war Kapitel III — Design als System. Funktion, Methode, Produkt: Du siehst Ulm jetzt mit anderen Augen.</p>
+          </div>
+          <div class="qv2-guide-figure"><img src="../assets/svg/Figur_winken.svg" alt="HfG-Maskottchen, winkend"></div>
+        </div>
+
+      </section>
+
+      <section class="section section-inner dsg-chapter-next" aria-labelledby="design-next-title">
+        <div class="info-box info-box--light">
+          <div class="dsg-chapter-next__grid">
+            <div class="dsg-chapter-next__copy">
+              <span class="info-box__label">Weiter</span>
+              <h3 class="info-box__title" id="design-next-title">Wie wirkt Design weiter?</h3>
+              <p class="info-box__body">
+                Im n&auml;chsten Kapitel siehst du, wie aus Produkten, Zeichen und Methoden
+                ein Erbe wurde, das bis heute nachwirkt.
+              </p>
+            </div>
+            <div class="dsg-chapter-next__action">
+              <a class="btn btn--black btn--pill btn--lg" href="erbe.html">Zum Erbe</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /.page-wrapper -->
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       Pfade von /seiten/ aus: ../js/
+       Seiten-eigenes Skript für design.html direkt unten.
+  ===================================================== -->
+  <script src="../js/navigation.js"></script>
+  <script src="../js/kapitel-hero.js"></script>
+  <script src="../js/quiz.js"></script>
+  <script src="../js/hotspot.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // ============================================================
+    // 1. TIMELINE — Designprozess
+    // ============================================================
+    var tlDetails = [
+      'Am Anfang steht nicht die Form, sondern die Aufgabe: Wer nutzt das Objekt, in welchem Zusammenhang?',
+      'Erst wenn die Funktion klar ist, wird über Material und Bedienung entschieden.',
+      'Einzelne Lösungen werden in einen größeren Zusammenhang aus Serie und Raster gebracht.',
+      'Alles Überflüssige wird entfernt, bis nur die tragende Idee übrig bleibt.',
+      'Der Prototyp wird getestet — die Realität entscheidet, nicht der Geschmack.'
+    ];
+    var tlSteps = [
+      'Schritt 01 · Aufgabe verstehen',
+      'Schritt 02 · Funktion klären',
+      'Schritt 03 · System ordnen',
+      'Schritt 04 · Form reduzieren',
+      'Schritt 05 · Nutzung prüfen'
+    ];
+    var tlPoints = document.querySelectorAll('#dsg-timeline .timeline__point');
+    var tlDetailEl = document.getElementById('dsg-timeline-detail');
+    var tlFillEl = document.getElementById('dsg-timeline-fill');
+    var tlReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function tlSetFill(idx) {
+      if (!tlFillEl) return;
+      tlFillEl.style.width = (idx / (tlPoints.length - 1) * 100) + '%';
+    }
+
+    tlSetFill(0);
+
+    tlPoints.forEach(function (p) {
+      p.addEventListener('click', function () {
+        var idx = Number(p.dataset.idx);
+        tlPoints.forEach(function (o) {
+          o.classList.remove('is-active');
+          o.setAttribute('aria-pressed', 'false');
+        });
+        p.classList.add('is-active');
+        p.setAttribute('aria-pressed', 'true');
+        tlSetFill(idx);
+
+        function applyDetail() {
+          tlDetailEl.textContent = tlDetails[idx] || '';
+          tlDetailEl.setAttribute('data-step', tlSteps[idx] || '');
+          tlDetailEl.classList.remove('is-fading');
+        }
+
+        if (tlReduceMotion) {
+          applyDetail();
+        } else {
+          tlDetailEl.classList.add('is-fading');
+          setTimeout(applyDetail, 180);
+        }
+      });
+    });
+
+    // ============================================================
+    // 2. FLIP-CARDS — Reveal-Trio & Prinzipien
+    // ============================================================
+    document.querySelectorAll('.dsg-flip-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        card.classList.toggle('is-flipped');
+      });
+    });
+
+    // ============================================================
+    // 3. MINI-WISSENSCHECK
+    // ============================================================
+    var kc = document.getElementById('dsg-kc');
+    if (kc) {
+      var kcLocked = false;
+      var kcFeedback = document.getElementById('dsg-kc-feedback');
+      kc.querySelectorAll('.quiz__option').forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          if (kcLocked) return;
+          kcLocked = true;
+          var correct = opt.dataset.correct === 'true';
+          kc.querySelectorAll('.quiz__option').forEach(function (o) {
+            o.style.pointerEvents = 'none';
+            if (o.dataset.correct === 'true') o.classList.add('is-correct');
+            else if (o === opt) o.classList.add('is-wrong');
+          });
+          kcFeedback.textContent = correct
+            ? 'Richtig. Gutes Design löst eine Aufgabe funktional, verständlich und verantwortungsvoll.'
+            : 'Nicht ganz. Gutes Design löst eine Aufgabe funktional, verständlich und verantwortungsvoll — nicht durch Auffälligkeit oder Dekoration.';
+          kcFeedback.classList.add('is-visible', correct ? 'quiz__feedback--correct' : 'quiz__feedback--wrong');
+        });
+      });
+    }
+
+    // ============================================================
+    // 4. SORTIER-ÜBUNG (Drag & Drop) — Karten in Slots bleiben
+    //    danach weiterhin verschiebbar (Slot -> Slot oder zurück in die Bank)
+    // ============================================================
+    var sortChips = document.querySelectorAll('.dsg-sort-chip');
+    var sortSlots = document.querySelectorAll('.dsg-sort-slot');
+    var sortBankEl = document.getElementById('dsg-sort-bank');
+    var sortFeedback = document.getElementById('dsg-sort-feedback');
+    var sortDragPayload = null; // { id, label, sourceSlot }
+
+    function sortChipLabel(id) {
+      var chip = Array.from(sortChips).find(function (c) { return c.dataset.id === id; });
+      return chip ? chip.textContent : '';
+    }
+
+    function sortClearSlot(slot) {
+      slot.innerHTML = '<span>' + slot.dataset.pos.padStart(2, '0') + '</span><span class="dsg-sort-slot__placeholder">hier ablegen</span>';
+      delete slot.dataset.current;
+      slot.draggable = false;
+      slot.classList.remove('filled-correct', 'filled-wrong');
+    }
+
+    function sortFillSlot(slot, id, label) {
+      slot.innerHTML = '<span>' + slot.dataset.pos.padStart(2, '0') + '</span>' + label;
+      slot.dataset.current = id;
+      slot.draggable = true;
+      slot.classList.remove('filled-correct', 'filled-wrong');
+    }
+
+    sortChips.forEach(function (chip) {
+      chip.addEventListener('dragstart', function () {
+        sortDragPayload = { id: chip.dataset.id, label: chip.textContent, sourceSlot: null };
+        chip.style.opacity = '0.5';
+      });
+      chip.addEventListener('dragend', function () { chip.style.opacity = ''; sortDragPayload = null; });
+    });
+
+    sortSlots.forEach(function (slot) {
+      slot.addEventListener('dragstart', function () {
+        if (!slot.dataset.current) return;
+        sortDragPayload = {
+          id: slot.dataset.current,
+          label: sortChipLabel(slot.dataset.current),
+          sourceSlot: slot
+        };
+        slot.style.opacity = '0.5';
+      });
+      slot.addEventListener('dragend', function () { slot.style.opacity = ''; sortDragPayload = null; });
+
+      slot.addEventListener('dragover', function (e) { e.preventDefault(); slot.classList.add('over'); });
+      slot.addEventListener('dragleave', function () { slot.classList.remove('over'); });
+      slot.addEventListener('drop', function (e) {
+        e.preventDefault();
+        slot.classList.remove('over');
+        if (!sortDragPayload || sortDragPayload.sourceSlot === slot) return;
+
+        var incoming = sortDragPayload;
+
+        if (slot.dataset.current) {
+          var displacedId = slot.dataset.current;
+          if (incoming.sourceSlot) {
+            sortFillSlot(incoming.sourceSlot, displacedId, sortChipLabel(displacedId));
+          } else {
+            var displacedChip = Array.from(sortChips).find(function (c) { return c.dataset.id === displacedId; });
+            if (displacedChip) displacedChip.classList.remove('used');
+          }
+        } else if (incoming.sourceSlot) {
+          sortClearSlot(incoming.sourceSlot);
+        }
+
+        sortFillSlot(slot, incoming.id, incoming.label);
+
+        if (!incoming.sourceSlot) {
+          var chipEl = Array.from(sortChips).find(function (c) { return c.dataset.id === incoming.id; });
+          if (chipEl) chipEl.classList.add('used');
+        }
+
+        sortFeedback.textContent = '';
+        sortFeedback.className = 'quiz__feedback';
+      });
+    });
+
+    if (sortBankEl) {
+      sortBankEl.addEventListener('dragover', function (e) { e.preventDefault(); });
+      sortBankEl.addEventListener('drop', function (e) {
+        e.preventDefault();
+        if (sortDragPayload && sortDragPayload.sourceSlot) {
+          var chipEl = Array.from(sortChips).find(function (c) { return c.dataset.id === sortDragPayload.id; });
+          if (chipEl) chipEl.classList.remove('used');
+          sortClearSlot(sortDragPayload.sourceSlot);
+        }
+      });
+    }
+
+    var sortCheckBtn = document.getElementById('dsg-sort-check');
+    if (sortCheckBtn) {
+      sortCheckBtn.addEventListener('click', function () {
+        var allCorrect = true;
+        sortSlots.forEach(function (slot) {
+          var filled = slot.dataset.current || '';
+          slot.classList.remove('filled-correct', 'filled-wrong');
+          if (filled === slot.dataset.answer) {
+            slot.classList.add('filled-correct');
+          } else {
+            slot.classList.add('filled-wrong');
+            allCorrect = false;
+          }
+        });
+        sortFeedback.classList.add('is-visible');
+        if (allCorrect) {
+          sortFeedback.classList.add('quiz__feedback--correct');
+          sortFeedback.classList.remove('quiz__feedback--wrong');
+          sortFeedback.textContent = 'Richtig sortiert: Analyse, Recherche, Entwurf, Umsetzung.';
+        } else {
+          sortFeedback.classList.add('quiz__feedback--wrong');
+          sortFeedback.classList.remove('quiz__feedback--correct');
+          sortFeedback.textContent = 'Noch nicht ganz richtig — überprüfe die Reihenfolge.';
+        }
+      });
+    }
+
+    var sortResetBtn = document.getElementById('dsg-sort-reset');
+    if (sortResetBtn) {
+      sortResetBtn.addEventListener('click', function () {
+        sortSlots.forEach(function (slot) { sortClearSlot(slot); });
+        sortChips.forEach(function (chip) { chip.classList.remove('used'); });
+        sortFeedback.textContent = '';
+        sortFeedback.className = 'quiz__feedback';
+      });
+    }
+
+    // ============================================================
+    // 6. PRODUKT-EXPLORER (Komponente aus quiz-v2.html)
+    // ============================================================
+    var explItems = [
+      { id: 'hocker', label: 'Ulmer\nHocker', title: 'Ulmer Hocker',
+        desc: 'Sechs Teile Holz, ein Rundstab — kein Leim, keine Schrauben. Sitz, Beistelltisch, Tablett: ein Objekt, drei Funktionen.',
+        year: '1954', author: 'Max Bill · Hans Gugelot · Paul Hildinger',
+        image: '../assets/images/design/Ulmer%20Hocker%20neu.jpg' },
+      { id: 'tierbaukasten', label: 'Tier-\nbaukasten', title: 'Tierbaukasten',
+        desc: 'Ein modulares Spielzeug-System aus geometrischen Grundformen. Tier-Körper zusammensetzbar ohne Leim oder Schrauben — Funktion und Spiel in einem Objekt.',
+        year: 'ca. 1960', author: 'HfG Ulm',
+        image: '../assets/images/design/Tierbaukasten%201.jpeg' },
+      { id: 'aschenbecher', label: 'Stapelb.\nAschenb.', title: 'Stapelbarer Aschenbecher',
+        desc: 'Gleiche Form, stapelbar, platzsparend. Serienproduktion ist von Anfang an mitgedacht — Funktion bestimmt jede Kurve.',
+        year: 'ca. 1960', author: 'HfG Ulm',
+        image: '../assets/images/design/Stapelbarer%20Aschenbecher.jpeg' },
+      { id: 'regal', label: 'Regal-\nsystem 606', title: 'Regalsystem 606',
+        desc: 'Modular, kombinierbar, langlebig. Das Regal wächst mit dem Leben — ein System statt eines Möbelstücks.',
+        year: '1960', author: 'Dieter Rams',
+        image: null },
+      { id: 'sk4', label: 'SK 4\nRadio', title: 'SK 4 Radio',
+        desc: '„Schneewittchensarg" — Technik wird sichtbar, nicht versteckt. Transparenz als Designhaltung.',
+        year: '1956', author: 'Dieter Rams · Hans Gugelot',
+        image: '../assets/images/design/braun-sk4.webp' },
+      { id: 'braunt3', label: 'Braun\nT 3', title: 'Braun T 3',
+        desc: 'Tragbares Radio. Klare Bedienung, ruhige Geometrie, präzise Produktgrafik. Vorbild für das iPod-Click-Wheel.',
+        year: '1958', author: 'Dieter Rams',
+        image: '../assets/images/design/braun-t3-neu.png' }
+    ];
+
+    var explMap = document.getElementById('dsg-expl-map');
+    var explPanel = document.getElementById('dsg-expl-panel');
+
+    if (explMap && explPanel) {
+      var MAP_W = 500, MAP_H = 520, CX = MAP_W / 2, CY = MAP_H / 2;
+      var RADIUS_X = 220, RADIUS_Y = 205;
+      var N = explItems.length;
+
+      var eSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      eSvg.setAttribute('class', 'qv2-expl-svg');
+      eSvg.setAttribute('viewBox', '0 0 ' + MAP_W + ' ' + MAP_H);
+      explMap.appendChild(eSvg);
+
+      var eCenterBtn = document.createElement('button');
+      eCenterBtn.type = 'button';
+      eCenterBtn.className = 'qv2-expl-node qv2-expl-node--center is-active';
+      eCenterBtn.style.left = (CX / MAP_W * 100) + '%';
+      eCenterBtn.style.top = (CY / MAP_H * 100) + '%';
+      eCenterBtn.innerHTML = '<div class="qv2-expl-mark" aria-hidden="true"><span>H</span><span>F</span><span>G</span><span>U</span><span>L</span><span>M</span></div>';
+      eCenterBtn.setAttribute('aria-label', 'HfG Ulm — Übersicht');
+      explMap.appendChild(eCenterBtn);
+
+      var eOuterBtns = [], eLines = [];
+      explItems.forEach(function (item, i) {
+        var angle = (i * (360 / N) - 90) * (Math.PI / 180);
+        var nx = Math.round(CX + RADIUS_X * Math.cos(angle));
+        var ny = Math.round(CY + RADIUS_Y * Math.sin(angle));
+
+        var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', CX); line.setAttribute('y1', CY);
+        line.setAttribute('x2', nx); line.setAttribute('y2', ny);
+        line.setAttribute('class', 'qv2-expl-line');
+        eSvg.appendChild(line);
+        eLines.push(line);
+
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'qv2-expl-node qv2-expl-node--outer';
+        btn.style.left = (nx / MAP_W * 100) + '%';
+        btn.style.top = (ny / MAP_H * 100) + '%';
+        btn.innerHTML = '<span class="qv2-expl-node__index">' + String(i + 1).padStart(2, '0') + '</span>' +
+          '<span class="qv2-expl-node__label">' + item.label.replace('\n', '<br>') + '</span>';
+        btn.setAttribute('aria-label', item.title);
+        explMap.appendChild(btn);
+        eOuterBtns.push(btn);
+
+        btn.addEventListener('click', function () { explSelect(item, btn); });
+      });
+
+      function explImageMarkup(item, big) {
+        if (item.image) {
+          return '<img src="' + item.image + '" alt="' + item.title + '">';
+        }
+        return '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--color-black);color:var(--color-white);font-family:var(--font-heading);font-size:' + (big ? '22px' : '18px') + ';text-align:center;padding:var(--space-sm);">Regalsystem<br>606</div>';
+      }
+
+      function explReset() {
+        eOuterBtns.forEach(function (b) { b.classList.remove('is-active'); });
+        eLines.forEach(function (l) { l.classList.remove('is-active'); });
+        eCenterBtn.classList.add('is-active');
+        explPanel.innerHTML =
+          '<div class="qv2-expl-hero">' +
+            '<figure class="qv2-expl-hero-fig"><img src="../assets/images/HfG-Grundlehre-Tomás-Maldonado-in-der-Grundlehre-Foto-Ernst-Hahn-HfG-Archiv-480x342.jpg" alt="Studierende und Lehrende an der HfG Ulm"></figure>' +
+            '<div class="qv2-expl-hero-info">' +
+              '<span class="label label--orange">Produkte erkunden</span>' +
+              '<h3>Objekt auswählen</h3>' +
+              '<p class="body-text">Wähle einen der sechs Kreise aus und entdecke den Entwurf, seine Idee und seinen gestalterischen Kontext.</p>' +
+            '</div>' +
+          '</div>';
+      }
+
+      function explSelect(item, btn) {
+        eOuterBtns.forEach(function (b) { b.classList.remove('is-active'); });
+        eLines.forEach(function (l) { l.classList.remove('is-active'); });
+        eCenterBtn.classList.remove('is-active');
+        btn.classList.add('is-active');
+
+        explPanel.innerHTML =
+          '<div class="qv2-expl-reveal">' +
+            '<figure class="qv2-expl-reveal__image">' + explImageMarkup(item) + '</figure>' +
+            '<div class="qv2-expl-reveal__body">' +
+              '<span class="label label--orange">Ausgewählt</span>' +
+              '<h3>' + item.title + '</h3>' +
+              '<p class="body-text">' + item.desc + '</p>' +
+              '<p class="dsg-expl-meta">' + item.year + ' · ' + item.author + '</p>' +
+            '</div>' +
+          '</div>';
+      }
+
+      eCenterBtn.addEventListener('click', explReset);
+      explReset();
+    }
+
+    // ============================================================
+    // 7. LÜCKENTEXT (1:1 aus quiz-v2.js)
+    // ============================================================
+    var gapSlots = document.querySelectorAll('.qv2-gap-slot[data-answer]');
+    var gapChips = document.querySelectorAll('.qv2-gap-chip[draggable]');
+    var gapFeedback = document.getElementById('gap-feedback');
+    var gapDragging = null;
+
+    gapChips.forEach(function (chip) {
+      chip.addEventListener('dragstart', function (e) {
+        gapDragging = chip;
+        e.dataTransfer.setData('text/plain', chip.dataset.word);
+        chip.style.opacity = '0.5';
+      });
+      chip.addEventListener('dragend', function () { chip.style.opacity = ''; gapDragging = null; });
+    });
+
+    gapSlots.forEach(function (slot) {
+      slot.addEventListener('dragover', function (e) { e.preventDefault(); slot.classList.add('over'); });
+      slot.addEventListener('dragleave', function () { slot.classList.remove('over'); });
+      slot.addEventListener('drop', function (e) {
+        e.preventDefault();
+        slot.classList.remove('over');
+        var word = e.dataTransfer.getData('text/plain');
+
+        if (slot.dataset.current) {
+          var prev = Array.from(gapChips).find(function (c) { return c.dataset.word === slot.dataset.current; });
+          if (prev) prev.classList.remove('used');
+        }
+
+        slot.textContent = word;
+        slot.dataset.current = word;
+        slot.classList.remove('filled-correct', 'filled-wrong');
+        if (gapDragging) gapDragging.classList.add('used');
+        gapFeedback.textContent = '';
+        gapFeedback.className = 'quiz__feedback';
+      });
+    });
+
+    var gapCheckBtn = document.getElementById('gap-check');
+    if (gapCheckBtn) {
+      gapCheckBtn.addEventListener('click', function () {
+        var allCorrect = true;
+        gapSlots.forEach(function (slot) {
+          var filled = slot.dataset.current || '';
+          slot.classList.remove('filled-correct', 'filled-wrong');
+          if (filled === slot.dataset.answer) {
+            slot.classList.add('filled-correct');
+          } else {
+            slot.classList.add('filled-wrong');
+            allCorrect = false;
+          }
+        });
+        gapFeedback.classList.add('is-visible');
+        if (allCorrect) {
+          gapFeedback.classList.add('quiz__feedback--correct');
+          gapFeedback.classList.remove('quiz__feedback--wrong');
+          gapFeedback.textContent = 'Alle Lücken richtig ausgefüllt.';
+        } else {
+          gapFeedback.classList.add('quiz__feedback--wrong');
+          gapFeedback.classList.remove('quiz__feedback--correct');
+          gapFeedback.textContent = 'Nicht alle Lücken stimmen — überprüf deine Antworten.';
+        }
+      });
+    }
+
+    var gapResetBtn = document.getElementById('gap-reset');
+    if (gapResetBtn) {
+      gapResetBtn.addEventListener('click', function () {
+        gapSlots.forEach(function (slot) {
+          slot.innerHTML = '&nbsp;';
+          delete slot.dataset.current;
+          slot.classList.remove('filled-correct', 'filled-wrong');
+        });
+        gapChips.forEach(function (chip) { chip.classList.remove('used'); });
+        gapFeedback.textContent = '';
+        gapFeedback.className = 'quiz__feedback';
+      });
+    }
+
+    // ============================================================
+    // 8. STUDENTENPROJEKTE
+    // ============================================================
+    var studProjects = [
+      { title: 'Bushaltestelle', meta: 'Produktgestaltung · System',
+        desc: 'Entwurf eines modularen Haltestellensystems. Die Grundform wird zur Serie — gleiche Einheit, variables System.',
+        imgs: ['Bushaltestelle%201.jpeg.jpg', 'Bushaltestelle%202.jpeg', 'Bushaltestelle%203.jpeg', 'Bushaltestelle%20info.jpeg'] },
+      { title: 'Holzstudie', meta: 'Grundlehre · Werkstatt',
+        desc: 'Paul Hildinger mit Studierenden in der Holzwerkstatt der HfG, 1958. Eine skulpturale Formstudie aus Holz — Geometrie als Erkenntnismittel.',
+        imgs: ['Studierendenkunst2.png', 'Studierenden%20kunst.png'] },
+      { title: 'Handbohrer', meta: 'Produktgestaltung · Werkzeug',
+        desc: 'Wie lässt sich ein komplexes Werkzeug auf seine wesentlichen Funktionen reduzieren? Modell, Schnittzeichnung und Objekt zeigen den Weg vom Konzept zum Gegenstand.',
+        imgs: ['Studierendenkunst3.png', 'vorher%202.png', 'vorher%201%20kunst%20.png'] },
+      { title: 'Nicht orientierbare Fläche', meta: 'Grundlehre · Formtheorie',
+        desc: 'Skulpturale Auseinandersetzung mit nicht-orientierbaren Flächen. Ein Denkmodell, das die Wahrnehmung herausfordert.',
+        imgs: ['Nicht%20orientierbare%20fl%C3%A4che%201.jpeg', 'Nicht%20orientierbare%20fl%C3%A4che%202.jpeg', 'Nicht%20orientierbare%20fl%C3%A4che%203.jpeg'] },
+      { title: 'Brillengläser', meta: 'Produktgestaltung · Optik',
+        desc: 'Funktion, Material und Tragekomfort werden systematisch analysiert, bevor Form entsteht.',
+        imgs: ['brille%201.jpeg', 'brille%202.jpeg', 'brille%203.jpeg'] },
+      { title: 'Donnerstagvorträge', meta: 'Visuelle Kommunikation · Plakatgestaltung',
+        desc: 'Typografisches Plakatsystem für die wöchentliche Vortragsreihe der HfG. Klare Hierarchie, kein Ornament.',
+        imgs: ['Plakat%20Donnerstagvortr%C3%A4ge%20im%20November.jpeg', 'Donnerstagvortr%C3%A4ge%202.jpeg', 'Donnerstagvortr%C3%A4ge%203.jpeg', 'Donnerstagvortr%C3%A4ge%204.jpeg', 'Donnerstragvortr%C3%A4ge5.jpeg', 'Donnerstagvortr%C3%A4ge%206.jpeg'] },
+      { title: 'Fotografie als Methode', meta: 'Visuelle Forschung · Grundlehre',
+        desc: 'Fotografie als Analysewerkzeug — nicht als Kunst, sondern als präzises Mittel zur Untersuchung von Raum, Oberfläche und Proportion.',
+        imgs: ['Fotografie%201.jpeg', 'Fotografie%202.jpeg', 'Fotografie%203.jpeg', 'Fotografie%204.jpeg', 'Fotografie%205.jpeg'] },
+      { title: 'Geometrie-Studie', meta: 'Grundlehre · Formanalyse',
+        desc: 'Wie entstehen aus Punkt, Linie und Fläche Objekte mit Charakter und Ordnung? Grundlegende Formstudie als Einstieg in systematisches Gestalten.',
+        imgs: ['Geometrie%201.jpeg', 'Geometrie%202.jpeg', 'Geometrie%203.jpeg'] },
+      { title: 'Fleischmesser', meta: 'Produktgestaltung · Werkzeug',
+        desc: 'Griff, Klinge und Balance werden nicht einzeln, sondern als ganzheitliches System entworfen.',
+        imgs: ['Fleischmesserabteilung%20Produktgestalten%20studierendenkunst.png', 'Info%20Fleischmesser%20geometrie.png', 'Fleischmesser%20detail.png'] }
+    ];
+
+    var studStrip   = document.getElementById('dsg-stud-strip');
+    var studDetail  = document.getElementById('dsg-stud-detail');
+    var studDotsBox = document.getElementById('dsg-stud-dots');
+    var studDeptBox = document.getElementById('dsg-stud-depts');
+
+    var dImg   = document.getElementById('dsg-stud-d-img');
+    var dMeta  = document.getElementById('dsg-stud-d-meta');
+    var dTitle = document.getElementById('dsg-stud-d-title');
+    var dDesc  = document.getElementById('dsg-stud-d-desc');
+    var dIdx   = document.getElementById('dsg-stud-d-idx');
+    var dNav   = document.getElementById('dsg-stud-d-nav');
+    var dPrev  = document.getElementById('dsg-stud-d-prev');
+    var dNext  = document.getElementById('dsg-stud-d-next');
+    var dClose = document.getElementById('dsg-stud-detail-close');
+
+    if (studStrip && studDetail) {
+
+      var activeIdx = -1, imgIdx = 0, imgs = [];
+      var thumbEls = [], dotEls = [];
+      var projectDept = function (proj) { return (proj.meta || '').split(' · ')[0] || 'Sonstige'; };
+      var activeDept = 'Alle';
+      var displayedProjects = studProjects.slice();
+
+      function closeStudDetail() {
+        studDetail.classList.remove('open');
+        studDetail.setAttribute('aria-hidden', 'true');
+        thumbEls.forEach(function (t) { t.classList.remove('active'); });
+        activeIdx = -1;
+      }
+
+      function renderDeptFilters() {
+        if (!studDeptBox) return;
+        var seen = {}, depts = ['Alle'];
+        studProjects.forEach(function (p) {
+          var d = projectDept(p);
+          if (!seen[d]) { seen[d] = true; depts.push(d); }
+        });
+        studDeptBox.innerHTML = '';
+        depts.forEach(function (dept) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'dsg-stud-dept-btn' + (dept === activeDept ? ' active' : '');
+          b.textContent = dept;
+          b.addEventListener('click', function () { sortByDept(dept); });
+          studDeptBox.appendChild(b);
+        });
+      }
+
+      function updateDeptButtons() {
+        if (!studDeptBox) return;
+        studDeptBox.querySelectorAll('.dsg-stud-dept-btn').forEach(function (b) {
+          b.classList.toggle('active', b.textContent === activeDept);
+        });
+      }
+
+      function sortByDept(dept) {
+        activeDept = dept;
+        displayedProjects = dept === 'Alle'
+          ? studProjects.slice()
+          : studProjects.filter(function (p) { return projectDept(p) === dept; })
+              .concat(studProjects.filter(function (p) { return projectDept(p) !== dept; }));
+        renderStrip();
+        closeStudDetail();
+        updateDeptButtons();
+        studStrip.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+
+      function renderStrip() {
+        studStrip.innerHTML = '';
+        if (studDotsBox) studDotsBox.innerHTML = '';
+        thumbEls.length = 0;
+        dotEls.length = 0;
+
+        displayedProjects.forEach(function (proj, i) {
+          var t = document.createElement('div');
+          t.className = 'dsg-stud-thumb';
+          t.innerHTML =
+            '<div class="dsg-stud-thumb-bg" style="background-image:url(\'../assets/images/design/' + proj.imgs[0] + '\')"></div>' +
+            '<div class="dsg-stud-thumb-foot">' +
+              '<span class="dsg-stud-thumb-num">' + String(i + 1).padStart(2, '0') + '</span>' +
+              '<span class="dsg-stud-thumb-name">' + proj.title + '</span>' +
+            '</div>';
+          t.addEventListener('click', function () { if (hasDragged) return; openDetail(i); });
+          studStrip.appendChild(t);
+          thumbEls.push(t);
+
+          if (studDotsBox) {
+            var d = document.createElement('button');
+            d.type = 'button';
+            d.className = 'dsg-stud-dot';
+            d.setAttribute('aria-label', proj.title);
+            d.addEventListener('click', function () { scrollToThumb(i); });
+            studDotsBox.appendChild(d);
+            dotEls.push(d);
+          }
+        });
+        scrollToThumb(0);
+      }
+
+      function scrollToThumb(i) {
+        var thumb = thumbEls[i];
+        if (!thumb) return;
+        studStrip.scrollTo({ left: thumb.offsetLeft - 2, behavior: 'smooth' });
+        dotEls.forEach(function (d, di) { d.classList.toggle('active', di === i); });
+      }
+
+      studStrip.addEventListener('scroll', function () {
+        var mid = studStrip.scrollLeft + studStrip.clientWidth / 2;
+        var closest = 0, closestDist = Infinity;
+        thumbEls.forEach(function (t, i) {
+          var dist = Math.abs(t.offsetLeft + t.offsetWidth / 2 - mid);
+          if (dist < closestDist) { closestDist = dist; closest = i; }
+        });
+        dotEls.forEach(function (d, di) { d.classList.toggle('active', di === closest); });
+      }, { passive: true });
+
+      function openDetail(i) {
+        activeIdx = i;
+        imgIdx = 0;
+        var project = displayedProjects[i];
+        imgs = project.imgs;
+        thumbEls.forEach(function (t, ti) { t.classList.toggle('active', ti === i); });
+        dMeta.textContent = project.meta;
+        dTitle.textContent = project.title;
+        dDesc.textContent = project.desc;
+        if (dNav) dNav.style.display = imgs.length <= 1 ? 'none' : 'flex';
+        updateImg();
+        studDetail.classList.add('open');
+        studDetail.setAttribute('aria-hidden', 'false');
+        setTimeout(function () { studDetail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
+      }
+
+      function updateImg() {
+        if (dImg) dImg.src = '../assets/images/design/' + imgs[imgIdx];
+        if (dIdx) dIdx.textContent = (imgIdx + 1) + ' / ' + imgs.length;
+      }
+
+      if (dPrev) dPrev.addEventListener('click', function () { imgIdx = (imgIdx - 1 + imgs.length) % imgs.length; updateImg(); });
+      if (dNext) dNext.addEventListener('click', function () { imgIdx = (imgIdx + 1) % imgs.length; updateImg(); });
+      if (dClose) dClose.addEventListener('click', closeStudDetail);
+
+      // Maus-Drag zum Scrollen der Leiste
+      var isDragging = false, dragX = 0, dragScroll = 0, hasDragged = false;
+      studStrip.addEventListener('mousedown', function (e) {
+        isDragging = true; hasDragged = false;
+        dragX = e.pageX; dragScroll = studStrip.scrollLeft;
+        studStrip.style.cursor = 'grabbing';
+      });
+      window.addEventListener('mouseup', function () {
+        isDragging = false;
+        studStrip.style.cursor = '';
+        setTimeout(function () { hasDragged = false; }, 50);
+      });
+      studStrip.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        var walk = e.pageX - dragX;
+        if (Math.abs(walk) > 5) hasDragged = true;
+        studStrip.scrollLeft = dragScroll - walk;
+      });
+
+      renderDeptFilters();
+      renderStrip();
+    }
+
+    // ============================================================
+    // 9. ÜBUNGEN — Tabs + Ergebnis-Slider
+    // ============================================================
+    var dsgTabs = document.querySelectorAll('.dsg-tab');
+    var dsgPanels = document.querySelectorAll('.dsg-tab-panel');
+    var dsgTabList = document.querySelector('.dsg-tabs');
+    var dsgTabIndicator = document.querySelector('.dsg-tab-indicator');
+    var dsgTabTrack = document.querySelector('.dsg-tab-track');
+
+    function positionTabIndicator(tab) {
+      if (!dsgTabIndicator || !dsgTabList || !tab) return;
+      dsgTabIndicator.style.width = tab.offsetWidth + 'px';
+      dsgTabIndicator.style.transform = 'translateX(' + tab.offsetLeft + 'px)';
+    }
+
+    function activateDsgTab(index, moveFocus) {
+      index = (index + dsgTabs.length) % dsgTabs.length;
+
+      dsgTabs.forEach(function (tab, tabIndex) {
+        var isActive = tabIndex === index;
+        tab.classList.toggle('is-active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        tab.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
+
+      dsgPanels.forEach(function (panel, panelIndex) {
+        var isActive = panelIndex === index;
+        panel.classList.toggle('is-active', isActive);
+        panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        panel.toggleAttribute('inert', !isActive);
+      });
+
+      if (dsgTabTrack) {
+        dsgTabTrack.style.transform = 'translate3d(-' + (index * 100) + '%, 0, 0)';
+      }
+
+      positionTabIndicator(dsgTabs[index]);
+      if (moveFocus) dsgTabs[index].focus();
+    }
+
+    dsgTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activateDsgTab(Number(tab.dataset.tab), false);
+      });
+    });
+
+    if (dsgTabList) {
+      dsgTabList.addEventListener('keydown', function (event) {
+        var activeIndex = Array.prototype.indexOf.call(dsgTabs, document.activeElement);
+        if (activeIndex < 0) return;
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          activateDsgTab(activeIndex + 1, true);
+        } else if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          activateDsgTab(activeIndex - 1, true);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          activateDsgTab(0, true);
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          activateDsgTab(dsgTabs.length - 1, true);
+        }
+      });
+    }
+
+    if (dsgTabs.length) {
+      dsgTabList.classList.add('is-enhanced');
+      activateDsgTab(0, false);
+      window.addEventListener('resize', function () {
+        positionTabIndicator(document.querySelector('.dsg-tab.is-active'));
+      });
+    }
+
+    var resFigs = document.querySelectorAll('#dsg-res-stage figure');
+    var resCounter = document.getElementById('dsg-res-counter');
+    var resIdx = 0;
+    function showResImg(i) {
+      resIdx = (i + resFigs.length) % resFigs.length;
+      resFigs.forEach(function (f, idx) { f.classList.toggle('active', idx === resIdx); });
+      resCounter.textContent = (resIdx + 1) + ' / ' + resFigs.length;
+    }
+    var resPrev = document.getElementById('dsg-res-prev');
+    var resNext = document.getElementById('dsg-res-next');
+    if (resPrev) resPrev.addEventListener('click', function () { showResImg(resIdx - 1); });
+    if (resNext) resNext.addEventListener('click', function () { showResImg(resIdx + 1); });
+
+    // ============================================================
+    // 10. MEMORY (1:1 aus quiz-v2.js, Inhalt angepasst)
+    // ============================================================
+    var memPairs = [
+      { id: 'p1', a: { kicker: 'Gestalter', label: 'Max Bill' }, b: { kicker: 'Werkbild', label: 'Ulmer Hocker', image: '../assets/images/design/Ulmer%20Hocker%20neu.jpg' } },
+      { id: 'p2', a: { kicker: 'Gestalter', label: 'Dieter Rams' }, b: { kicker: 'Werkbild', label: 'Braun T 3', image: '../assets/images/design/braun-t3-neu.png' } },
+      { id: 'p3', a: { kicker: 'Gestalter', label: 'Hans Gugelot' }, b: { kicker: 'Werkbild', label: 'SK 4 Radio', image: '../assets/images/design/braun-sk4.webp' } },
+      { id: 'p4', a: { kicker: 'Gestalter', label: 'Otl Aicher' }, b: { kicker: 'Werkbild', label: 'Donnerstagvorträge', image: '../assets/images/design/Plakat%20Donnerstagvortr%C3%A4ge%20im%20November.jpeg' } }
+    ];
+
+    var memBoard = document.getElementById('mem-board');
+    var memMovesEl = document.getElementById('mem-moves');
+    var memFoundEl = document.getElementById('mem-found');
+    var memCompleteEl = document.getElementById('mem-complete');
+    var memComplTxt = document.getElementById('mem-complete-text');
+    var memResetBtn = document.getElementById('mem-reset');
+    var memResetBtn2 = document.getElementById('mem-reset-2');
+    var memState = { first: null, lock: false, moves: 0, found: 0 };
+
+    function memShuffle(arr) {
+      var a = arr.slice();
+      for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = a[i]; a[i] = a[j]; a[j] = t;
+      }
+      return a;
+    }
+
+    var memFrontHTML = '<div class="qv2-mem-mark" aria-hidden="true"><span>H</span><span>F</span><span>G</span><span>U</span><span>L</span><span>M</span></div>';
+
+    function memRender() {
+      if (!memBoard) return;
+      memBoard.innerHTML = '';
+      memState = { first: null, lock: false, moves: 0, found: 0 };
+      if (memMovesEl) memMovesEl.textContent = '0';
+      if (memFoundEl) memFoundEl.textContent = '0';
+      if (memCompleteEl) memCompleteEl.style.display = 'none';
+
+      var cards = [];
+      memPairs.forEach(function (p) {
+        cards.push({ pair: p.id, kicker: p.a.kicker, label: p.a.label, image: p.a.image });
+        cards.push({ pair: p.id, kicker: p.b.kicker, label: p.b.label, image: p.b.image });
+      });
+
+      memShuffle(cards).forEach(function (c) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'qv2-mem-card';
+        btn.dataset.pair = c.pair;
+        btn.setAttribute('aria-label', 'Karte aufdecken');
+        var imgContent = c.image ? '<img class="qv2-mem-img-real" src="' + c.image + '" alt="' + c.label + '">' : '';
+        btn.innerHTML =
+          '<div class="qv2-mem-face qv2-mem-front">' + memFrontHTML + '</div>' +
+          '<div class="qv2-mem-face qv2-mem-back">' + imgContent +
+            '<span class="qv2-mem-kicker">' + c.kicker + '</span>' +
+            '<span class="qv2-mem-label">' + c.label + '</span>' +
+          '</div>';
+        btn.addEventListener('click', function () { memClick(btn); });
+        memBoard.appendChild(btn);
+      });
+    }
+
+    function memClick(card) {
+      if (memState.lock) return;
+      if (card.classList.contains('flipped') || card.classList.contains('matched')) return;
+
+      card.classList.add('flipped');
+
+      if (!memState.first) { memState.first = card; return; }
+
+      memState.moves++;
+      if (memMovesEl) memMovesEl.textContent = memState.moves;
+      memState.lock = true;
+
+      var a = memState.first, b = card;
+      if (a.dataset.pair === b.dataset.pair) {
+        setTimeout(function () {
+          a.classList.add('matched'); b.classList.add('matched');
+          memState.found++;
+          if (memFoundEl) memFoundEl.textContent = memState.found;
+          memState.first = null; memState.lock = false;
+          if (memState.found === memPairs.length) {
+            if (memCompleteEl) {
+              if (memComplTxt) memComplTxt.textContent = memState.moves + ' Züge. Du kennst die Paare.';
+              memCompleteEl.style.display = 'flex';
+            }
+          }
+        }, 300);
+      } else {
+        a.classList.add('mismatch'); b.classList.add('mismatch');
+        setTimeout(function () {
+          a.classList.remove('flipped', 'mismatch'); b.classList.remove('flipped', 'mismatch');
+          memState.first = null; memState.lock = false;
+        }, 900);
+      }
+    }
+
+    if (memResetBtn) memResetBtn.addEventListener('click', memRender);
+    if (memResetBtn2) memResetBtn2.addEventListener('click', memRender);
+    memRender();
+
+    // ============================================================
+    // 11. MULTIPLE-CHOICE-QUIZ (1:1 aus quiz-v2.js)
+    // ============================================================
+    var mcData = [
+      { q: 'Welches Produkt besteht aus sechs Holzteilen und einem Rundstab?',
+        opts: ['Braun T 3', 'Ulmer Hocker', 'Stapelbarer Aschenbecher', 'Regalsystem 606'], correct: 1,
+        ex: 'Der Ulmer Hocker zeigt mit wenigen Teilen gleich mehrere Funktionen: Sitz, Beistelltisch, Tablett.' },
+      { q: 'Welches Produkt steht besonders für „System statt Einzelstück"?',
+        opts: ['Regalsystem 606', 'SK 4 Radio', 'Tierbaukasten', 'Braun T 3'], correct: 0,
+        ex: 'Das Regalsystem 606 ist modular, kombinierbar und wächst mit dem Raum oder dem Leben mit.' },
+      { q: 'Warum passt das SK 4 Radio so gut zur Ulmer Haltung?',
+        opts: ['Weil Technik versteckt wird', 'Weil Transparenz und Ordnung sichtbar werden', 'Weil es möglichst verziert ist', 'Weil es nur als Dekoration dient'], correct: 1,
+        ex: 'Beim SK 4 wird Technik nicht versteckt. Die klare Ordnung macht das Produkt verständlich.' },
+      { q: 'Was zeigt der Tierbaukasten über Ulmer Design?',
+        opts: ['Dass Spielzeug keine Regeln braucht', 'Dass auch Spiel modular und systematisch gedacht werden kann', 'Dass Ornament wichtiger ist als Funktion', 'Dass jedes Teil einzeln funktionieren muss'], correct: 1,
+        ex: 'Der Tierbaukasten überträgt das Systemdenken der HfG sogar auf ein Spielzeug.' },
+      { q: 'Was macht den Stapelbaren Aschenbecher zum guten Produkt?',
+        opts: ['Ornament und Mode', 'Gleiche Form, stapelbar und von Anfang an für Serienproduktion gedacht', 'Möglichst komplizierte Bedienung', 'Ein einzelner auffälliger Effekt'], correct: 1,
+        ex: 'Serienproduktion ist von Anfang an mitgedacht — Funktion bestimmt jede Kurve.' }
+    ];
+
+    var mcIdx = 0, mcScore = 0, mcLocked = false;
+    var mcQuestion = document.getElementById('mc-question');
+    var mcOptions = document.getElementById('mc-options');
+    var mcFeedback = document.getElementById('mc-feedback');
+    var mcFooter = document.getElementById('mc-footer');
+    var mcNextBtn = document.getElementById('mc-next-btn');
+    var mcCurrentEl = document.getElementById('mc-current');
+    var mcActiveEl = document.getElementById('mc-active');
+    var mcResultEl = document.getElementById('mc-result');
+    var mcScoreDisplay = document.getElementById('mc-score-display');
+    var mcResultTitle = document.getElementById('mc-result-title');
+    var mcResultText = document.getElementById('mc-result-text');
+    var mcRetryBtn = document.getElementById('mc-retry');
+
+    function mcRender() {
+      if (!mcQuestion) return;
+      var item = mcData[mcIdx];
+      mcLocked = false;
+      mcCurrentEl.textContent = String(mcIdx + 1).padStart(2, '0');
+      mcQuestion.textContent = item.q;
+      mcFeedback.textContent = '';
+      mcFeedback.className = 'quiz__feedback';
+      mcFooter.style.display = 'none';
+      mcOptions.innerHTML = '';
+      item.opts.forEach(function (opt, i) {
+        var div = document.createElement('div');
+        div.className = 'quiz__option';
+        div.innerHTML = '<span class="quiz__radio"></span><span class="quiz__option-text">' + opt + '</span>';
+        div.addEventListener('click', function () { mcChoose(i); });
+        mcOptions.appendChild(div);
+      });
+    }
+
+    function mcChoose(chosen) {
+      if (mcLocked) return;
+      mcLocked = true;
+      var item = mcData[mcIdx];
+      var correct = chosen === item.correct;
+      if (correct) mcScore++;
+      var allOpts = mcOptions.querySelectorAll('.quiz__option');
+      allOpts.forEach(function (opt, i) {
+        opt.style.pointerEvents = 'none';
+        if (i === item.correct) opt.classList.add('is-correct');
+        else if (i === chosen && !correct) opt.classList.add('is-wrong');
+      });
+      mcFeedback.textContent = (correct ? 'Richtig. ' : 'Nicht ganz. ') + item.ex;
+      mcFeedback.classList.add('is-visible', correct ? 'quiz__feedback--correct' : 'quiz__feedback--wrong');
+      mcNextBtn.textContent = (mcIdx === mcData.length - 1) ? 'Ergebnis sehen' : 'Nächste Frage';
+      mcFooter.style.display = 'flex';
+    }
+
+    if (mcNextBtn) {
+      mcNextBtn.addEventListener('click', function () {
+        mcIdx++;
+        if (mcIdx >= mcData.length) mcShowResult(); else mcRender();
+      });
+    }
+
+    function mcShowResult() {
+      mcActiveEl.style.display = 'none';
+      mcResultEl.style.display = 'block';
+      mcScoreDisplay.textContent = mcScore + ' / ' + mcData.length;
+      if (mcScore === mcData.length) {
+        mcResultTitle.textContent = 'Perfekt. Du erkennst die Produkte.';
+        mcResultText.textContent = 'Alle fünf Fragen richtig. Du kannst die Objekte und ihre Designargumente sicher zuordnen.';
+      } else if (mcScore >= 3) {
+        mcResultTitle.textContent = 'Guter Produktblick.';
+        mcResultText.textContent = mcScore + ' von 5 richtig. Die wichtigsten Designargumente sitzen schon.';
+      } else {
+        mcResultTitle.textContent = 'Nochmal zu den Produkten.';
+        mcResultText.textContent = mcScore + ' von 5 richtig. Schau dir die Objektstrecke nochmal an.';
+      }
+    }
+
+    if (mcRetryBtn) {
+      mcRetryBtn.addEventListener('click', function () {
+        mcIdx = 0; mcScore = 0;
+        mcResultEl.style.display = 'none';
+        mcActiveEl.style.display = 'block';
+        mcRender();
+      });
+    }
+
+    mcRender();
+
+    // ============================================================
+    // 12. SCROLL-REVEAL — Kapitel-Köpfe, Zitate, Karten-Raster
+    // ============================================================
+    // ============================================================
+    // 11b. HOCKER ZUSAMMENBAUEN (Drag & Drop + Tap-Fallback)
+    // ============================================================
+    var hbStage = document.getElementById('hb-stage');
+    var hbBank = document.getElementById('hb-bank');
+    var hbStatus = document.getElementById('hb-status');
+    var hbReset = document.getElementById('hb-reset');
+    if (hbStage && hbBank && hbStatus) {
+      var hbChips = hbBank.querySelectorAll('.dsg-build__chip');
+      var hbTotal = hbChips.length;
+      var hbDragPart = null;
+
+      function hbUpdate() {
+        var placed = hbStage.querySelectorAll('.hb-part.is-placed').length;
+        var done = placed === hbTotal;
+        hbStatus.innerHTML = '<strong>' + placed + '</strong>\u2009/\u2009' + hbTotal +
+          ' Teilen \u00b7 0 Schrauben' + (done ? ' \u2014 fertig!' : '');
+      }
+      function hbPlace(part) {
+        var el = hbStage.querySelector('.hb-part[data-part="' + part + '"]');
+        var chip = hbBank.querySelector('.dsg-build__chip[data-part="' + part + '"]');
+        if (!el || (chip && chip.classList.contains('used'))) return;
+        el.classList.add('is-placed');
+        if (chip) chip.classList.add('used');
+        hbUpdate();
+      }
+
+      hbChips.forEach(function (chip) {
+        chip.addEventListener('dragstart', function () { hbDragPart = chip.dataset.part; chip.style.opacity = '0.5'; });
+        chip.addEventListener('dragend', function () { chip.style.opacity = ''; hbDragPart = null; });
+        chip.addEventListener('click', function () { hbPlace(chip.dataset.part); });
+      });
+
+      hbStage.addEventListener('dragover', function (e) { e.preventDefault(); hbStage.classList.add('drag-over'); });
+      hbStage.addEventListener('dragleave', function () { hbStage.classList.remove('drag-over'); });
+      hbStage.addEventListener('drop', function (e) {
+        e.preventDefault();
+        hbStage.classList.remove('drag-over');
+        if (hbDragPart) hbPlace(hbDragPart);
+      });
+
+      if (hbReset) hbReset.addEventListener('click', function () {
+        hbStage.querySelectorAll('.hb-part').forEach(function (p) { p.classList.remove('is-placed'); });
+        hbChips.forEach(function (c) { c.classList.remove('used'); });
+        hbUpdate();
+      });
+
+      hbUpdate();
+    }
+
+    var dsgReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Word-Rise vorbereiten: Text in .dsg-word > span aufsplitten (wie erbe)
+    document.querySelectorAll('.dsg-reveal-text').forEach(function (el) {
+      var nodes = Array.prototype.slice.call(el.childNodes);
+      el.innerHTML = '';
+      nodes.forEach(function (node) {
+        if (node.nodeType === 3) {
+          node.textContent.split(/(\s+)/).forEach(function (part) {
+            if (part === '') return;
+            if (/^\s+$/.test(part)) { el.appendChild(document.createTextNode(part)); return; }
+            var word = document.createElement('span'); word.className = 'dsg-word';
+            var inner = document.createElement('span'); inner.textContent = part;
+            word.appendChild(inner); el.appendChild(word);
+          });
+        } else if (node.nodeName === 'BR') {
+          el.appendChild(node);
+        } else {
+          var w = document.createElement('span'); w.className = 'dsg-word';
+          var wi = document.createElement('span'); wi.appendChild(node);
+          w.appendChild(wi); el.appendChild(w);
+        }
+      });
+    });
+
+    var revealEls = document.querySelectorAll('.dsg-reveal, .dsg-reveal-text');
+    var staggerEls = document.querySelectorAll('.dsg-stagger');
+    staggerEls.forEach(function (wrap) {
+      Array.prototype.forEach.call(wrap.children, function (child, i) {
+        child.style.transitionDelay = (i * 90) + 'ms';
+      });
+    });
+
+    if (!('IntersectionObserver' in window) || dsgReduceMotion) {
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+      staggerEls.forEach(function (el) { el.classList.add('is-visible'); });
+    } else {
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+      revealEls.forEach(function (el) { revealObserver.observe(el); });
+      staggerEls.forEach(function (el) { revealObserver.observe(el); });
+    }
+
+    // Text-Highlight (ee-mark): aktiviert sich beim Einscrollen
+    var dsgMarks = document.querySelectorAll('.dsg-mark');
+    if (!('IntersectionObserver' in window) || dsgReduceMotion) {
+      dsgMarks.forEach(function (m) { m.classList.add('is-active'); });
+    } else if (dsgMarks.length) {
+      var markObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('is-active'); markObserver.unobserve(entry.target); }
+        });
+      }, { threshold: 0.8 });
+      dsgMarks.forEach(function (m) { markObserver.observe(m); });
+    }
+
+    // Parallax: schwarze Trennfläche zwischen Methode-Timeline und Übung
+    var dividerLayer = document.querySelector('.dsg-methode-divider__layer');
+    var dividerBox = document.getElementById('dsg-methode-divider');
+    if (dividerLayer && dividerBox && !dsgReduceMotion) {
+      var dividerTicking = false;
+      function updateDividerParallax() {
+        dividerTicking = false;
+        var rect = dividerBox.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var progress = (vh - rect.top) / (vh + rect.height);
+        var offset = (progress - 0.5) * (rect.height * 0.28);
+        dividerLayer.style.transform = 'translate3d(0, ' + offset.toFixed(1) + 'px, 0)';
+      }
+      window.addEventListener('scroll', function () {
+        if (!dividerTicking) {
+          dividerTicking = true;
+          requestAnimationFrame(updateDividerParallax);
+        }
+      }, { passive: true });
+      window.addEventListener('resize', updateDividerParallax);
+      updateDividerParallax();
+    }
+
+  });
+  </script>
+
+</body>
+</html>

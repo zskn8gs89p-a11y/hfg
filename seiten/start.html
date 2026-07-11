@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1366">
+  <title>HfG Ulm — Start</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+
+  <style>
+    /* -------------------------------------------------------
+       START-SEITE — Spezifische Styles
+       Nur für diese Seite, nicht in andere kopieren.
+    ------------------------------------------------------- */
+
+    /* Seite ist statisch — kein Scrollen */
+    html, body {
+      overflow: hidden;
+      height: var(--canvas-h);        /* 1024px */
+      width: var(--canvas-w);         /* 1366px */
+    }
+
+    /* Hauptbereich füllt gesamten Viewport */
+    .start-wrapper {
+      position: relative;
+      width: var(--canvas-w);
+      height: var(--canvas-h);
+      overflow: hidden;
+      background: var(--color-white);
+    }
+
+    /* -------------------------------------------------------
+       TYPOGRAFIE — Großer Hintergrundtitel "HfG ULM"
+       Aufgeteilt auf zwei Zeilen, übergroß
+    ------------------------------------------------------- */
+    .start-bg-title {
+      font-family: var(--font-heading);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 1;
+
+      /* Padding links: Sidebar-Breite freilassen */
+      padding-left: var(--sidebar-w);
+    }
+
+    .start-bg-title__line {
+      font-family: var(--font-heading);
+      font-size: 340px;               /* Bewusst übergroß — füllt Breite */
+      font-weight: var(--fw-bold);
+      line-height: 0.88; 
+      color: var(--color-black);
+      text-transform: none;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    /* "HfG" oben links */
+    .start-bg-title__top {
+      padding-top: 60px;              /* Abstand zur Nav */
+      padding-left: 0;
+    }
+
+    /* "ULM" unten, leicht nach rechts */
+    .start-bg-title__bottom {
+      text-align: right;
+      padding-right: var(--sq-3);
+      padding-bottom: 0;
+    }
+
+    /* -------------------------------------------------------
+       3D-HOCKER — Canvas in der Mitte
+    ------------------------------------------------------- */
+    .start-3d {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;           /* Wird nach Three.js-Init auf auto gesetzt */
+    }
+
+    #hocker-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Fallback bevor 3D geladen ist */
+    .start-3d__placeholder {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: var(--sq-1);
+      height: var(--sq-1);
+      background: var(--color-orange);
+      border-radius: 8px;
+      opacity: 0.15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--fs-detail);
+      font-family: var(--font-body);
+      color: var(--color-orange);
+      letter-spacing: var(--ls-caps);
+      text-transform: uppercase;
+      opacity: 1;
+    }
+
+    /* -------------------------------------------------------
+       CONTENT-OVERLAY — Text + Button unten links
+    ------------------------------------------------------- */
+    /* CONTENT-OVERLAY — Grid-basiert */
+   /* CONTENT-OVERLAY — Grid-basiert */
+.start-content {
+  position: absolute;
+  bottom: var(--sq-2);
+  left: var(--sidebar-w);
+  right: 0;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gutter);
+  padding: 0 var(--sq-3);
+  align-items: end;
+}
+
+.start-content__left {
+  grid-column: 1 / 5;            /* Spalten 1–4: Label + Text */
+  display: flex;
+  flex-direction: column;
+  gap: var(--sq-5);
+}
+
+.start-content__right {
+  grid-column: 9 / 12;           /* Spalten 8–11: Button */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; 
+  margin-bottom: var(--sq-1);
+}
+
+   .start-content__label {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--color-orange);
+}
+
+    .start-content__text {
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      font-weight: var(--fw-bold);
+      line-height: 1.4;
+      color: var(--color-black);
+      margin: 0;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <!-- FORTSCHRITTSBALKEN — auf Startseite versteckt -->
+  <aside class="progress-sidebar" aria-label="Lesefortschritt" style="display: none;"></aside>
+
+  <!-- NAVIGATION -->
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <div class="nav-bar">
+      <a class="nav-link is-active" href="start.html"      data-page="start">Start</a>
+      <a class="nav-link"          href="geschichte.html"  data-page="geschichte">Geschichte</a>
+      <a class="nav-link"          href="lehre.html"       data-page="lehre">Lehre</a>
+      <a class="nav-link"          href="design.html"      data-page="design">Design</a>
+      <a class="nav-link"          href="erbe.html"        data-page="erbe">Erbe</a>
+    </div>
+  </nav>
+
+  <!-- HAUPT-WRAPPER -->
+  <div class="start-wrapper">
+
+    <!-- HINTERGRUND-TITEL "HfG ULM" -->
+    <div class="start-bg-title" aria-hidden="true">
+      <div class="start-bg-title__top">
+        <span class="start-bg-title__line">HfG</span>
+      </div>
+      <div class="start-bg-title__bottom">
+        <span class="start-bg-title__line">ULM</span>
+      </div>
+    </div>
+
+    <!-- 3D HOCKER -->
+    <div class="start-3d" id="start-3d">
+      <!-- Fallback bis GLB geladen -->
+      <div class="start-3d__placeholder" id="hocker-placeholder">
+        <span style="font-size: 11px; letter-spacing: 0.12em; color: rgba(0,0,0,0.3);">3D · Hocker</span>
+      </div>
+      <!-- Three.js Canvas wird hier per JS eingefügt -->
+      <canvas id="hocker-canvas" style="display:none;"></canvas>
+    </div>
+
+    <!-- TEXT + BUTTON -->
+    <div class="start-content">
+  <div class="start-content__left">
+    <h2 class="start-content__label" style="margin: 0;">Willkommen!</h2>
+    <p class="start-content__text">
+      Tauche ein in die Welt der HfG Ulm. Teste dein Wissen
+      und erfahre, warum die HfG bis heute als Meilenstein
+      der Designgeschichte gilt.
+    </p>
+  </div>
+  <!-- <div class="start-content__right">
+    <a class="btn btn--orange btn--pill btn--lg" href="geschichte.html">
+      Start
+    </a> -->
+  </div>
+</div>
+
+  </div><!-- /.start-wrapper -->
+<a class="btn btn--orange btn--pill btn--lg" 
+   href="geschichte.html"
+   style="position: absolute; 
+          top: var(--sq-1); 
+          left: calc(var(--sidebar-w) + var(--sq-3) + (9 * (100% - var(--sidebar-w) - 2 * var(--sq-3)) / 12));
+          z-index: 3;"> Start
+</a>
+
+  <!-- =====================================================
+       THREE.JS — 3D Hocker
+       Wird aktiviert sobald die .glb Datei vorhanden ist.
+       Datei ablegen unter: ../assets/models/hocker.glb
+  ===================================================== -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // -------------------------------------------------------
+    // KONFIGURATION
+    // -------------------------------------------------------
+    const MODEL_PATH = '../assets/models/Ulmer_Hocker04.glb'; // Pfad zur .glb Datei
+    const AUTO_ROTATE_SPEED = -0.5;                    // Langsame Auto-Rotation
+    const MODEL_COLOR = 0xFF7B00;                     // Orange — var(--color-orange)
+
+    // -------------------------------------------------------
+    // SETUP
+    // -------------------------------------------------------
+    const canvas   = document.getElementById('hocker-canvas');
+    const wrapper  = document.getElementById('start-3d');
+    const placeholder = document.getElementById('hocker-placeholder');
+
+    const W = wrapper.offsetWidth;
+    const H = wrapper.offsetHeight;
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,           // Transparenter Hintergrund
+    });
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x000000, 0);   // Komplett transparent
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    // Kamera
+    const camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 100);
+    camera.position.set(0, 0.5, 3);
+
+    // Szene
+    const scene = new THREE.Scene();
+
+    // Licht
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(ambientLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 2.5);
+    dirLight.position.set(5, 8, 5);
+    scene.add(dirLight);
+
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    fillLight.position.set(-5, 0, -5);
+    scene.add(fillLight);
+
+    // OrbitControls — Finger-/Maussteuerung
+    const controls = new OrbitControls(camera, canvas);
+    controls.enableDamping    = true;       // Sanftes Nachschwingen
+    controls.dampingFactor    = 0.08;
+    controls.enableZoom       = false;      // Kein Zoom
+    controls.enablePan        = false;      // Kein Verschieben
+    controls.autoRotate       = true;       // Langsame Auto-Rotation
+    controls.autoRotateSpeed  = AUTO_ROTATE_SPEED;
+    controls.minPolarAngle    = Math.PI / 4;  // Nicht zu weit nach oben
+    controls.maxPolarAngle    = Math.PI / 1.5; // Nicht zu weit nach unten
+
+    // -------------------------------------------------------
+    // MODELL LADEN
+    // -------------------------------------------------------
+    const loader = new GLTFLoader();
+
+    loader.load(
+      MODEL_PATH,
+
+      // Erfolg
+      function (gltf) {
+        const model = gltf.scene;
+
+        // Modell zentrieren
+        const box    = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        const size   = box.getSize(new THREE.Vector3());
+        model.position.sub(center);
+
+        // Skalierung: Modell soll ca. 1.5 Einheiten hoch sein
+        const scale = 1.12 / size.y;
+        model.scale.setScalar(scale);
+
+        // Material: Orange, leicht glänzend
+        model.traverse(function (child) {
+          if (child.isMesh) {
+            child.material = new THREE.MeshStandardMaterial({
+              color: child.material.color,   /* Originalfarbe aus Blender behalten */
+              roughness: 0.85,               /* Matt wie Holz */
+              metalness: 0.0,
+              envMapIntensity: 0.2,          /* Wenig Umgebungsreflexion */
+            });
+          }
+        });
+
+        scene.add(model);
+
+        // Placeholder ausblenden, Canvas einblenden
+        placeholder.style.display = 'none';
+        canvas.style.display      = 'block';
+
+        // Pointer-Events aktivieren (für Finger-Steuerung)
+        wrapper.style.pointerEvents = 'auto';
+
+        console.log('Hocker geladen ✓');
+      },
+
+      // Ladefortschritt
+      function (progress) {
+        const pct = Math.round((progress.loaded / progress.total) * 100);
+        placeholder.querySelector('span').textContent = 'Lädt… ' + pct + '%';
+      },
+
+      // Fehler — .glb noch nicht vorhanden
+      function (error) {
+        console.warn('Hocker .glb nicht gefunden — Platzhalter bleibt sichtbar.');
+        console.warn('Datei ablegen unter: ../assets/models/hocker.glb');
+        placeholder.querySelector('span').textContent = '3D · Hocker';
+      }
+    );
+
+    // -------------------------------------------------------
+    // ANIMATIONS-LOOP
+    // -------------------------------------------------------
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+  </script>
+
+  <script src="../js/navigation.js"></script>
+
+</body>
+</html>

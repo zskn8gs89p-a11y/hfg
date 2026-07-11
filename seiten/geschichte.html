@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1366">
+  <title>HfG Ulm — Geschichte</title>
+
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Projekt-CSS -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/kapitel-hero.css">
+  <link rel="stylesheet" href="../css/quiz-v2.css">
+  <link rel="stylesheet" href="../css/geschichte-eva.css">
+
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  </script>
+
+  
+
+</head>
+
+<body class="inhalt-gesperrt">
+
+  <!-- FORTSCHRITTSBALKEN -->
+  <aside class="progress-sidebar" aria-label="Lesefortschritt">
+    <span class="progress-sidebar__label">Fortschritt</span>
+    <div class="progress-sidebar__track">
+      <div class="progress-sidebar__fill"></div>
+      <div class="progress-sidebar__marker"></div>
+    </div>
+    <span class="progress-sidebar__pct">0%</span>
+  </aside>
+
+  <!-- NAVIGATION -->
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <div class="nav-bar">
+      <a class="nav-link" href="start.html" data-page="start">Start</a>
+      <a class="nav-link is-active" href="geschichte.html" data-page="geschichte">Geschichte</a>
+      <a class="nav-link" href="lehre.html" data-page="lehre">Lehre</a>
+      <a class="nav-link" href="design.html" data-page="design">Design</a>
+      <a class="nav-link" href="erbe.html" data-page="erbe">Erbe</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <main class="main-content">
+
+      <!-- =====================================================
+           KAPITEL-HERO
+      ====================================================== -->
+      <section class="kapitel-hero" id="kapitel-hero">
+
+        <div class="kapitel-hero__visual">
+          <svg class="kapitel-hero__d-svg" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0 0 L 190 0 Q 380 0 380 190 Q 380 380 190 380 L 0 380 Z" fill="#FF7B00"/>
+            <image href="../assets/svg/Figur_winken.svg" x="20" y="80" width="340" height="240"/>
+          </svg>
+        </div>
+
+        <div class="kapitel-hero__title">
+          <span class="kapitel-hero__title-line kapitel-hero__title-line--orange">Ursprung</span>
+          <span class="kapitel-hero__title-line">des Systems</span>
+        </div>
+
+        <div class="kapitel-hero__content">
+          <div class="kapitel-hero__content-left">
+            <span class="label label--orange">Kapitel 01 · Geschichte</span>
+            <h2 style="margin-top: var(--sq-6);">Eine Zeitreise durch die HfG Ulm</h2>
+            <p class="body-text">
+              Scroll mit – das Maskottchen nimmt dich an die Hand und erzählt dir,
+              wie aus den Trümmern des Krieges eine der einflussreichsten
+              Designschulen der Welt entstand.
+            </p>
+          </div>
+          <div class="kapitel-hero__content-right">
+            <a class="btn btn--orange btn--pill btn--lg" href="#inhalt" id="hero-btn">
+              Zeitreise starten
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Anker: Hier beginnt der eigentliche Inhalt -->
+      <div id="inhalt"></div>
+  <!-- =====================================================
+           TEIL 1 — NACH DEM KRIEG
+      ===================================================== -->
+      <section class="section section-inner story-scroll" id="teil-1" data-story-scroll>
+        <span class="label label--orange">Zeitreise · Station 1</span>
+        <h1 style="margin-top: var(--sq-6);">nach dem krieg</h1>
+
+        <div class="story-intro-guide history-guide history-guide--hero qv2-guide-demo qv2-guide-demo--left">
+          <div class="qv2-guide-figure">
+            <img class="story-guide-img" src="../assets/svg/Figur_winken.svg" alt="">
+          </div>
+
+          <div class="qv2-guide-bubble">
+            <span class="qv2-guide-kicker">Zeitreise</span>
+            <p>Wir starten jetzt eine Zeitreise. Scroll mit mir durch die wichtigsten Stationen der HfG Ulm.</p>
+          </div>
+        </div>
+
+        <div class="grid story-scroll__grid">
+          <div class="col-start-1-end-5">
+            <div class="story-scroll__sticky">
+              <img src="../assets/svg/Figur_neutral.svg" alt="" class="story-scroll__figure">
+              <div class="story-scroll__year" data-story-year>1945</div>
+            </div>
+          </div>
+
+          <div class="col-start-6-end-13 story-scroll__steps">
+            <article class="story-step is-active" data-year="1945">
+              <span class="label label--orange">1945</span>
+              <h2>Nach dem Krieg</h2>
+              <ul>
+                <li>Deutschland liegt in Trümmern.</li>
+                <li>Die Frage nach einer besseren Gesellschaft entsteht.</li>
+                <li>Gestaltung wird als Teil des Wiederaufbaus verstanden.</li>
+              </ul>
+            </article>
+
+            <article class="story-step" data-year="1946">
+              <span class="label label--orange">1946</span>
+              <h2>Volkshochschule Ulm</h2>
+              <ul>
+                <li>Otl Aicher und Inge Scholl organisieren Vorträge und Workshops.</li>
+                <li>Politische Bildung wird zum demokratischen Neuanfang.</li>
+                <li>Die Volkshochschule Ulm wird zum Vorläufer der HfG.</li>
+              </ul>
+            </article>
+
+            <article class="story-step" data-year="1950">
+              <span class="label label--orange">1950</span>
+              <h2>Max Bill kommt ins Spiel</h2>
+              <ul>
+                <li>Der Gedanke einer neuen Hochschule wird konkreter.</li>
+                <li>Max Bill verlagert den Schwerpunkt auf Gestaltung.</li>
+                <li>Die Schule bekommt eine klare architektonische und gestalterische Richtung.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAILSTRECKE: NACH DEM KRIEG -->
+      <section class="section section-inner">
+        <div class="grid" style="align-items:center;">
+          <div class="col-start-1-end-6">
+            <span class="label label--orange">Kapitel 1 · Die Ausgangsfrage</span>
+            <h2 style="margin-top: var(--sq-6);">Design als <span style="color: var(--color-orange);">Antwort.</span></h2>
+            <p class="body-text" style="margin-top: var(--sq-5);">
+              Nach dem Zweiten Weltkrieg ging es nicht nur darum, zerstörte Gebäude wieder aufzubauen.
+              Viele Menschen fragten sich auch, wie eine demokratische Gesellschaft neu entstehen kann.
+              Gestaltung wurde dabei als Werkzeug verstanden: Sie sollte Orientierung geben, verständlich sein
+              und den Alltag der Menschen verbessern.
+            </p>
+          </div>
+          <div class="col-start-7-end-13">
+            <figure class="image-frame image-frame--large">
+              <img src="../assets/images/geschichte/ulmKieg.jpg" alt="Ulm nach dem zweiten Weltkrieg">
+              <figcaption class="caption">Ulm, Zerstörung nach dem zweiten Weltkrieg</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="info-box info-box--dark">
+          <div class="grid" style="align-items:center;">
+            <div class="col-start-1-end-6">
+              <span class="info-box__label">Der Gegenentwurf</span>
+              <h3 class="info-box__title">Eine Schule sollte nicht nur Formen lehren, sondern Haltung.</h3>
+            </div>
+            <div class="col-start-7-end-13">
+              <p class="info-box__body">
+                Die spätere HfG Ulm entstand aus dem Wunsch, Bildung, Gestaltung und gesellschaftliche Verantwortung
+                zusammenzudenken. Nicht Dekoration stand im Mittelpunkt, sondern die Frage, wie Gestaltung zu einer
+                offenen, demokratischen Kultur beitragen kann.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="history-guide history-guide--hero qv2-guide-demo qv2-guide-demo--lg qv2-guide-demo--left">
+          <div class="qv2-guide-figure">
+            <img src="../assets/svg/Figur_winken.svg" alt="HfG-Maskottchen">
+          </div>
+
+          <div class="qv2-guide-bubble">
+            <span class="qv2-guide-kicker">Zeitreise</span>
+            <p>
+              Otl Aicher und Inge Scholl dachten Bildung politisch:
+              als Antwort auf Nationalsozialismus, Krieg und Zerstörung.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <span class="label label--orange">Die Menschen hinter der Idee</span>
+
+        <div class="person-full">
+          <div class="grid person-feature">
+            <div class="col-start-1-end-6">
+              <figure class="image-frame">
+                <img src="../assets/images/geschichte/Otl-Aicher-im-Atelier-1953-c-Florian-Aicher-HfG-Archiv-Museum-Ulm.png" alt="Otl Aicher">
+                <figcaption class="caption">Otl Aicher</figcaption>
+              </figure>
+            </div>
+            <div class="col-start-8-end-13">
+              <span class="label label--orange">Person</span>
+              <h2>Otl Aicher</h2>
+              <p class="body-text" style="margin-top: var(--sq-5);">
+                Otl Aicher war Grafiker, Mitgründer und einer der wichtigsten Systemdenker der HfG.
+                Für ihn war Gestaltung nie nur Stil. Sie musste verständlich, funktional und gesellschaftlich begründet sein.
+                Dieses Denken prägte später unter anderem Erscheinungsbilder, Piktogramme und Leitsysteme.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid person-feature">
+            <div class="col-start-1-end-6">
+              <figure class="image-frame">
+                <img src="../assets/images/geschichte/inge.png" alt="Inge Aicher-Scholl">
+                <figcaption class="caption">Inge Aicher-Scholl</figcaption>
+              </figure>
+            </div>
+            <div class="col-start-8-end-13">
+              <span class="label label--orange">Person</span>
+              <h2>Inge Aicher-Scholl</h2>
+              <p class="body-text" style="margin-top: var(--sq-5);">
+                Inge Aicher-Scholl war Schriftstellerin, Kulturvermittlerin und Initiatorin der Hochschule.
+                Als Schwester von Hans und Sophie Scholl verband sie das Erbe des Widerstands mit der Idee einer neuen,
+                demokratischen Bildung. Daraus entstand der Wunsch nach einer Schule, die Verantwortung ernst nimmt.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="grid" style="align-items:center; row-gap: var(--sq-2);">
+          <div class="col-start-1-end-6">
+            <span class="label label--orange">Volkshochschule Ulm</span>
+            <h2 style="margin-top: var(--sq-6);">Mehr als Unterricht.</h2>
+            <p class="body-text" style="margin-top: var(--sq-5);">
+              Bevor die HfG gegründet wurde, organisierten Otl Aicher und Inge Scholl Vorträge,
+              Gesprächsrunden und Workshops zu politischen und gesellschaftlichen Themen.
+              Die Volkshochschule Ulm wurde so zu einem Ort des kulturellen Wiederaufbaus:
+              Menschen sollten lernen, zu diskutieren, kritisch zu denken und Gesellschaft aktiv mitzugestalten.
+            </p>
+          </div>
+
+          <div class="col-start-7-end-13">
+            <figure class="image-frame">
+              <img src="../assets/images/geschichte/inge_plakat_vs.avif" alt="Inge Aicher-Scholl mit Plakat">
+              <figcaption class="caption">Inge Aicher-Scholl mit einem Plakat der Ulmer Volkshochschule</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="history-guide history-guide--hero qv2-guide-demo qv2-guide-demo--lg qv2-guide-demo--left">
+          <div class="qv2-guide-figure">
+            <img src="../assets/svg/Figur_winken.svg" alt="HfG-Maskottchen">
+          </div>
+
+          <div class="qv2-guide-bubble">
+            <span class="qv2-guide-kicker">Warum Max Bill?</span>
+            <p>
+              Aus politischer Bildung sollte eine Hochschule für Gestaltung werden.
+              Dafür brauchte die Idee eine gestalterische und architektonische Richtung.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="grid" style="align-items:center;">
+          <div class="col-start-1-end-6">
+            <figure class="image-frame">
+              <img src="../assets/images/geschichte/max_bill.png" alt="Max Bill">
+              <figcaption class="caption">Max Bill</figcaption>
+            </figure>
+          </div>
+          <div class="col-start-8-end-13">
+            <span class="label label--orange">Person</span>
+            <h2 style="margin-top: var(--sq-6);">Max Bill</h2>
+            <p class="body-text" style="margin-top: var(--sq-5);">
+              Max Bill war Schweizer Künstler, Architekt und ehemaliger Bauhaus-Schüler.
+              Er brachte die Verbindung aus Kunst, Architektur, Gestaltung und Systemdenken ein.
+              Unter seiner Mitwirkung wurde aus der Idee einer demokratischen Bildungseinrichtung
+              die Vision einer Hochschule für Gestaltung. Auch das Gebäude auf dem Oberen Kuhberg
+              wurde von ihm entworfen und verkörperte den Anspruch der Schule: Leben, Arbeiten und Lernen
+              an einem Ort.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section section-inner chapter-check" id="check-teil-1" data-gap-check data-unlocks="teil1-next">
+        <div class="qv2-section-head">
+          <span class="label label--orange">Kapitel-Check · Station 1</span>
+          <h2>Was gehört zusammen?</h2>
+        </div>
+        <div class="quiz">
+          <div class="quiz__counter">Lückentext</div>
+          <p class="body-text body-text--muted" style="margin-bottom: var(--sq-5);">
+            Fülle die drei Lücken mit den passenden Begriffen. Erst danach geht die Zeitreise weiter.
+          </p>
+          <div class="qv2-gap-bank" data-gap-bank>
+            <button class="qv2-gap-chip" type="button" data-word="Volkshochschule Ulm">Volkshochschule Ulm</button>
+            <button class="qv2-gap-chip" type="button" data-word="Max Bill">Max Bill</button>
+            <button class="qv2-gap-chip" type="button" data-word="Otl Aicher und Inge Scholl">Otl Aicher und Inge Scholl</button>
+            <button class="qv2-gap-chip" type="button" data-word="Bauhaus Dessau">Bauhaus Dessau</button>
+          </div>
+          <p class="qv2-gap-text">
+            <span class="qv2-gap-slot" data-answer="Otl Aicher und Inge Scholl">&nbsp;</span>
+            organisierten Vorträge und Workshops. Daraus entwickelte sich die
+            <span class="qv2-gap-slot" data-answer="Volkshochschule Ulm">&nbsp;</span>
+            als Vorläuferin der HfG. Später brachte
+            <span class="qv2-gap-slot" data-answer="Max Bill">&nbsp;</span>
+            den Schwerpunkt Gestaltung ein.
+          </p>
+          <div class="quiz__feedback" aria-live="polite"></div>
+          <div class="quiz__footer">
+            <button class="btn btn--ghost btn--pill btn--lg" type="button" data-gap-reset>Zurücksetzen</button>
+            <button class="btn btn--black btn--pill btn--lg" type="button" data-gap-check-btn style="margin-left: var(--sq-6);">Überprüfen</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="station-cta info-box info-box--light">
+          <div class="grid" style="align-items:center;">
+            <div class="col-start-1-end-3"><img src="../assets/svg/Figur_winken.svg" alt=""></div>
+            <div class="col-start-3-end-9">
+              <span class="info-box__label">Zeitreise · Station 2</span>
+              <h3 class="info-box__title">Komm mit – jetzt wird aus einer Idee eine Hochschule.</h3>
+              <p class="info-box__body">Aus politischer Bildung, gestalterischer Haltung und konkreter Planung entsteht nun ein institutionelles Projekt: die HfG Ulm.</p>
+            </div>
+            <div class="col-start-10-end-13"><a class="btn btn--black btn--pill btn--lg" href="#check-teil-1" data-href="#teil-2" data-unlock-target="teil1-next" aria-disabled="true" style="opacity:.35; pointer-events:none;">Zur Gründung →</a></div>
+          </div>
+        </div>
+      </section>
+
+
+<!-- =====================================================
+           TEIL 2 — DIE GRÜNDUNG
+      ===================================================== -->
+      <section class="section section-inner story-scroll" id="teil-2" data-story-scroll>
+        <span class="label label--orange">Zeitreise · Station 2</span>
+        <h1 style="margin-top: var(--sq-6);">die gründung</h1>
+
+        <div class="grid story-scroll__grid">
+          <div class="col-start-1-end-5">
+            <div class="story-scroll__sticky is-active">
+              <img src="../assets/svg/Figur_neutral.svg" alt="" class="story-scroll__figure">
+              <div class="story-scroll__year" data-story-year>1951</div>
+            </div>
+          </div>
+
+          <div class="col-start-6-end-13 story-scroll__steps">
+            <article class="story-step is-active" data-year="1951">
+              <span class="label label--orange">1951</span>
+              <h2>Geschwister-Scholl-Stiftung</h2>
+              <ul>
+                <li>Die Geschwister-Scholl-Stiftung wird gegründet.</li>
+                <li>Sie wird Trägerin der HfG Ulm.</li>
+                <li>Die organisatorische Grundlage für die Hochschule entsteht.</li>
+              </ul>
+            </article>
+            <article class="story-step" data-year="1953">
+              <span class="label label--orange">1953</span>
+              <h2>Start des Lehrbetriebs</h2>
+              <ul>
+                <li>Am 3. August 1953 startet der Lehrbetrieb.</li>
+                <li>Die ersten 21 Studierenden beginnen an der HfG.</li>
+                <li>Der Unterricht findet zunächst in der Volkshochschule statt.</li>
+              </ul>
+            </article>
+            <article class="story-step" data-year="1955">
+              <span class="label label--orange">1955</span>
+              <h2>Campus auf dem Kuhberg</h2>
+              <ul>
+                <li>Der Campus auf dem Oberen Kuhberg wird offiziell eröffnet.</li>
+                <li>Leben, Arbeiten und Lernen werden räumlich verbunden.</li>
+                <li>Die Architektur wird Teil des pädagogischen Systems.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <figure class="image-frame image-frame--hero">
+             <img src="../assets/images/geschichte/luftaufnahmen-des-hfg-gebaeudes-mit-fort-oberer-kuhberg-70936.jpg" alt="Luftaufnahme des HfG-Gebäudes">
+          <figcaption class="caption">Luftaufnahme des HfG-Gebäudes</figcaption>
+        </figure>
+      </section>
+
+      <section class="section section-inner">
+        <div class="info-box info-box--dark">
+          <div class="grid" style="align-items:center;">
+            <div class="col-start-1-end-6">
+              <span class="info-box__label">Bauhaus → Ulm</span>
+              <h3 class="info-box__title">Vom künstlerischen Entwurf zum systematischen Denken.</h3>
+            </div>
+            <div class="col-start-7-end-13">
+              <p class="info-box__body">Während das Bauhaus noch stark künstlerisch geprägt war, wird Ulm systematisch, wissenschaftlich und analytisch.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <span class="label label--orange">Design wird hier</span>
+        <div class="grid card-row" style="margin-top: var(--sq-4);">
+          <article class="card col-start-1-end-5"><span class="card__label">01</span><h3 class="card__title">logisch</h3><p class="card__body">Jede Gestaltung sollte nachvollziehbar aufgebaut sein und einem klaren Zweck folgen.</p></article>
+          <article class="card col-start-5-end-9"><span class="card__label">02</span><h3 class="card__title">messbar</h3><p class="card__body">Design wurde anhand seiner Funktion und Wirkung analysiert.</p></article>
+          <article class="card col-start-9-end-13"><span class="card__label">03</span><h3 class="card__title">begründbar</h3><p class="card__body">Jede gestalterische Entscheidung sollte erklärt werden können.</p></article>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="station-cta info-box info-box--light">
+          <div class="grid" style="align-items:center;">
+            <div class="col-start-1-end-3"><img src="../assets/svg/Figur_winken.svg" alt=""></div>
+            <div class="col-start-3-end-9">
+              <span class="info-box__label">Exkurs · Design</span>
+              <h3 class="info-box__title">Was bedeutet „Ulmer Design“ konkret?</h3>
+              <p class="info-box__body">Logisch, messbar, begründbar – diese Begriffe prägen nicht nur die Geschichte der HfG, sondern auch ihre Produkte, Methoden und Gestaltungsideale.</p>
+            </div>
+            <div class="col-start-10-end-13"><a class="btn btn--black btn--pill btn--lg" href="design.html">Zum Design →</a></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="grid" style="align-items:end;">
+          <div class="col-start-1-end-6">
+            <span class="label label--orange">Start des Lehrbetriebs</span>
+            <h2 style="margin-top: var(--sq-6);">21 Studierende. Eine neue Idee von Design.</h2>
+            <p class="body-text" style="margin-top: var(--sq-5);">Am 3. August 1953 startet der Lehrbetrieb. Der Unterricht findet zunächst in den Räumen der Volkshochschule statt.</p>
+          </div>
+          <div class="col-start-6-end-13">
+            <figure class="image-frame image-frame--large">
+             <img src="../assets/images/geschichte/kurs-mit-inge-scholl-in-der-ulmer-volkshochschule-72592.jpg" alt="VS Lehre mit Studierenden">
+              <figcaption class="caption">Kurs mit Inge Scholl an der Ulmer Volkshochschule</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Hotspot-Block entfernt: passte inhaltlich besser auf die Lehre-/Design-Seite. -->
+
+
+
+
+      <section class="section section-inner chapter-check" id="check-teil-2" data-order-check data-unlocks="teil2-next">
+        <div class="qv2-section-head">
+          <span class="label label--orange">Kapitel-Check · Station 2</span>
+          <h2>Bring die Gründung in Reihenfolge</h2>
+        </div>
+        <div class="quiz">
+          <div class="quiz__counter">Reihenfolge</div>
+          <p class="body-text body-text--muted" style="margin-bottom: var(--sq-5);">
+            Tippe die Stationen in der richtigen chronologischen Reihenfolge an.
+          </p>
+          <div class="qv2-gap-bank" data-order-bank>
+            <button class="qv2-gap-chip" type="button" data-order-value="1955">Campus auf dem Kuhberg</button>
+            <button class="qv2-gap-chip" type="button" data-order-value="1951">Geschwister-Scholl-Stiftung</button>
+            <button class="qv2-gap-chip" type="button" data-order-value="1953">Start des Lehrbetriebs</button>
+          </div>
+          <div class="grid" style="margin-top: var(--sq-5); gap: var(--grid-gutter);" data-order-slots>
+            <div class="qv2-gap-slot col-start-1-end-5" data-order-slot>&nbsp;</div>
+            <div class="qv2-gap-slot col-start-5-end-9" data-order-slot>&nbsp;</div>
+            <div class="qv2-gap-slot col-start-9-end-13" data-order-slot>&nbsp;</div>
+          </div>
+          <div class="quiz__feedback" aria-live="polite"></div>
+          <div class="quiz__footer">
+            <button class="btn btn--ghost btn--pill btn--lg" type="button" data-order-reset>Zurücksetzen</button>
+            <button class="btn btn--black btn--pill btn--lg" type="button" data-order-check-btn style="margin-left: var(--sq-6);">Überprüfen</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="station-cta info-box info-box--light">
+          <div class="grid" style="align-items:center;">
+            <div class="col-start-1-end-3"><img src="../assets/svg/Figur_winken.svg" alt=""></div>
+            <div class="col-start-3-end-9">
+              <span class="info-box__label">Zeitreise · Station 3</span>
+              <h3 class="info-box__title">Die Schule steht – aber wie wurde hier eigentlich gelernt?</h3>
+              <p class="info-box__body">Der Unterricht an der HfG war anders als alles, was man bis dahin kannte.</p>
+            </div>
+            <div class="col-start-10-end-13"><a class="btn btn--black btn--pill btn--lg" href="#check-teil-2" data-href="#teil-3" data-unlock-target="teil2-next" aria-disabled="true" style="opacity:.35; pointer-events:none;">Weiter →</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           TEIL 3 — DER UNTERRICHT
+      ===================================================== -->
+      <section class="section section-inner" id="teil-3">
+        <span class="label label--orange">Zeitreise · Station 3</span>
+        <h1 style="margin-top: var(--sq-6);">der unterricht</h1>
+
+        <div class="grid history-chapter-intro">
+          <div class="col-start-1-end-6">
+            <span class="label label--orange">Lehre als Methode</span>
+            <h2 style="margin-top: var(--sq-6);">Nicht Stil lernen. Denken lernen.</h2>
+          </div>
+          <div class="col-start-7-end-13">
+            <p class="body-text">
+              An der HfG wurde Gestaltung als System gelehrt: beobachten, analysieren, testen,
+              begründen. Die Studierenden sollten nicht nur schöne Formen entwickeln, sondern
+              Entscheidungen nachvollziehbar machen.
+            </p>
+          </div>
+        </div>
+
+        <div class="history-flip-grid">
+          <button class="history-flip-card" type="button">
+            <div class="history-flip-face history-flip-front">
+              <span class="history-flip-num">01</span>
+              <div>
+                <h3>Grundkurs</h3>
+                <p>Wahrnehmung, Material und Form verstehen.</p>
+              </div>
+              <span class="history-flip-tap">Tippen</span>
+            </div>
+            <div class="history-flip-face history-flip-back">
+              <p>Im Grundkurs lernten Studierende, genau zu beobachten und Gestaltung systematisch aufzubauen.</p>
+            </div>
+          </button>
+
+          <button class="history-flip-card" type="button">
+            <div class="history-flip-face history-flip-front">
+              <span class="history-flip-num">02</span>
+              <div>
+                <h3>Analyse</h3>
+                <p>Entscheidungen begründen statt nur fühlen.</p>
+              </div>
+              <span class="history-flip-tap">Tippen</span>
+            </div>
+            <div class="history-flip-face history-flip-back">
+              <p>Gestaltung wurde untersucht: Funktion, Wirkung, Gebrauch, Produktion und gesellschaftlicher Kontext.</p>
+            </div>
+          </button>
+
+          <button class="history-flip-card" type="button">
+            <div class="history-flip-face history-flip-front">
+              <span class="history-flip-num">03</span>
+              <div>
+                <h3>Kritik</h3>
+                <p>Gemeinsam prüfen, verbessern, weiterdenken.</p>
+              </div>
+              <span class="history-flip-tap">Tippen</span>
+            </div>
+            <div class="history-flip-face history-flip-back">
+              <p>Entwürfe wurden besprochen, hinterfragt und überarbeitet. So wurde Gestaltung zu einem argumentierbaren Prozess.</p>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="station-cta info-box info-box--light">
+          <div class="grid" style="align-items:center;">
+            <div class="col-start-1-end-3"><img src="../assets/svg/Figur_winken.svg" alt=""></div>
+            <div class="col-start-3-end-9">
+              <span class="info-box__label">Exkurs · Lehre</span>
+              <h3 class="info-box__title">Willst du tiefer in den Unterricht eintauchen?</h3>
+              <p class="info-box__body">Auf der Seite „Lehre“ findest du Grundkurs, Tagesablauf und weitere interaktive Übungen.</p>
+            </div>
+            <div class="col-start-10-end-13"><a class="btn btn--black btn--pill btn--lg" href="lehre.html">Zur Lehre →</a></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-inner chapter-check" id="check-teil-3" data-mc-check data-unlocks="teil3-next">
+        <div class="qv2-section-head">
+          <span class="label label--orange">Kapitel-Check · Station 3</span>
+          <h2>Kurz prüfen</h2>
+        </div>
+        <div class="quiz">
+          <div class="quiz__counter">Multiple Choice</div>
+          <div class="quiz__question">Was stand im Zentrum der Ulmer Lehre?</div>
+          <div class="quiz__options">
+            <div class="quiz__option" data-correct="false"><span class="quiz__radio"></span><span class="quiz__option-text">Dekoration und Stilgefühl</span></div>
+            <div class="quiz__option" data-correct="true"><span class="quiz__radio"></span><span class="quiz__option-text">Systematisches Denken, Analyse und Begründung</span></div>
+            <div class="quiz__option" data-correct="false"><span class="quiz__radio"></span><span class="quiz__option-text">Reine künstlerische Selbstdarstellung</span></div>
+          </div>
+          <div class="quiz__feedback" aria-live="polite">Richtig: Gestaltung wurde an der HfG analysiert, begründet und als System verstanden.</div>
+        </div>
+      </section>
+
+      <section class="section section-inner">
+        <div class="station-cta info-box info-box--light">
+          <div class="grid" style="align-items:center;">
+            <div class="col-start-1-end-3"><img src="../assets/svg/Figur_winken.svg" alt=""></div>
+            <div class="col-start-3-end-9">
+              <span class="info-box__label">Zeitreise · Station 4</span>
+              <h3 class="info-box__title">Nicht alle waren derselben Meinung.</h3>
+              <p class="info-box__body">So innovativ die HfG war: Zwischen künstlerischer Freiheit, Wissenschaftlichkeit und Politik entstanden Konflikte.</p>
+            </div>
+            <div class="col-start-10-end-13"><a class="btn btn--black btn--pill btn--lg" href="#check-teil-3" data-href="#teil-4" data-unlock-target="teil3-next" aria-disabled="true" style="opacity:.35; pointer-events:none;">Zu den Konflikten →</a></div>
+          </div>
+        </div>
+      </section>
+
+     <!-- =====================================================
+     TEIL 4 — KONFLIKTE
+===================================================== -->
+<section class="section section-inner" id="teil-4">
+  <span class="label label--orange">Zeitreise · Station 4</span>
+  <h1 style="margin-top: var(--sq-6);">konflikte</h1>
+</section>
+
+<section class="section section-inner">
+  <div class="history-guide history-guide--hero qv2-guide-demo qv2-guide-demo--lg qv2-guide-demo--left">
+    <div class="qv2-guide-figure">
+      <img src="../assets/svg/Figur_winken.svg" alt="HfG-Maskottchen">
+    </div>
+    <div class="qv2-guide-bubble">
+      <span class="qv2-guide-kicker">Konflikte</span>
+      <p>
+        Je erfolgreicher die HfG wurde, desto unterschiedlicher wurden die Vorstellungen
+        darüber, wie sie sich weiterentwickeln sollte.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-inner story-scroll" id="konflikt-timeline" data-story-scroll>
+  <div class="grid story-scroll__grid">
+    <div class="col-start-1-end-5">
+      <div class="story-scroll__sticky is-active">
+        <img src="../assets/svg/Figur_neutral.svg" alt="" class="story-scroll__figure">
+        <div class="story-scroll__year" data-story-year>1956</div>
+      </div>
+    </div>
+
+    <div class="col-start-6-end-13 story-scroll__steps">
+      <article class="story-step is-active" data-year="1956">
+        <span class="label label--orange">1956</span>
+        <h2>Max Bill verlässt die HfG</h2>
+        <ul>
+          <li>Unterschiedliche Vorstellungen über die Zukunft der Hochschule werden sichtbar.</li>
+          <li>Max Bill tritt als Rektor zurück.</li>
+          <li>Die Diskussion über die Ausrichtung beginnt.</li>
+        </ul>
+      </article>
+
+      <article class="story-step" data-year="1958">
+        <span class="label label--orange">1958</span>
+        <h2>Maldonado prägt die neue Richtung</h2>
+        <ul>
+          <li>Gestaltung wird wissenschaftlicher verstanden.</li>
+          <li>Analyse und Systemdenken rücken stärker in den Mittelpunkt.</li>
+          <li>Design soll gesellschaftliche Probleme methodisch lösen.</li>
+        </ul>
+      </article>
+
+      <article class="story-step" data-year="1966">
+        <span class="label label--orange">1966</span>
+        <h2>Politische und finanzielle Spannungen</h2>
+        <ul>
+          <li>Die Finanzierung wird zunehmend schwieriger.</li>
+          <li>Politische Erwartungen und interne Konflikte verschärfen sich.</li>
+          <li>Die Zukunft der Hochschule wird unsicher.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-inner">
+  <div class="grid" style="align-items:center;">
+    <div class="col-start-1-end-6">
+      <span class="label label--orange">Ausrichtung</span>
+      <h2 style="margin-top: var(--sq-6);">
+        Die HfG war erfolgreich — und genau deshalb umstritten.
+      </h2>
+    </div>
+    <div class="col-start-7-end-13">
+      <p class="body-text">
+        Die Hochschule wurde international bekannt. Gleichzeitig stellte sich immer stärker
+        die Frage, was Gestaltung eigentlich leisten sollte: Sollte sie näher an Kunst,
+        Architektur und Form bleiben? Oder stärker wissenschaftlich, analytisch und
+        gesellschaftlich begründet werden?
+      </p>
+      <p class="body-text" style="margin-top: var(--sq-5);">
+        Diese Diskussionen waren kein Nebenthema. Sie bestimmten, wie an der HfG gelehrt,
+        geforscht und entworfen wurde.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-inner">
+  <div class="history-guide history-guide--hero qv2-guide-demo qv2-guide-demo--lg qv2-guide-demo--left">
+    <div class="qv2-guide-figure">
+      <img src="../assets/svg/Figur_winken.svg" alt="HfG-Maskottchen">
+    </div>
+    <div class="qv2-guide-bubble">
+      <span class="qv2-guide-kicker">Neue Richtung</span>
+      <p>
+        Es ging nicht darum, ob Design wichtig ist — sondern darum,
+        wie Design entstehen sollte.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-inner">
+  <div class="grid" style="align-items:center;">
+    <div class="col-start-1-end-6">
+      <figure class="image-frame">
+        <img src="../assets/images/geschichte/Tomás_Maldonado_(1956).tif.jpg" alt="Tomás Maldonado">
+        <figcaption class="caption">Tomás Maldonado</figcaption>
+      </figure>
+    </div>
+
+    <div class="col-start-8-end-13">
+      <span class="label label--orange">Person</span>
+      <h2 style="margin-top: var(--sq-6);">Tomás Maldonado</h2>
+      <p class="body-text" style="margin-top: var(--sq-5);">
+        Tomás Maldonado war Designer, Künstler und Theoretiker. Nach dem Weggang von
+        Max Bill gewann er zunehmend Einfluss auf die Ausrichtung der Hochschule.
+      </p>
+      <p class="body-text" style="margin-top: var(--sq-5);">
+        Unter seiner Prägung wurde Design stärker als wissenschaftlicher Prozess verstanden:
+        Analyse, Methodik, Forschung und gesellschaftliche Verantwortung wurden wichtiger
+        als reine Formfragen.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-inner chapter-check" id="check-teil-4" data-tf-check data-unlocks="teil4-next">
+  <div class="qv2-section-head">
+    <span class="label label--orange">Kapitel-Check · Station 4</span>
+    <h2>Richtig oder falsch?</h2>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz__counter">Aussage</div>
+    <div class="quiz__question">
+      An der HfG gab es nur eine einheitliche Meinung darüber, wie Design gelehrt werden sollte.
+    </div>
+
+    <div class="qv2-tf-opts">
+      <button class="btn btn--ghost btn--pill btn--lg qv2-tf-btn" type="button" data-correct="false">Richtig</button>
+      <button class="btn btn--ghost btn--pill btn--lg qv2-tf-btn" type="button" data-correct="true">Falsch</button>
+    </div>
+
+    <div class="quiz__feedback" aria-live="polite">
+      Falsch. Gerade unterschiedliche Vorstellungen über Kunst, Wissenschaft,
+      Politik und Gestaltung führten zu Spannungen.
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     TEIL 5 — SCHLIESSUNG / ERBE
+===================================================== -->
+<section class="section section-inner" id="teil-5">
+  <span class="label label--orange">Zeitreise · Station 5</span>
+  <h1 style="margin-top: var(--sq-6);">das ende</h1>
+</section>
+
+<section class="section section-inner">
+  <div class="grid" style="align-items:center;">
+    <div class="col-start-1-end-6">
+      <div class="story-scroll__year" style="position: static;">1968</div>
+    </div>
+
+    <div class="col-start-7-end-13">
+      <span class="label label--orange">Schließung</span>
+      <h2 style="margin-top: var(--sq-6);">Die HfG Ulm wird geschlossen.</h2>
+      <ul class="styled-list" style="margin-top: var(--sq-5);">
+        <li>Das Land Baden-Württemberg beendet die Finanzierung.</li>
+        <li>Die Hochschule wird geschlossen.</li>
+        <li>Nach nur 15 Jahren endet die Geschichte der HfG Ulm.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-inner">
+  <figure class="image-frame image-frame--hero">
+    <img src="../assets/images/geschichte/hfg_nacht.jpg" alt="HfG Ulm Schließung">
+    <figcaption class="caption">Die HfG Ulm existierte nur von 1953 bis 1968.</figcaption>
+  </figure>
+</section>
+
+<section class="section section-inner">
+  <div class="history-guide history-guide--hero qv2-guide-demo qv2-guide-demo--lg qv2-guide-demo--left">
+    <div class="qv2-guide-figure">
+      <img src="../assets/svg/Figur_winken.svg" alt="HfG-Maskottchen">
+    </div>
+    <div class="qv2-guide-bubble">
+      <span class="qv2-guide-kicker">Erbe</span>
+      <p>
+        Eine Hochschule kann schließen — ihre Ideen nicht.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-inner">
+  <div class="grid" style="align-items:start;">
+    <div class="col-start-1-end-6">
+      <span class="label label--orange">Nachwirkung</span>
+      <h2 style="margin-top: var(--sq-6);">
+        Das Ende einer Hochschule — nicht ihrer Ideen.
+      </h2>
+    </div>
+
+    <div class="col-start-7-end-13">
+      <p class="body-text">
+        Die HfG Ulm existierte nur fünfzehn Jahre. Trotzdem prägen ihre Ideen bis heute
+        Produktgestaltung, Informationsdesign, Interface Design und Designforschung.
+      </p>
+      <p class="body-text" style="margin-top: var(--sq-5);">
+        Ihr Einfluss zeigt sich überall dort, wo Gestaltung klar, funktional,
+        systematisch und gesellschaftlich verantwortungsvoll gedacht wird.
+      </p>
+    </div>
+  </div>
+
+  <div class="grid card-row" style="margin-top: var(--sq-3);">
+    <article class="card col-start-1-end-5">
+      <span class="card__label">01</span>
+      <h3 class="card__title">Produktdesign</h3>
+      <p class="card__body">
+        Viele Industrieprodukte orientieren sich bis heute an Ulmer Prinzipien:
+        reduziert, funktional und langlebig.
+      </p>
+    </article>
+
+    <article class="card col-start-5-end-9">
+      <span class="card__label">02</span>
+      <h3 class="card__title">Interface Design</h3>
+      <p class="card__body">
+        Klare Navigation, reduzierte Gestaltung und verständliche Bedienung greifen
+        Gedanken der HfG wieder auf.
+      </p>
+    </article>
+
+    <article class="card col-start-9-end-13">
+      <span class="card__label">03</span>
+      <h3 class="card__title">Informationsdesign</h3>
+      <p class="card__body">
+        Komplexe Informationen verständlich darzustellen gehört bis heute zu den
+        wichtigsten Gestaltungsaufgaben.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section section-inner">
+  <div class="station-cta info-box info-box--light">
+    <div class="grid" style="align-items:center;">
+      <div class="col-start-1-end-3">
+        <img src="../assets/svg/Figur_winken.svg" alt="">
+      </div>
+
+      <div class="col-start-3-end-9">
+        <span class="info-box__label">Weiterdenken</span>
+        <h3 class="info-box__title">
+          Möchtest du sehen, wie die Ideen der HfG bis heute weiterleben?
+        </h3>
+        <p class="info-box__body">
+          Im Kapitel „Erbe“ geht es darum, welche Spuren die HfG in Design,
+          Alltag und digitalen Systemen hinterlassen hat.
+        </p>
+      </div>
+
+      <div class="col-start-10-end-13">
+        <a class="btn btn--black btn--pill btn--lg" href="erbe.html">
+          Zum Erbe →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+    <section class="section section--sm section-inner" id="geschichte-mc" aria-label="Abschlussquiz Geschichte">
+  <div class="qv2-section-head">
+    <span class="label label--orange">Abschlussquiz</span>
+    <h2>Was hast du behalten?</h2>
+  </div>
+
+  <div id="hist-mc-active">
+    <div class="quiz">
+      <div class="quiz__counter">Frage <span id="hist-mc-current">01</span> / 05</div>
+      <div class="quiz__question" id="hist-mc-question"></div>
+      <div class="quiz__options" id="hist-mc-options"></div>
+      <div class="quiz__feedback" id="hist-mc-feedback"></div>
+      <div class="quiz__footer" id="hist-mc-footer" style="display:none;">
+        <button class="btn btn--black btn--pill btn--lg" id="hist-mc-next-btn">Nächste Frage</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--dark qv2-result" id="hist-mc-result" style="display:none;" aria-live="polite">
+    <span class="card__label">Ergebnis</span>
+    <div class="qv2-result__score" id="hist-mc-score-display">0 / 5</div>
+    <p class="card__title" id="hist-mc-result-title"></p>
+    <p class="card__body" id="hist-mc-result-text"></p>
+    <button class="btn btn--ghost btn--pill btn--lg qv2-result__retry" id="hist-mc-retry">↺ Nochmal</button>
+  </div>
+</section>
+
+  
+    </main>
+  </div>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/kapitel-hero.js"></script>
+  <script src="../js/geschichte-eva.js"></script>
+</body>
+</html>
